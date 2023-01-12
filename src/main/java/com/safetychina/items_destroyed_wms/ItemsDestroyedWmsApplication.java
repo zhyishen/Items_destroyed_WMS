@@ -10,7 +10,7 @@ public class ItemsDestroyedWmsApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(ItemsDestroyedWmsApplication.class, args);
-        test
+
     }
 
 }
