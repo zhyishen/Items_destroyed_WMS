@@ -2,7 +2,7 @@ package com.safetychina.items_destroyed_wms.Controller;
 
 
 import com.safetychina.items_destroyed_wms.Entity.Electronic;
-import com.safetychina.items_destroyed_wms.Services.ElectronicServices;
+import com.safetychina.items_destroyed_wms.Services.ElectronicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping
 public class ElectronicController {
 
-    private final ElectronicServices electronicServices;
+    private final ElectronicService electronicService;
 
     @Autowired
-    public ElectronicController(ElectronicServices electronicServices) {
-        this.electronicServices = electronicServices;
+    public ElectronicController(ElectronicService electronicService) {
+        this.electronicService = electronicService;
     }
 
     @PostMapping

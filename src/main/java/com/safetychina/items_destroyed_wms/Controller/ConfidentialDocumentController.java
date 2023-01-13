@@ -2,7 +2,7 @@ package com.safetychina.items_destroyed_wms.Controller;
 
 
 import com.safetychina.items_destroyed_wms.Entity.ConfidentialDocument;
-import com.safetychina.items_destroyed_wms.Services.ConfidentialDocumentServices;
+import com.safetychina.items_destroyed_wms.Services.ConfidentialDocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping
 public class ConfidentialDocumentController {
 
-    private final ConfidentialDocumentServices confidentialDocumentServices;
+    private final ConfidentialDocumentService confidentialDocumentService;
 
     @Autowired
-    public ConfidentialDocumentController(ConfidentialDocumentServices confidentialDocumentServices) {
-        this.confidentialDocumentServices = confidentialDocumentServices;
+    public ConfidentialDocumentController(ConfidentialDocumentService confidentialDocumentService) {
+        this.confidentialDocumentService = confidentialDocumentService;
     }
 
     @PostMapping

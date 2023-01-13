@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 
-public class ElectronicServices {
+public class ElectronicService {
 }

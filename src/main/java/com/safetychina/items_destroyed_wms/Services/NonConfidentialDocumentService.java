@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 
-public class NonConfidentialDocumentServices {
+public class NonConfidentialDocumentService {
     private final NonConfidentialDocumentRepository nonConfidentialDocumentRepository;
 
-    public NonConfidentialDocumentServices(NonConfidentialDocumentRepository nonConfidentialDocumentRepository) {
+    public NonConfidentialDocumentService(NonConfidentialDocumentRepository nonConfidentialDocumentRepository) {
         this.nonConfidentialDocumentRepository = nonConfidentialDocumentRepository;
     }
 
@@ -20,11 +20,15 @@ public class NonConfidentialDocumentServices {
     }
 
 
-    public void addNonConfidentialDocuments(NonConfidentialDocument nonConfidentialDocuments){
-        nonConfidentialDocumentRepository.save(nonConfidentialDocuments);
+    public void addNonConfidentialDocument(NonConfidentialDocument nonConfidentialDocument){
+        nonConfidentialDocumentRepository.save(nonConfidentialDocument);
     }
     
-    public void putNonConfidentialDocuments
+    public void putNonConfidentialDocument(NonConfidentialDocument nonConfidentialDocument){
+        nonConfidentialDocumentRepository.update(nonConfidentialDocument);
+    }
+
+    public void deleteNon
 
 
 
