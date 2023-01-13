@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "non_confidential_documents_entity")
-public class NonConfidentialDocumentsEntity {
+public class NonConfidentialDocument {
     @Id
     @SequenceGenerator(
             name = "non_confidential_documents",

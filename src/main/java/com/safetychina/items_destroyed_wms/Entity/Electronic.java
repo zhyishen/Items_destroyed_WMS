@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "electronics_entity")
-public class ElectronicsEntity {
+public class Electronic {
 
     @Id
     @SequenceGenerator(name = "electronics_generator",
@@ -20,15 +20,15 @@ public class ElectronicsEntity {
     private String departmentOfUse;
     private String personOfUse;
 
-    public ElectronicsEntity() {
+    public Electronic() {
     }
 
-    public ElectronicsEntity(String equipmentName,
-                             String type,
-                             String secretLevel,
-                             Integer quantity,
-                             String departmentOfUse,
-                             String personOfUse) {
+    public Electronic(String equipmentName,
+                      String type,
+                      String secretLevel,
+                      Integer quantity,
+                      String departmentOfUse,
+                      String personOfUse) {
         this.equipmentName = equipmentName;
         this.type = type;
         this.secretLevel = secretLevel;
