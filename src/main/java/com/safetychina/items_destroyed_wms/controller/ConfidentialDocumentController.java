@@ -1,8 +1,8 @@
-package com.safetychina.items_destroyed_wms.Controller;
+package com.safetychina.items_destroyed_wms.controller;
 
 
-import com.safetychina.items_destroyed_wms.Entity.ConfidentialDocument;
-import com.safetychina.items_destroyed_wms.Services.ConfidentialDocumentService;
+import com.safetychina.items_destroyed_wms.entity.ConfidentialDocument;
+import com.safetychina.items_destroyed_wms.services.ConfidentialDocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package com.safetychina.items_destroyed_wms.Entity;
+package com.safetychina.items_destroyed_wms.entity;
 
 import jakarta.persistence.*;
 

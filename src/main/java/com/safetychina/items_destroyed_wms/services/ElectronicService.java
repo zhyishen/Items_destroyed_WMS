@@ -1,4 +1,4 @@
-package com.safetychina.items_destroyed_wms.Services;
+package com.safetychina.items_destroyed_wms.services;
 
 
 import org.springframework.stereotype.Service;

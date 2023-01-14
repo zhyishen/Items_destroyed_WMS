@@ -1,7 +1,7 @@
-package com.safetychina.items_destroyed_wms.Services;
+package com.safetychina.items_destroyed_wms.services;
 
 
-import com.safetychina.items_destroyed_wms.Entity.NonConfidentialDocument;
+import com.safetychina.items_destroyed_wms.entity.NonConfidentialDocument;
 import org.springframework.stereotype.Service;
 
 @Service
