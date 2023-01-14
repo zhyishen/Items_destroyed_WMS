@@ -3,6 +3,7 @@ package com.safetychina.items_destroyed_wms.Entity;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "confidential_documents_entity")
@@ -125,5 +126,33 @@ public class ConfidentialDocument {
 
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ConfidentialDocument that)) return false;
+        return getId().equals(that.getId()) && getDocumentID().equals(that.getDocumentID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getDocumentID());
+    }
+
+    @Override
+    public String toString() {
+        return "ConfidentialDocument{" +
+                "id=" + id +
+                ", documentID='" + documentID + '\'' +
+                ", title='" + title + '\'' +
+                ", quantity=" + quantity +
+                ", secretLevel='" + secretLevel + '\'' +
+                ", sendDepartment='" + sendDepartment + '\'' +
+                ", receiveDepartment='" + receiveDepartment + '\'' +
+                ", approveSignature='" + approveSignature + '\'' +
+                ", transferSignature='" + transferSignature + '\'' +
+                ", receiveDate=" + receiveDate +
+                '}';
     }
 }

@@ -5,8 +5,9 @@ import com.safetychina.items_destroyed_wms.Entity.NonConfidentialDocument;
 import com.safetychina.items_destroyed_wms.Repository.NonConfidentialDocumentRepository;
 import org.springframework.stereotype.Service;
 
-@Service
+import java.util.List;
 
+@Service
 public class NonConfidentialDocumentService {
     private final NonConfidentialDocumentRepository nonConfidentialDocumentRepository;
 
@@ -15,7 +16,7 @@ public class NonConfidentialDocumentService {
     }
 
     public List<NonConfidentialDocument> getNonConfidentialDocuments(){
-
+        return nonConfidentialDocumentRepository.findAll();
 
     }
 
@@ -28,7 +29,9 @@ public class NonConfidentialDocumentService {
         nonConfidentialDocumentRepository.update(nonConfidentialDocument);
     }
 
-    public void deleteNon
+    public void deleteNonConfidentialDocument(NonConfidentialDocument nonConfidentialDocument){
+        nonConfidentialDocumentRepository.delete(nonConfidentialDocument);
+    }
 
 
 

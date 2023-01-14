@@ -2,6 +2,8 @@ package com.safetychina.items_destroyed_wms.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "electronics_entity")
 public class Electronic {
@@ -35,19 +37,6 @@ public class Electronic {
         this.quantity = quantity;
         this.departmentOfUse = departmentOfUse;
         this.personOfUse = personOfUse;
-    }
-
-    @Override
-    public String toString() {
-        return "ElectronicsEntity{" +
-                "id=" + id +
-                ", equipmentName='" + equipmentName + '\'' +
-                ", type='" + type + '\'' +
-                ", secretLevel='" + secretLevel + '\'' +
-                ", quantity=" + quantity +
-                ", departmentOfUse='" + departmentOfUse + '\'' +
-                ", personOfUse='" + personOfUse + '\'' +
-                '}';
     }
 
     public String getEquipmentName() {
@@ -102,5 +91,28 @@ public class Electronic {
         return id;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Electronic that)) return false;
+        return getId().equals(that.getId());
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "Electronic{" +
+                "id=" + id +
+                ", equipmentName='" + equipmentName + '\'' +
+                ", type='" + type + '\'' +
+                ", secretLevel='" + secretLevel + '\'' +
+                ", quantity=" + quantity +
+                ", departmentOfUse='" + departmentOfUse + '\'' +
+                ", personOfUse='" + personOfUse + '\'' +
+                '}';
+    }
 }
