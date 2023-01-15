@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/Electronics")
 public class ElectronicController {
 
     private final ElectronicService electronicService;
@@ -18,18 +18,18 @@ public class ElectronicController {
     }
 
     @PostMapping
-    public void addElectronics(Electronic c){
+    public void addElectronics(Electronic electronic){
 
     }
 
     @DeleteMapping
-    public void deleteElectronics(Electronic c){
+    public void deleteElectronics(Electronic electronic){
 
     }
 
 
     @PutMapping
-    public void putElectronics(Electronic c){
+    public void putElectronics(Electronic electronic){
 
     }
 

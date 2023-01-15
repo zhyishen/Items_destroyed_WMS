@@ -2,6 +2,7 @@ package com.safetychina.items_destroyed_wms.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -21,22 +22,36 @@ public class Electronic {
     private Integer quantity;
     private String departmentOfUse;
     private String personOfUse;
+    private Date receiveDate;
+    private String transferor;
+    private String recipient;
+
+
+
 
     public Electronic() {
     }
+
+
 
     public Electronic(String equipmentName,
                       String type,
                       String secretLevel,
                       Integer quantity,
                       String departmentOfUse,
-                      String personOfUse) {
+                      String personOfUse,
+                      Date receiveDate,
+                      String transferor,
+                      String recipient) {
         this.equipmentName = equipmentName;
         this.type = type;
         this.secretLevel = secretLevel;
         this.quantity = quantity;
         this.departmentOfUse = departmentOfUse;
         this.personOfUse = personOfUse;
+        this.receiveDate = receiveDate;
+        this.transferor = transferor;
+        this.recipient = recipient;
     }
 
     public String getEquipmentName() {
@@ -91,6 +106,30 @@ public class Electronic {
         return id;
     }
 
+    public Date getReceiveDate() {
+        return receiveDate;
+    }
+
+    public void setReceiveDate(Date receiveDate) {
+        this.receiveDate = receiveDate;
+    }
+
+    public String getTransferor() {
+        return transferor;
+    }
+
+    public void setTransferor(String transferor) {
+        this.transferor = transferor;
+    }
+
+    public String getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -113,6 +152,9 @@ public class Electronic {
                 ", quantity=" + quantity +
                 ", departmentOfUse='" + departmentOfUse + '\'' +
                 ", personOfUse='" + personOfUse + '\'' +
+                ", receiveDate=" + receiveDate +
+                ", transferor='" + transferor + '\'' +
+                ", recipient='" + recipient + '\'' +
                 '}';
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/ConfidentialDocuments")
 public class ConfidentialDocumentController {
 
     private final ConfidentialDocumentService confidentialDocumentService;
@@ -18,18 +18,18 @@ public class ConfidentialDocumentController {
     }
 
     @PostMapping
-    public void addConfidentialDocuments(ConfidentialDocument c){
+    public void addConfidentialDocuments(ConfidentialDocument confidentialDocument){
 
     }
 
     @DeleteMapping
-    public void deleteConfidentialDocuments(ConfidentialDocument c){
+    public void deleteConfidentialDocuments(ConfidentialDocument confidentialDocument){
 
     }
 
 
     @PutMapping
-    public void putConfidentialDocuments(ConfidentialDocument c){
+    public void putConfidentialDocuments(ConfidentialDocument confidentialDocument){
 
     }
 
