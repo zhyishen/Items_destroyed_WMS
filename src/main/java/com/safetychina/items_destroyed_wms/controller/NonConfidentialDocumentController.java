@@ -48,7 +48,7 @@ public class NonConfidentialDocumentController {
     }
 
     @GetMapping("/NonConfidentialDocuments/{id}")
-    NonConfidentialDocument getNonConfidentialDocument(@PathVariable Long id){
+    public NonConfidentialDocument getNonConfidentialDocument(@PathVariable Long id){
         return nonConfidentialDocumentService.getNonConfidentialDocument(id);
     }
     

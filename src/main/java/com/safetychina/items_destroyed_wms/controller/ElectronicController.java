@@ -6,6 +6,8 @@ import com.safetychina.items_destroyed_wms.services.ElectronicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/Electronics")
 public class ElectronicController {
@@ -18,24 +20,28 @@ public class ElectronicController {
     }
 
     @PostMapping
-    public void addElectronics(Electronic electronic){
-
+    public void addElectronics(@RequestBody Electronic electronic){
+        electronicService.addElectronic(electronic);
     }
 
-    @DeleteMapping
-    public void deleteElectronics(Electronic electronic){
-
+    @DeleteMapping("/Electronics/{id}")
+    public void deleteElectronics(@PathVariable Long id){
+        electronicService.deleteElectronic(id);
     }
 
 
-    @PutMapping
-    public void putElectronics(Electronic electronic){
-
+    @PutMapping("/Electronics/{id}")
+    public Electronic putElectronics(@RequestBody Electronic electronic, @PathVariable Long id){
+        return electronicService.putElectronic(electronic,id);
     }
 
     @GetMapping
-    public void getElectronics(){
+    public List<Electronic> getElectronics(){
+        return electronicService.getElectronics();
+    }
 
-
+    @GetMapping("/Electronics/{id}")
+    public Electronic getElectronic(@PathVariable Long id){
+        return electronicService.getElectronic(id);
     }
 }
