@@ -6,6 +6,8 @@ import com.safetychina.items_destroyed_wms.services.ConfidentialDocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/ConfidentialDocuments")
 public class ConfidentialDocumentController {
@@ -17,25 +19,34 @@ public class ConfidentialDocumentController {
         this.confidentialDocumentService = confidentialDocumentService;
     }
 
+    /**
+     * 增加保密文件项目
+     *
+     * @param newConfidentialDocument 新保密文件实体
+     */
     @PostMapping
-    public void addConfidentialDocuments(ConfidentialDocument confidentialDocument){
-
+    public void addConfidentialDocuments(@RequestBody ConfidentialDocument newConfidentialDocument){
+        confidentialDocumentService.addConfidentialDocument(newConfidentialDocument);
     }
 
-    @DeleteMapping
-    public void deleteConfidentialDocuments(ConfidentialDocument confidentialDocument){
-
+    @DeleteMapping("/{id}")
+    public void deleteConfidentialDocuments(@PathVariable Long id){
+        confidentialDocumentService.deleteConfidentialDocument(id);
     }
 
 
-    @PutMapping
-    public void putConfidentialDocuments(ConfidentialDocument confidentialDocument){
-
+    @PutMapping("/{id}")
+    public ConfidentialDocument putConfidentialDocuments(@RequestBody ConfidentialDocument confidentialDocument, @PathVariable Long id){
+        return confidentialDocumentService.putConfidentialDocument(confidentialDocument, id);
     }
 
     @GetMapping
-    public void getConfidentialDocuments(){
+    public List<ConfidentialDocument> getConfidentialDocuments(){
+        return confidentialDocumentService.getConfidentialDocuments();
+    }
 
-
+    @GetMapping("/{id}")
+    public ConfidentialDocument getConfidentialDocument(@PathVariable Long id){
+        return confidentialDocumentService.getConfidentialDocument(id);
     }
 }

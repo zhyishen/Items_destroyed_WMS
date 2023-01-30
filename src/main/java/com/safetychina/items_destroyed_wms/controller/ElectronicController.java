@@ -24,13 +24,13 @@ public class ElectronicController {
         electronicService.addElectronic(electronic);
     }
 
-    @DeleteMapping("/Electronics/{id}")
+    @DeleteMapping("{id}")
     public void deleteElectronics(@PathVariable Long id){
         electronicService.deleteElectronic(id);
     }
 
 
-    @PutMapping("/Electronics/{id}")
+    @PutMapping("{id}")
     public Electronic putElectronics(@RequestBody Electronic electronic, @PathVariable Long id){
         return electronicService.putElectronic(electronic,id);
     }
@@ -40,7 +40,7 @@ public class ElectronicController {
         return electronicService.getElectronics();
     }
 
-    @GetMapping("/Electronics/{id}")
+    @GetMapping("{id}")
     public Electronic getElectronic(@PathVariable Long id){
         return electronicService.getElectronic(id);
     }

@@ -18,6 +18,10 @@ public class ElectronicService {
         this.electronicRepository = electronicRepository;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Electronic> getElectronics(){
         return electronicRepository.findAll();
     }
@@ -40,7 +44,7 @@ public class ElectronicService {
                     electronic.setSecretLevel(newElectronic.getSecretLevel());
                     return electronicRepository.save(electronic);
                 })
-                .orElseThrow(()->new ElectronicNotFoundException((id)));
+                .orElseThrow(()->new ElectronicNotFoundException(id));
     }
 
     public void deleteElectronic(Long id){electronicRepository.deleteById(id);}

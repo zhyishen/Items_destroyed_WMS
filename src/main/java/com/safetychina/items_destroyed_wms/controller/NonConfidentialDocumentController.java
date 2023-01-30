@@ -7,6 +7,7 @@ package com.safetychina.items_destroyed_wms.controller;
 
 import com.safetychina.items_destroyed_wms.entity.NonConfidentialDocument;
 import com.safetychina.items_destroyed_wms.services.NonConfidentialDocumentService;
+import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,14 +31,14 @@ public class NonConfidentialDocumentController {
 
     }
 
-    @DeleteMapping("/NonConfidentialDocuments/{id}")
-    public void deleteNonConfidentialDocuments(@PathVariable Long id){
+    @DeleteMapping("/{id}")
+    public void deleteNonConfidentialDocuments(@PathVariable("id") Long id){
         nonConfidentialDocumentService.deleteNonConfidentialDocument(id);
     }
 
 
-    @PutMapping("/NonConfidentialDocuments/{id}")
-    public NonConfidentialDocument putNonConfidentialDocument(@RequestBody NonConfidentialDocument nonConfidentialDocument, @PathVariable Long id){
+    @PutMapping("/{id}")
+    public NonConfidentialDocument putNonConfidentialDocument(@RequestBody NonConfidentialDocument nonConfidentialDocument, @PathVariable("id") Long id){
         return nonConfidentialDocumentService.putNonConfidentialDocument(nonConfidentialDocument,id);
     }
 
@@ -47,8 +48,8 @@ public class NonConfidentialDocumentController {
 
     }
 
-    @GetMapping("/NonConfidentialDocuments/{id}")
-    public NonConfidentialDocument getNonConfidentialDocument(@PathVariable Long id){
+    @GetMapping("/{id}")
+    public NonConfidentialDocument getNonConfidentialDocument(@PathVariable("id") Long id){
         return nonConfidentialDocumentService.getNonConfidentialDocument(id);
     }
     
