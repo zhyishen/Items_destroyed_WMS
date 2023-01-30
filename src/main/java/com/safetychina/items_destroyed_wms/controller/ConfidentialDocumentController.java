@@ -29,22 +29,41 @@ public class ConfidentialDocumentController {
         confidentialDocumentService.addConfidentialDocument(newConfidentialDocument);
     }
 
+    /**
+     *
+     * @param id 从链接参数中提取id作为传入参数
+     */
     @DeleteMapping("/{id}")
     public void deleteConfidentialDocuments(@PathVariable Long id){
         confidentialDocumentService.deleteConfidentialDocument(id);
     }
 
-
+    /**
+     *
+     * @param confidentialDocument 新保密文件实体替换原有实体
+     * @param id 从链接参数中提取id作为传入参数
+     * @return 更改过后的新保密文件实体
+     */
     @PutMapping("/{id}")
     public ConfidentialDocument putConfidentialDocuments(@RequestBody ConfidentialDocument confidentialDocument, @PathVariable Long id){
         return confidentialDocumentService.putConfidentialDocument(confidentialDocument, id);
     }
 
+    /**
+     *
+     * @return 所有保密文件实体
+     */
     @GetMapping
     public List<ConfidentialDocument> getConfidentialDocuments(){
         return confidentialDocumentService.getConfidentialDocuments();
     }
 
+
+    /**
+     *
+     * @param id 从链接参数中提取id作为传入参数
+     * @return 根据id找到的保密文件实体
+     */
     @GetMapping("/{id}")
     public ConfidentialDocument getConfidentialDocument(@PathVariable Long id){
         return confidentialDocumentService.getConfidentialDocument(id);
