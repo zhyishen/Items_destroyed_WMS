@@ -42,6 +42,7 @@ public class ElectronicService {
                     electronic.setPersonOfUse(newElectronic.getPersonOfUse());
                     electronic.setType(newElectronic.getType());
                     electronic.setSecretLevel(newElectronic.getSecretLevel());
+                    electronic.setNotes(newElectronic.getNotes());
                     return electronicRepository.save(electronic);
                 })
                 .orElseThrow(()->new ElectronicNotFoundException(id));
