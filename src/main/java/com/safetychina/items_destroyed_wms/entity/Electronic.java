@@ -15,16 +15,17 @@ public class Electronic {
             allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "electronics_generator")
-    private Long id;
-    private String equipmentName;
-    private String type;
-    private String secretLevel;
-    private Integer quantity;
-    private String departmentOfUse;
-    private String personOfUse;
-    private Date receiveDate;
-    private String transferor;
-    private String recipient;
+    private Long id;//电子类实体ID
+    private String equipmentName;//设备名称
+    private String type;//设备类型
+    private String secretLevel;//保密级别
+    private Integer quantity;//设备数量
+    private String sendDepartment;//移交部门
+    private String personOfUse;//使用责任人
+    private Date receiveDate;//入库时间
+    private String transferor;//移交人
+    private String recipient;//接收人
+    private String notes;//备注
 
 
 
@@ -38,20 +39,22 @@ public class Electronic {
                       String type,
                       String secretLevel,
                       Integer quantity,
-                      String departmentOfUse,
+                      String sendDepartment,
                       String personOfUse,
                       Date receiveDate,
                       String transferor,
-                      String recipient) {
+                      String recipient,
+                      String notes) {
         this.equipmentName = equipmentName;
         this.type = type;
         this.secretLevel = secretLevel;
         this.quantity = quantity;
-        this.departmentOfUse = departmentOfUse;
+        this.sendDepartment = sendDepartment;
         this.personOfUse = personOfUse;
         this.receiveDate = receiveDate;
         this.transferor = transferor;
         this.recipient = recipient;
+        this.notes = notes;
     }
 
     public String getEquipmentName() {
@@ -86,12 +89,12 @@ public class Electronic {
         this.quantity = quantity;
     }
 
-    public String getDepartmentOfUse() {
-        return departmentOfUse;
+    public String getSendDepartment() {
+        return sendDepartment;
     }
 
-    public void setDepartmentOfUse(String departmentOfUse) {
-        this.departmentOfUse = departmentOfUse;
+    public void setSendDepartment(String sendDepartment) {
+        this.sendDepartment = sendDepartment;
     }
 
     public String getPersonOfUse() {
@@ -130,6 +133,14 @@ public class Electronic {
         this.recipient = recipient;
     }
 
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -150,11 +161,12 @@ public class Electronic {
                 ", type='" + type + '\'' +
                 ", secretLevel='" + secretLevel + '\'' +
                 ", quantity=" + quantity +
-                ", departmentOfUse='" + departmentOfUse + '\'' +
+                ", sendDepartment='" + sendDepartment + '\'' +
                 ", personOfUse='" + personOfUse + '\'' +
                 ", receiveDate=" + receiveDate +
                 ", transferor='" + transferor + '\'' +
                 ", recipient='" + recipient + '\'' +
+                ", notes='" + notes + '\'' +
                 '}';
     }
 }

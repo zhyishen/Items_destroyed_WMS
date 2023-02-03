@@ -37,7 +37,7 @@ public class ElectronicService {
                     electronic.setRecipient(newElectronic.getRecipient());
                     electronic.setTransferor(newElectronic.getTransferor());
                     electronic.setReceiveDate(newElectronic.getReceiveDate());
-                    electronic.setDepartmentOfUse(newElectronic.getDepartmentOfUse());
+                    electronic.setSendDepartment(newElectronic.getSendDepartment());
                     electronic.setEquipmentName(newElectronic.getEquipmentName());
                     electronic.setPersonOfUse(newElectronic.getPersonOfUse());
                     electronic.setType(newElectronic.getType());

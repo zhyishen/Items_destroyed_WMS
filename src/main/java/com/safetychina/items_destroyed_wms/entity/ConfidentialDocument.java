@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
+
+
 @Entity
 @Table(name = "confidential_documents_entity")
 public class ConfidentialDocument {
@@ -18,16 +20,16 @@ public class ConfidentialDocument {
             strategy = GenerationType.SEQUENCE,
             generator = "confidential_documents_generator"
     )
-    private Long id;
-    private String documentID;
-    private String title;
-    private Integer quantity;
-    private String secretLevel;
-    private String sendDepartment;
-    private String receiveDepartment;
-    private String approveSignature;
-    private String transferSignature;
-    private Date receiveDate;
+    private Long id;//实体ID
+    private String documentID;//保密文档编号
+    private String title;//保密文档标题
+    private Integer quantity;//保密文档数量（单位份数）
+    private String secretLevel;//保密级别
+    private String sendDepartment;//移交部门名称
+    private String receiveDepartment;//接收部门名称
+    private String recipient;//接收人
+    private String transferor;//移交人
+    private Date receiveDate;//接收日期
 
     public ConfidentialDocument() {
     }
@@ -38,8 +40,8 @@ public class ConfidentialDocument {
                                 String secretLevel,
                                 String sendDepartment,
                                 String receiveDepartment,
-                                String approveSignature,
-                                String transferSignature,
+                                String recipient,
+                                String transferor,
                                 Date receiveDate) {
         this.documentID = documentID;
         this.title = title;
@@ -47,8 +49,8 @@ public class ConfidentialDocument {
         this.secretLevel = secretLevel;
         this.sendDepartment = sendDepartment;
         this.receiveDepartment = receiveDepartment;
-        this.approveSignature = approveSignature;
-        this.transferSignature = transferSignature;
+        this.recipient = recipient;
+        this.transferor = transferor;
         this.receiveDate = receiveDate;
     }
 
@@ -100,20 +102,20 @@ public class ConfidentialDocument {
         this.receiveDepartment = receiveDepartment;
     }
 
-    public String getApproveSignature() {
-        return approveSignature;
+    public String getRecipient() {
+        return recipient;
     }
 
-    public void setApproveSignature(String approveSignature) {
-        this.approveSignature = approveSignature;
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
     }
 
-    public String getTransferSignature() {
-        return transferSignature;
+    public String getTransferor() {
+        return transferor;
     }
 
-    public void setTransferSignature(String transferSignature) {
-        this.transferSignature = transferSignature;
+    public void setTransferor(String transferor) {
+        this.transferor = transferor;
     }
 
     public Date getReceiveDate() {
@@ -150,8 +152,8 @@ public class ConfidentialDocument {
                 ", secretLevel='" + secretLevel + '\'' +
                 ", sendDepartment='" + sendDepartment + '\'' +
                 ", receiveDepartment='" + receiveDepartment + '\'' +
-                ", approveSignature='" + approveSignature + '\'' +
-                ", transferSignature='" + transferSignature + '\'' +
+                ", approveSignature='" + recipient + '\'' +
+                ", transferSignature='" + transferor + '\'' +
                 ", receiveDate=" + receiveDate +
                 '}';
     }

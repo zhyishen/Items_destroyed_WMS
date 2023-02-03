@@ -34,8 +34,8 @@ public class ConfidentialDocumentService {
                     confidentialDocument.setSecretLevel(newConfidentialDocument.getSecretLevel());
                     confidentialDocument.setSendDepartment(newConfidentialDocument.getSendDepartment());
                     confidentialDocument.setReceiveDepartment(newConfidentialDocument.getReceiveDepartment());
-                    confidentialDocument.setApproveSignature(newConfidentialDocument.getApproveSignature());
-                    confidentialDocument.setTransferSignature(newConfidentialDocument.getTransferSignature());
+                    confidentialDocument.setRecipient(newConfidentialDocument.getRecipient());
+                    confidentialDocument.setTransferor(newConfidentialDocument.getTransferor());
                     confidentialDocument.setReceiveDate(newConfidentialDocument.getReceiveDate());
                     return confidentialDocumentRepository.save(confidentialDocument);
                 })

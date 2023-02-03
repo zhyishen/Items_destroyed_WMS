@@ -31,13 +31,13 @@ public class NonConfidentialDocument {
             generator = "non_confidential_documents",
             strategy = GenerationType.SEQUENCE
     )
-    private Long id;
-    private String department;
-    private String detail;
-    private Integer quantity;
-    private String transferor;
-    private String recipient;
-    private Date receiveDate;
+    private Long id;//非涉密文档实体序号
+    private String department;//移交单位
+    private String detail;//内容（明细）
+    private Integer quantity;//数量（单位公斤）
+    private String transferor;//移交人
+    private String recipient;//接收人
+    private Date receiveDate;//接收日期
 
 
     public String getDepartment() {
