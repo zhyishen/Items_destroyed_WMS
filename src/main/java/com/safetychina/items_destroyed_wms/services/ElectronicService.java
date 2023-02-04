@@ -19,8 +19,8 @@ public class ElectronicService {
     }
 
     /**
-     *
-     * @return
+     * 把所有的电子类项目进行列表
+     * @return 返回所有的电子类项目
      */
     public List<Electronic> getElectronics(){
         return electronicRepository.findAll();
