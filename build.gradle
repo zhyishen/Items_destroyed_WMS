@@ -8,9 +8,31 @@ group = 'com.safety-china'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
 repositories {
     mavenCentral()
 }
+
+processResources{
+    dependsOn 'copyFrontendToBuild'
+}
+
+bootJar{
+    archiveFileName = "app.jar"
+}
+
+task copyFrontendToBuild(type:Copy){
+    dependsOn ':vue_ui:appNpmBuild'
+    from "$projectDir/vue_ui/dist/"
+    into "$buildDir/resources/main/static"
+}
+
+
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -26,3 +48,7 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+
+
+
