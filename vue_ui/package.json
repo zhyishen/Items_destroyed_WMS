@@ -11,5 +11,11 @@
   "devDependencies": {
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
+  },
+  "dependencies": {
+    "@picocss/pico": "^1.5.7",
+    "element-plus": "^2.2.29",
+    "pinia": "^2.0.30",
+    "yarn": "^1.22.19"
   }
 }
