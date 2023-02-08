@@ -1,10 +1,10 @@
 <script setup>
 
     import {ref} from "vue";
-    // 数据
-    let queryInput = ref("")
-    let multipleSelection = ref([])
-    let tableData = ref([{
+    // 数据   $无法监听
+    let queryInput = $ref("")
+    let multipleSelection = $ref([])
+    let tableData = $ref([{
         id: '2016-05-03',
         department: 'Tom',
         detail: 'California',
@@ -40,8 +40,8 @@
         recipient: 'CA 90036',
         receiveDate: 'Office',
     },])
-    let dialogFormVisible = ref(false)
-    let tableForm = ref({
+    let dialogFormVisible = $ref(false)
+    let tableForm = $ref({
         id:'',
         department:'',
         detail:'',
@@ -50,19 +50,30 @@
         recipient:'',
         receiveDate:''
     })
+    let dialogType = $ref('add')
 
     // 方法
-    const handleClick = () =>{
-        console.log('click')
+    const handleRowDel = (row) =>{
+        console.log(row)
     }
 
     const handleSelectionChange = (val) => {
-        multipleSelection.value = val
+        multipleSelection = val
         console.log(val);
     }
     const handleAdd = () =>{
-        dialogFormVisible.value = true
+        dialogFormVisible = true
+        tableForm = {}
     }
+    const dialogConfirm = ()=>{
+        dialogFormVisible = false
+
+
+        tableData.push({
+            ...tableForm
+        })
+    }
+
 
 </script>
 
@@ -87,7 +98,7 @@
                 @selection-change="handleSelectionChange"
             >
                 <el-table-column type="selection" width="55" />
-                <el-table-column fixed prop="id" label="序号" width="150" />
+                <el-table-column prop="id" label="序号" width="150" />
                 <el-table-column prop="department" label="移交单位" width="120" />
                 <el-table-column prop="detail" label="内容（明细）" width="120" />
                 <el-table-column prop="quantity" label="数量（单位公斤）" width="120" />
@@ -95,16 +106,16 @@
                 <el-table-column prop="recipient" label="接收人" width="120" />
                 <el-table-column prop="receiveDate" label="接收日期" width="120" />
                 <el-table-column fixed="right" label="操作" width="120">
-                    <template #default>
-                        <el-button link type="primary" size="small" @click="handleClick">细节</el-button>
-                        <el-button link type="primary" size="small">删除</el-button>
+                    <template #default="scope">
+                        <el-button link type="primary" size="small" @click="handleClick">编辑</el-button>
+                        <el-button link type="primary" size="small" @click="handleRowDel(scope.row)">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>
         </div>
         <div>
             <!-- input window -->
-            <el-dialog v-model="dialogFormVisible" title="新增条目">
+            <el-dialog v-model="dialogFormVisible" :title="dialogType=== 'add'? '新增条目' : '编辑条目' ">
                 <el-form :model="tableForm">
                     <el-form-item label="移交单位" :label-width="100">
                         <el-input v-model="tableForm.department" autocomplete="off" />
@@ -128,7 +139,7 @@
                 </el-form>
                 <template #footer>
                 <span class="dialog-footer">
-                    <el-button type="primary" @click="dialogFormVisible = false">
+                    <el-button type="primary" @click="dialogConfirm">
                     确认
                     </el-button>
                 </span>
