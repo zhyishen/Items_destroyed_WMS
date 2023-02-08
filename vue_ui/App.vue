@@ -5,41 +5,52 @@
     let queryInput = ref("")
     let multipleSelection = ref([])
     let tableData = ref([{
-    date: '2016-05-03',
-    name: 'Tom',
-    state: 'California',
-    city: 'Los Angeles',
-    address: 'No. 189, Grove St, Los Angeles',
-    zip: 'CA 90036',
-    tag: 'Home',
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    state: 'California',
-    city: 'Los Angeles',
-    address: 'No. 189, Grove St, Los Angeles',
-    zip: 'CA 90036',
-    tag: 'Office',
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    state: 'California',
-    city: 'Los Angeles',
-    address: 'No. 189, Grove St, Los Angeles',
-    zip: 'CA 90036',
-    tag: 'Home',
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    state: 'California',
-    city: 'Los Angeles',
-    address: 'No. 189, Grove St, Los Angeles',
-    zip: 'CA 90036',
-    tag: 'Office',
-  },])
+        id: '2016-05-03',
+        department: 'Tom',
+        detail: 'California',
+        quantity: 'Los Angeles',
+        transferor: 'No. 189, Grove St, Los Angeles',
+        recipient: 'CA 90036',
+        receiveDate: 'Home',
+    },
+    {
+        id: '2016-05-02',
+        department: 'Tom',
+        detail: 'California',
+        quantity: 'Los Angeles',
+        transferor: 'No. 189, Grove St, Los Angeles',
+        recipient: 'CA 90036',
+        receiveDate: 'Office',
+    },
+    {
+        id: '2016-05-04',
+        department: 'Tom',
+        detail: 'California',
+        quantity: 'Los Angeles',
+        transferor: 'No. 189, Grove St, Los Angeles',
+        recipient: 'CA 90036',
+        receiveDate: 'Home',
+    },
+    {
+        id: '2016-05-01',
+        department: 'Tom',
+        detail: 'California',
+        quantity: 'Los Angeles',
+        transferor: 'No. 189, Grove St, Los Angeles',
+        recipient: 'CA 90036',
+        receiveDate: 'Office',
+    },])
+    let dialogFormVisible = ref(false)
+    let tableForm = ref({
+        id:'',
+        department:'',
+        detail:'',
+        quantity:'',
+        transferor:'',
+        recipient:'',
+        receiveDate:''
+    })
+
     // 方法
     const handleClick = () =>{
         console.log('click')
@@ -48,6 +59,9 @@
     const handleSelectionChange = (val) => {
         multipleSelection.value = val
         console.log(val);
+    }
+    const handleAdd = () =>{
+        dialogFormVisible.value = true
     }
 
 </script>
@@ -59,8 +73,8 @@
         </div>
         <!-- query -->
         <div class="query-box">
-            <el-input v-model="queryInput" placeholder="Please input" />
-            <el-button type="primary">增加</el-button>
+            <el-input class="query-input" v-model="queryInput" placeholder="Please input" />
+            <el-button type="primary" @click="handleAdd">增加</el-button>
         </div>
         <!-- table -->
         <div class="table">
@@ -73,19 +87,53 @@
                 @selection-change="handleSelectionChange"
             >
                 <el-table-column type="selection" width="55" />
-                <el-table-column fixed prop="date" label="Date" width="150" />
-                <el-table-column prop="name" label="Name" width="120" />
-                <el-table-column prop="state" label="State" width="120" />
-                <el-table-column prop="city" label="City" width="120" />
-                <el-table-column prop="address" label="Address" width="600" />
-                <el-table-column prop="zip" label="Zip" width="120" />
-                <el-table-column fixed="right" label="Operations" width="120">
+                <el-table-column fixed prop="id" label="序号" width="150" />
+                <el-table-column prop="department" label="移交单位" width="120" />
+                <el-table-column prop="detail" label="内容（明细）" width="120" />
+                <el-table-column prop="quantity" label="数量（单位公斤）" width="120" />
+                <el-table-column prop="transferor" label="移交人" width="120" />
+                <el-table-column prop="recipient" label="接收人" width="120" />
+                <el-table-column prop="receiveDate" label="接收日期" width="120" />
+                <el-table-column fixed="right" label="操作" width="120">
                     <template #default>
-                        <el-button link type="primary" size="small" @click="handleClick">Detail</el-button>
-                        <el-button link type="primary" size="small">Edit</el-button>
+                        <el-button link type="primary" size="small" @click="handleClick">细节</el-button>
+                        <el-button link type="primary" size="small">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>
+        </div>
+        <div>
+            <!-- input window -->
+            <el-dialog v-model="dialogFormVisible" title="新增条目">
+                <el-form :model="tableForm">
+                    <el-form-item label="移交单位" :label-width="100">
+                        <el-input v-model="tableForm.department" autocomplete="off" />
+                    </el-form-item>
+                    <el-form-item label="内容" :label-width="100">
+                        <el-input v-model="tableForm.detail" autocomplete="off" />
+                    </el-form-item>
+                    <el-form-item label="数量" :label-width="100">
+                        <el-input v-model="tableForm.quantity" autocomplete="off" />
+                    </el-form-item>
+                    <el-form-item label="移交人" :label-width="100">
+                        <el-input v-model="tableForm.transferor" autocomplete="off" />
+                    </el-form-item>
+                    <el-form-item label="接收人" :label-width="100">
+                        <el-input v-model="tableForm.recipient" autocomplete="off" />
+                    </el-form-item>
+                    <el-form-item label="接收日期" :label-width="100">
+                        <el-input v-model="tableForm.receiveDate" autocomplete="off" />
+                    </el-form-item>
+                
+                </el-form>
+                <template #footer>
+                <span class="dialog-footer">
+                    <el-button type="primary" @click="dialogFormVisible = false">
+                    确认
+                    </el-button>
+                </span>
+                </template>
+            </el-dialog>
         </div>
     </div>
     
@@ -95,10 +143,7 @@
 <style scoped>
 .table-box{
     width: 800px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 200px auto;
 }
 .title{
     text-align: center;
@@ -111,5 +156,7 @@
 .el-input{
     width: 200px;
 }
-
+.query-input{
+    width:200px;
+}
 </style>
