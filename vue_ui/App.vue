@@ -53,18 +53,41 @@
     let dialogType = $ref('add')
 
     // 方法
-    const handleRowDel = (row) =>{
-        console.log(row)
+
+    // 删除一条
+    const handleRowDel = ({id}) =>{
+        console.log(id)
+        let index = tableData.findIndex(item =>item.id===id)
+        console.log(index)
+        tableData.splice(index,1)
     }
 
+
+    // 多选
     const handleSelectionChange = (val) => {
-        multipleSelection = val
-        console.log(val);
+        // multipleSelection = val
+        // console.log(val);
+        multipleSelection = []
+        val.forEach(item=>{
+            multipleSelection.push(item.id)
+        })
+        console.log(multipleSelection)
     }
+    
+    const handleDelList = () =>{
+        multipleSelection.forEach(id =>{
+            handleRowDel({id})
+        })
+        multipleSelection = []
+    }
+
+    // 新增
     const handleAdd = () =>{
         dialogFormVisible = true
         tableForm = {}
     }
+
+    // 确认
     const dialogConfirm = ()=>{
         dialogFormVisible = false
 
@@ -85,7 +108,11 @@
         <!-- query -->
         <div class="query-box">
             <el-input class="query-input" v-model="queryInput" placeholder="Please input" />
-            <el-button type="primary" @click="handleAdd">增加</el-button>
+            <div class="btn-list">
+                <el-button type="primary" @click="handleAdd">增加</el-button>
+            <el-button type="danger" @click="handleDelList" v-if="multipleSelection.length>0">批量删除</el-button>
+            </div>
+            
         </div>
         <!-- table -->
         <div class="table">
