@@ -90,11 +90,28 @@
     // 确认
     const dialogConfirm = ()=>{
         dialogFormVisible = false
-
-
-        tableData.push({
+        // 判断
+        if(dialogType==='add'){
+            // 拿到数据
+            // 添加到table
+            tableData.push({
             ...tableForm
-        })
+            })
+        }else if(dialogType ==='edit'){
+            let index = tableData.findIndex(item => item.id===tableForm.id)
+            // console.log(index)
+            tableData[index] = tableForm
+        }
+
+        
+    }
+
+    // 编辑
+    const handleEdit=(row)=>{
+        dialogFormVisible = true;
+        dialogType = 'edit'
+        tableForm = {...row}
+
     }
 
 
@@ -134,7 +151,7 @@
                 <el-table-column prop="receiveDate" label="接收日期" width="120" />
                 <el-table-column fixed="right" label="操作" width="120">
                     <template #default="scope">
-                        <el-button link type="primary" size="small" @click="handleClick">编辑</el-button>
+                        <el-button link type="primary" size="small" @click="handleEdit(scope.row)">编辑</el-button>
                         <el-button link type="primary" size="small" @click="handleRowDel(scope.row)">删除</el-button>
                     </template>
                 </el-table-column>
