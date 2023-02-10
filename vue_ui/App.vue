@@ -1,7 +1,7 @@
 <script setup>
 
     import {ref} from "vue";
-    import NonConfiditialDocumentGrid from './views/NonConfiditialDocumentGrid.vue'
+    import NonConfiditialDocumentGrid from './components/NonConfiditialDocumentGrid.vue'
     
     // 数据   $无法监听
     let queryInput = $ref("")
