@@ -1,14 +1,9 @@
 <srcript setup>
-import {ref} from "vue";
+    import {ref} from "vue";
+    import {useNonConfidentialDocumentsStore} from '@/store/nonConfidentialDocuments'  
+    const nfs = useNonConfidentialDocumentsStore()
+    defineEmits(['handleSelectionChange','handleEdit','handleRowDel'])
 
-import {useNonConfidentialDocumentsStore} from './store/nonConfidentialDocuents'
-    
-const nonConfidentialDocumentsStote = useNonConfidentialDocumentsStore()
-
-let 
-
-
-defineEmits(['handleSelectionChange','handleEdit','handleRowDel'])
 </srcript>
 
 <template>
@@ -16,7 +11,7 @@ defineEmits(['handleSelectionChange','handleEdit','handleRowDel'])
     <div class="table">
         <el-table 
             ref="multipleTableRef" 
-            :data="tableData" 
+            :data="nfs.tableData" 
             style="width: 100%" 
             border 
             stripe 

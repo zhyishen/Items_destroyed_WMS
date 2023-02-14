@@ -1,7 +1,7 @@
 <script setup>
 
     import {ref} from "vue";
-    // import NonConfiditialDocumentGrid from './components/NonConfiditialDocumentGrid.vue'
+    import NonConfiditialDocumentGrid from '@/components/NonConfiditialDocumentGrid.vue'
 
     import {useNonConfidentialDocumentsStore} from '@/store/nonConfidentialDocuments'
     
@@ -105,7 +105,7 @@
             
         </div>
         <!-- table -->
-        <div class="table">
+        <!-- <div class="table">
             <el-table 
                 ref="multipleTableRef" 
                 :data="nfs.tableData" 
@@ -129,7 +129,9 @@
                     </template>
                 </el-table-column>
             </el-table>
-        </div>
+        </div> -->
+
+        <NonConfiditialDocumentGrid/>
         <div>
             <!-- input window -->
             <el-dialog v-model="dialogFormVisible" :title="dialogType=== 'add'? '新增条目' : '编辑条目' ">
