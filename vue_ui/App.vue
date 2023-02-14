@@ -1,7 +1,13 @@
 <script setup>
 
     import {ref} from "vue";
-    import NonConfiditialDocumentGrid from './components/NonConfiditialDocumentGrid.vue'
+    // import NonConfiditialDocumentGrid from './components/NonConfiditialDocumentGrid.vue'
+
+    import {useNonConfidentialDocumentsStore} from '@/store/nonConfidentialDocuments'
+    
+    const nfs = useNonConfidentialDocumentsStore()
+
+
     
     // 数据   $无法监听
     let queryInput = $ref("")
@@ -24,9 +30,9 @@
     // 删除一条
     const handleRowDel = ({id}) =>{
         console.log(id)
-        let index = tableData.findIndex(item =>item.id===id)
+        let index = nfs.tableData.findIndex(item =>item.id===id)
         console.log(index)
-        tableData.splice(index,1)
+        nfs.tableData.splice(index,1)
     }
 
 
@@ -61,13 +67,13 @@
         if(dialogType==='add'){
             // 拿到数据
             // 添加到table
-            tableData.push({
+            nfs.tableData.push({
             ...tableForm
             })
         }else if(dialogType ==='edit'){
-            let index = tableData.findIndex(item => item.id===tableForm.id)
+            let index = nfs.tableData.findIndex(item => item.id===tableForm.id)
             // console.log(index)
-            tableData[index] = tableForm
+            nfs.tableData[index] = tableForm
         }
 
         
@@ -102,7 +108,7 @@
         <div class="table">
             <el-table 
                 ref="multipleTableRef" 
-                :data="tableData" 
+                :data="nfs.tableData" 
                 style="width: 100%" 
                 border 
                 stripe 
