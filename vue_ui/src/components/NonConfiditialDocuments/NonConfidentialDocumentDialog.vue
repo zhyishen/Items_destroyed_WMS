@@ -1,6 +1,6 @@
 <script setup>
     import {ref} from "vue";
-    import {useNonConfidentialDocumentsStore} from '@/store/nonConfidentialDocumentStore'  
+    import {useNonConfidentialDocumentsStore} from '@/store/nonConfidentialDocumentStore.js'
     const nfs = useNonConfidentialDocumentsStore()
 
 
