@@ -1,7 +1,7 @@
 <script setup>
 
-    import {ref} from "vue";
     import NonConfidentialDocumentView from "@/views/NonConfidentialDocumentView.vue";
+    import ConfidentialDocumentView from "@/views/ConfidentialDocumentView.vue";
 
 
     
@@ -15,8 +15,8 @@
 </script>
 
 <template>
-    <NonConfidentialDocumentView></NonConfidentialDocumentView>
-    
+<!--    <NonConfidentialDocumentView></NonConfidentialDocumentView>-->
+    <ConfidentialDocumentView></ConfidentialDocumentView>
 </template>
 
 
