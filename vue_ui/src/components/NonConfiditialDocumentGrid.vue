@@ -21,6 +21,14 @@
 
     }
 
+    // 删除一条
+    const handleRowDel = ({id}) =>{
+        console.log(id)
+        let index = nfs.tableData.findIndex(item =>item.id===id)
+        console.log(index)
+        nfs.tableData.splice(index,1)
+    }
+
 
 
 </script>
