@@ -2,6 +2,23 @@ import {defineStore} from 'pinia'
 import { ref } from 'vue'
 
 export const useNonConfidentialDocumentsStore = defineStore('nonConfidentialDocuments',()=>{
+
+    let dialogFormVisible = ref(false)
+
+    let dialogType = ref('add')
+
+    let multipleSelection = ref([])
+
+    let tableForm = ref({
+        id:'',
+        department:'',
+        detail:'',
+        quantity:'',
+        transferor:'',
+        recipient:'',
+        receiveDate:''
+    })
+
     let tableData = ref([{
         id: '2016-05-03',
         department: 'Tom',
@@ -39,5 +56,5 @@ export const useNonConfidentialDocumentsStore = defineStore('nonConfidentialDocu
         receiveDate: 'Office',
     },])
 
-    return {tableData}
+    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, }
 })
