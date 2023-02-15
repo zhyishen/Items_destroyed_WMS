@@ -2,6 +2,7 @@
 
     import NonConfidentialDocumentView from "@/views/NonConfidentialDocumentView.vue";
     import ConfidentialDocumentView from "@/views/ConfidentialDocumentView.vue";
+    import ElectronicView from "@/views/ElectronicView.vue";
 
 
     
@@ -16,7 +17,8 @@
 
 <template>
 <!--    <NonConfidentialDocumentView></NonConfidentialDocumentView>-->
-    <ConfidentialDocumentView></ConfidentialDocumentView>
+<!--    <ConfidentialDocumentView></ConfidentialDocumentView>-->
+  <ElectronicView></ElectronicView>
 </template>
 
 
