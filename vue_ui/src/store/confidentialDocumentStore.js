@@ -1,5 +1,8 @@
 import {defineStore} from 'pinia'
-import { ref } from 'vue'
+import {computed, ref} from 'vue'
+import axios from "axios";
+import {confidentialDocumentRequest} from "@/utils/confidentialDocumentRequest.js";
+
 
 export const useConfidentialDocumentsStore = defineStore('confidentialDocuments',()=>{
 
@@ -22,31 +25,20 @@ export const useConfidentialDocumentsStore = defineStore('confidentialDocuments'
         receiveDate: ''
     })
 
-    let tableData = ref([{
-            id: '2016-05-03',
-            documentID: 'Tom',
-            title: 'California',
-            quantity: 'Los Angeles',
-            secretLevel: 'No. 189, Grove St, Los Angeles',
-            sendDepartment: 'CA 90036',
-            receiveDepartment: 'Home',
-            recipient: 'aaa',
-            transferor: 'aa',
-            receiveDate: 'aaa'
-        },
-        {
-            id: '2016-05-02',
-            documentID: 'Tom',
-            title: 'California',
-            quantity: 'Los Angeles',
-            secretLevel: 'No. 189, Grove St, Los Angeles',
-            sendDepartment: 'CA 90036',
-            receiveDepartment: 'Home',
-            recipient: 'aaa',
-            transferor: 'aa',
-            receiveDate: 'aaa'
-        },
-        ])
+    let tableData = ref([])
 
-    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, }
+    let getTableData = computed(()=> tableData)
+
+    async function fetchConfidentialDocumentsStore(){
+        try{
+            const data = await axios.get("http://localhost:8080/ConfidentialDocuments")
+            console.log(data)
+            this.tableData = data.data;
+        }catch (error){
+            alert(error)
+            console.log(error)
+        }
+    }
+
+    return {tableData , getTableData ,dialogFormVisible, dialogType, tableForm, multipleSelection, }
 })
