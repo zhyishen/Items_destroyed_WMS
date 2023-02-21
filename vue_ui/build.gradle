@@ -2,6 +2,6 @@ plugins{
     id "com.github.node-gradle.node" version "3.5.1"
 }
 
-task appNpmBuild(type:NpmTask){
-    args = ["run", "build"]
-}
+//task appNpmBuild(type:NpmTask){
+//    args = ["run", "build"]
+//}

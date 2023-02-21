@@ -34,8 +34,12 @@
 <script setup>
 
   import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentStore.js";
+  import {onMounted, ref} from "vue";
+  import axios from "axios";
 
   const cfs = useConfidentialDocumentsStore()
+
+
 
   const handleSelectionChange = (val) => {
     // multipleSelection = val
@@ -61,6 +65,17 @@
     console.log(index)
     cfs.tableData.splice(index,1)
   }
+
+  onMounted(()=>{
+    axios
+        .get('http://localhost:8080/ConfidentialDocuments')
+        .then(response => (
+            cfs.tableData=response.data
+        ))
+        .catch(function (error) { // 请求失败处理
+          console.log(error);
+        });
+  })
 
 </script>
 

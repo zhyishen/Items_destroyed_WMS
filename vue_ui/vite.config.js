@@ -11,9 +11,12 @@ export default defineConfig({
         })
     ],
 
-    // server:{
+    server:{
+        proxy:{
+            target: "http://localhost:8080",
 
-    // },
+        }
+    },
 
 
     resolve:{

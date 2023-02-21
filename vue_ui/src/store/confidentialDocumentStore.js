@@ -27,12 +27,10 @@ export const useConfidentialDocumentsStore = defineStore('confidentialDocuments'
 
     let tableData = ref([])
 
-    let getTableData = computed(()=> tableData)
 
     async function fetchConfidentialDocumentsStore(){
         try{
             const data = await axios.get("http://localhost:8080/ConfidentialDocuments")
-            console.log(data)
             this.tableData = data.data;
         }catch (error){
             alert(error)
@@ -40,5 +38,17 @@ export const useConfidentialDocumentsStore = defineStore('confidentialDocuments'
         }
     }
 
-    return {tableData , getTableData ,dialogFormVisible, dialogType, tableForm, multipleSelection, }
+    function deleteItem({id}){
+
+    }
+
+    function addItem(){
+
+    }
+
+    function editItem(){
+
+    }
+
+    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, }
 })

@@ -11,15 +11,15 @@ const routes = [
         component: Login
     },
     {
-        path:"/ConfidentialDocuments",
+        path:"/getConfidentialDocuments",
         component:ConfidentialDocumentView
     },
     {
-        path:"/Electronics",
+        path:"/getElectronics",
         component:ElectronicView
     },
     {
-        path:"/NonConfidentialDocuments",
+        path:"/getNonConfidentialDocuments",
         component:NonConfidentialDocumentView
     }
 ]

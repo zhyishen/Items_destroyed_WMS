@@ -1,2 +1,2 @@
 rootProject.name = 'Items_destroyed_WMS'
-include 'vue_ui'
+//include 'vue_ui'

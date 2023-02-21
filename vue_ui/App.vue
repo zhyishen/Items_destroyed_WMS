@@ -18,9 +18,9 @@
 <template>
 
   <div class="link">
-    <router-link to="/Electronics">电子设备</router-link>
-    <router-link to="/ConfidentialDocuments">涉密文件</router-link>
-    <router-link to="/NonConfidentialDocuments">非涉密文件</router-link>
+    <router-link to="/getElectronics">电子设备</router-link>
+    <router-link to="/getConfidentialDocuments">涉密文件</router-link>
+    <router-link to="/getNonConfidentialDocuments">非涉密文件</router-link>
   </div>
   <router-view></router-view>
 </template>
