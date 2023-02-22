@@ -39,16 +39,14 @@ export const useConfidentialDocumentsStore = defineStore('confidentialDocuments'
     }
 
     function deleteItem({id}){
-
+        axios.delete("http://localhost:8080/ConfidentialDocuments/" + id);
     }
 
-    function addItem(){
 
-    }
 
     function editItem(){
 
     }
 
-    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, }
+    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, deleteItem}
 })
