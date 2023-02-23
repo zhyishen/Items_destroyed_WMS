@@ -3,7 +3,7 @@
   <div class="table">
     <el-table
         ref="multipleTableRef"
-        :data="cfs.tableData"
+        :data="tableData"
         style="width: 100%"
         border
         stripe
@@ -33,10 +33,11 @@
 
 <script setup>
  import API from "@/plugin/axiosInstance.js";
-  import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentStore.js";
+ import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentStore.js";
  import {onMounted} from "vue";
+ import {storeToRefs} from "pinia";
   const cfs = useConfidentialDocumentsStore()
-
+  const {tableData} = storeToRefs(cfs)
   const handleSelectionChange = (val) => {
     // multipleSelection = val
     // console.log(val);
@@ -60,9 +61,9 @@
     API({
                 url:'http://localhost:8080/ConfidentialDocuments/'+id,
                 method:'delete'
-            }).then((res)=>{
-              console.log(res)
-            });
+        }).then((res)=>{
+          console.log(res)
+        });
 
 
     console.log(id)
@@ -72,9 +73,10 @@
   }
 
   onMounted(()=>{
-    API.get("http://localhost:8080/ConfidentialDocuments").then(res=>{
-      cfs.tableData=res.data
-    })
+    // API.get("http://localhost:8080/ConfidentialDocuments").then(res=>{
+    //   cfs.tableData=res.data
+    // })
+    cfs.getItems()
   })
 
 </script>

@@ -26,8 +26,28 @@ export const useConfidentialDocumentsStore = defineStore('confidentialDocuments'
     let tableData = ref([])
 
     function getItems(){
-        tableData = API.get("http://localhost:8080/ConfidentialDocuments")
+        API.get("http://localhost:8080/ConfidentialDocuments").then(res=>{
+            this.tableData = res.data
+        })
     }
 
-    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, getItems}
+    function addItem(data){
+        API.post("http://localhost:8080/ConfidentialDocuments", data).then(r =>{
+            console.log(r)
+        })
+    }
+
+    function deleteItem(id){
+        API.delete("/ConfidentialDocuments/"+id).then(res=>{
+            console.log(res)
+        })
+    }
+
+    function updateItem(id,data){
+        API.put("/ConfidentialDocuments/"+id,data).then(res=>{
+            console.log(res)
+        })
+    }
+
+    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, getItems, addItem, deleteItem, updateItem}
 })

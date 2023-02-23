@@ -11,7 +11,7 @@
           <el-input v-model="cfs.tableForm.title" autocomplete="off" />
         </el-form-item>
         <el-form-item label="数量" :label-width="100">
-          <el-input v-model="cfs.tableForm.quantity" autocomplete="off" />
+          <el-input-number v-model="cfs.tableForm.quantity" :min="1" />
         </el-form-item>
         <el-form-item label="密级" :label-width="100">
           <el-input v-model="cfs.tableForm.secretLevel" autocomplete="off" />
@@ -29,7 +29,13 @@
           <el-input v-model="cfs.tableForm.transferor" autocomplete="off" />
         </el-form-item>
         <el-form-item label="接收日期" :label-width="100">
-          <el-input v-model="cfs.tableForm.receiveDate" autocomplete="off" />
+          <el-config-provider :locale=zhCn>
+            <el-date-picker
+                v-model="cfs.tableForm.receiveDate"
+                type="date"
+            />
+          </el-config-provider>
+
         </el-form-item>
 
 
@@ -50,6 +56,7 @@
 
   import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentStore.js";
   import API from "@/plugin/axiosInstance.js";
+  import {zhCn} from "element-plus/lib/locale/index";
 
   const cfs = useConfidentialDocumentsStore()
 
@@ -59,14 +66,13 @@
     if(cfs.dialogType==='add'){
       // 拿到数据
       // 添加到table
-      API.post("http://localhost:8080/ConfidentialDocuments",cfs.tableForm)
-      API.get("http://localhost:8080/ConfidentialDocuments").then(res=>{
-        cfs.tableData=res.data
-      })
+      cfs.addItem(cfs.tableForm)
+      cfs.getItems()
     }else if(cfs.dialogType ==='edit'){
       let index = cfs.tableData.findIndex(item => item.id===cfs.tableForm.id)
       // console.log(index)
       cfs.tableData[index] = cfs.tableForm
+      API.put("http://localhost:8080/ConfidentialDocuments/"+cfs.tableForm.id,cfs.tableForm)
     }
   }
 
