@@ -1,8 +1,6 @@
 import {defineStore} from 'pinia'
-import {computed, ref} from 'vue'
-import axios from "axios";
-import {confidentialDocumentRequest} from "@/utils/confidentialDocumentRequest.js";
-
+import { ref } from 'vue'
+import API from "@/plugin/axiosInstance.js";
 
 export const useConfidentialDocumentsStore = defineStore('confidentialDocuments',()=>{
 
@@ -27,26 +25,9 @@ export const useConfidentialDocumentsStore = defineStore('confidentialDocuments'
 
     let tableData = ref([])
 
-
-    async function fetchConfidentialDocumentsStore(){
-        try{
-            const data = await axios.get("http://localhost:8080/ConfidentialDocuments")
-            this.tableData = data.data;
-        }catch (error){
-            alert(error)
-            console.log(error)
-        }
+    function getItems(){
+        tableData = API.get("http://localhost:8080/ConfidentialDocuments")
     }
 
-    function deleteItem({id}){
-        axios.delete("http://localhost:8080/ConfidentialDocuments/" + id);
-    }
-
-
-
-    function editItem(){
-
-    }
-
-    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, deleteItem}
+    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, getItems}
 })

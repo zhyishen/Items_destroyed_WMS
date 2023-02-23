@@ -32,18 +32,15 @@
 </template>
 
 <script setup>
-
+ import API from "@/plugin/axiosInstance.js";
   import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentStore.js";
-  import {onMounted, ref} from "vue";
-  import axios from "axios";
-
+ import {onMounted} from "vue";
   const cfs = useConfidentialDocumentsStore()
-
-
 
   const handleSelectionChange = (val) => {
     // multipleSelection = val
     // console.log(val);
+ 
     cfs.multipleSelection = []
     val.forEach(item=>{
       cfs.multipleSelection.push(item.id)
@@ -60,6 +57,14 @@
 
   // 删除一条
   const handleRowDel = ({id}) =>{
+    API({
+                url:'http://localhost:8080/ConfidentialDocuments/'+id,
+                method:'delete'
+            }).then((res)=>{
+              console.log(res)
+            });
+
+
     console.log(id)
     let index = cfs.tableData.findIndex(item =>item.id===id)
     console.log(index)
@@ -67,14 +72,9 @@
   }
 
   onMounted(()=>{
-    axios
-        .get('http://localhost:8080/ConfidentialDocuments')
-        .then(response => (
-            cfs.tableData=response.data
-        ))
-        .catch(function (error) { // 请求失败处理
-          console.log(error);
-        });
+    API.get("http://localhost:8080/ConfidentialDocuments").then(res=>{
+      cfs.tableData=res.data
+    })
   })
 
 </script>

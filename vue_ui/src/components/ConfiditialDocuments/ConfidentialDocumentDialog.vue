@@ -49,7 +49,7 @@
 <script setup>
 
   import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentStore.js";
-  import axios from "axios";
+  import API from "@/plugin/axiosInstance.js";
 
   const cfs = useConfidentialDocumentsStore()
 
@@ -59,23 +59,15 @@
     if(cfs.dialogType==='add'){
       // 拿到数据
       // 添加到table
-      cfs.tableData.push({
-        ...cfs.tableForm
-      })
-      axios({
-        url:"http://localhost:8080/ConfidentialDocuments",
-        method:"post",
-        data:cfs.tableForm
-      }).then(res =>{
-        console.log(res)
+      API.post("http://localhost:8080/ConfidentialDocuments",cfs.tableForm)
+      API.get("http://localhost:8080/ConfidentialDocuments").then(res=>{
+        cfs.tableData=res.data
       })
     }else if(cfs.dialogType ==='edit'){
       let index = cfs.tableData.findIndex(item => item.id===cfs.tableForm.id)
       // console.log(index)
       cfs.tableData[index] = cfs.tableForm
     }
-
-
   }
 
 </script>
