@@ -1,6 +1,7 @@
 <script setup>
     import {ref} from "vue";
     import {useNonConfidentialDocumentsStore} from '@/store/nonConfidentialDocumentStore.js'
+    import {zhCn} from "element-plus/lib/locale/index";
     const nfs = useNonConfidentialDocumentsStore()
 
 
@@ -13,10 +14,12 @@
             nfs.tableData.push({
             ...nfs.tableForm
             })
+            nfs.addItem(nfs.tableForm)
         }else if(nfs.dialogType ==='edit'){
             let index = nfs.tableData.findIndex(item => item.id===nfs.tableForm.id)
             // console.log(index)
             nfs.tableData[index] = nfs.tableForm
+            nfs.updateItem(nfs.tableForm.id,nfs.tableForm)
         }
 
         
@@ -38,7 +41,7 @@
                         <el-input v-model="nfs.tableForm.detail" autocomplete="off" />
                     </el-form-item>
                     <el-form-item label="数量" :label-width="100">
-                        <el-input v-model="nfs.tableForm.quantity" autocomplete="off" />
+                      <el-input-number v-model="nfs.tableForm.quantity" :min="1" />
                     </el-form-item>
                     <el-form-item label="移交人" :label-width="100">
                         <el-input v-model="nfs.tableForm.transferor" autocomplete="off" />
@@ -47,7 +50,12 @@
                         <el-input v-model="nfs.tableForm.recipient" autocomplete="off" />
                     </el-form-item>
                     <el-form-item label="接收日期" :label-width="100">
-                        <el-input v-model="nfs.tableForm.receiveDate" autocomplete="off" />
+                      <el-config-provider :locale=zhCn>
+                        <el-date-picker
+                            v-model="nfs.tableForm.receiveDate"
+                            type="date"
+                        />
+                      </el-config-provider>
                     </el-form-item>
                 
                 </el-form>

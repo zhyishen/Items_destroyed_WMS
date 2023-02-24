@@ -1,8 +1,10 @@
 <script setup>
-    import {ref} from "vue";
+import {onMounted, ref} from "vue";
     import {useNonConfidentialDocumentsStore} from '@/store/nonConfidentialDocumentStore.js'
+    import {storeToRefs} from "pinia";
     const nfs = useNonConfidentialDocumentsStore()
 
+    const {tableData} = storeToRefs(nfs)
 
     const handleSelectionChange = (val) => {
         // multipleSelection = val
@@ -27,7 +29,12 @@
         let index = nfs.tableData.findIndex(item =>item.id===id)
         console.log(index)
         nfs.tableData.splice(index,1)
+        nfs.deleteItem(id)
     }
+
+    onMounted(()=>{
+      nfs.getItems()
+    })
 
 
 

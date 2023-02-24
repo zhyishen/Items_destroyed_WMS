@@ -11,10 +11,14 @@
           <el-input v-model="els.tableForm.type" autocomplete="off" />
         </el-form-item>
         <el-form-item label="数量" :label-width="100">
-          <el-input v-model="els.tableForm.quantity" autocomplete="off" />
+          <el-input-number v-model="els.tableForm.quantity" :min="1" />
         </el-form-item>
         <el-form-item label="密级" :label-width="100">
-          <el-input v-model="els.tableForm.secretLevel" autocomplete="off" />
+          <el-radio-group v-model="els.tableForm.secretLevel" size="large">
+            <el-radio-button label="绝密" />
+            <el-radio-button label="机密" />
+            <el-radio-button label="秘密" />
+          </el-radio-group>
         </el-form-item>
         <el-form-item label="移交部门" :label-width="100">
           <el-input v-model="els.tableForm.sendDepartment" autocomplete="off" />
@@ -29,7 +33,12 @@
           <el-input v-model="els.tableForm.transferor" autocomplete="off" />
         </el-form-item>
         <el-form-item label="接收日期" :label-width="100">
-          <el-input v-model="els.tableForm.receiveDate" autocomplete="off" />
+          <el-config-provider :locale=zhCn>
+            <el-date-picker
+                v-model="els.tableForm.receiveDate"
+                type="date"
+            />
+          </el-config-provider>
         </el-form-item>
 
 
@@ -52,6 +61,7 @@
   import {ref} from "vue";
 
   import {useElectronicStore} from "@/store/electronicStore.js";
+  import {zhCn} from "element-plus/lib/locale/index";
 
   const els = useElectronicStore()
 
@@ -64,10 +74,12 @@
       els.tableData.push({
         ...els.tableForm
       })
+      els.addItem(els.tableForm)
     }else if(els.dialogType ==='edit'){
       let index = els.tableData.findIndex(item => item.id===els.tableForm.id)
       // console.log(index)
       els.tableData[index] = els.tableForm
+      els.updateItem(els.tableForm.id, els.tableForm)
     }
 
 

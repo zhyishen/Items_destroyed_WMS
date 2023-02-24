@@ -34,9 +34,12 @@
 <script setup>
 
   import {useElectronicStore} from "@/store/electronicStore.js";
+  import {storeToRefs} from "pinia";
+  import {onMounted} from "vue";
 
   const els = useElectronicStore()
 
+  const {tableData} = storeToRefs(els)
   const handleSelectionChange = (val) => {
     // multipleSelection = val
     // console.log(val);
@@ -60,7 +63,12 @@
     let index = els.tableData.findIndex(item =>item.id===id)
     console.log(index)
     els.tableData.splice(index,1)
+    els.deleteItem(id)
   }
+
+  onMounted(()=>{
+    els.getItems()
+  })
   
 
 </script>

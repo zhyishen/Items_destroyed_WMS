@@ -1,5 +1,6 @@
 import {defineStore} from "pinia";
 import {ref} from "vue";
+import API from "@/plugin/axiosInstance.js";
 
 
 export const useElectronicStore = defineStore('electronic',()=>{
@@ -25,57 +26,31 @@ export const useElectronicStore = defineStore('electronic',()=>{
 
     })
 
-    let tableData = ref([{
-        id: '2016-05-03',
-        equipmentName: 'Tom',
-        type: 'California',
-        quantity: 'Los Angeles',
-        transferor: 'No. 189, Grove St, Los Angeles',
-        recipient: 'CA 90036',
-        receiveDate: 'Home',
-        secretLevel:'aaa',
-        sendDepartment:'aaa',
-        personOfUse:'aaa'
-    },
-    {
-        id: '2016-05-02',
-        equipmentName: 'Tom',
-        type: 'California',
-        quantity: 'Los Angeles',
-        transferor: 'No. 189, Grove St, Los Angeles',
-        recipient: 'CA 90036',
-        receiveDate: 'Office',
-        secretLevel:'aaa',
-        sendDepartment:'aaa',
-        personOfUse:'aaa'
+    let tableData = ref([])
 
-    },
-    {
-        id: '2016-05-04',
-        equipmentName: 'Tom',
-        type: 'California',
-        quantity: 'Los Angeles',
-        transferor: 'No. 189, Grove St, Los Angeles',
-        recipient: 'CA 90036',
-        receiveDate: 'Home',
-        secretLevel:'111',
-        sendDepartment:'aaa',
-        personOfUse:'bbb'
+    function getItems(){
+        API.get("http://localhost:8080/Electronics").then(res=>{
+            this.tableData = res.data
+        })
+    }
 
-    },
-    {
-        id: '2016-05-01',
-        equipmentName: 'Tom',
-        type: 'California',
-        quantity: 'Los Angeles',
-        transferor: 'No. 189, Grove St, Los Angeles',
-        recipient: 'CA 90036',
-        receiveDate: 'Office',
-        secretLevel:'222',
-        sendDepartment:'ccc',
-        personOfUse:'ddd'
+    function addItem(data){
+        API.post("http://localhost:8080/Electronics", data).then(r =>{
+            console.log(r)
+        })
+    }
 
-    },])
+    function deleteItem(id){
+        API.delete("http://localhost:8080/Electronics/"+id).then(res=>{
+            console.log(res)
+        })
+    }
 
-    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, }
+    function updateItem(id,data){
+        API.put("http://localhost:8080/Electronics/"+id,data).then(res=>{
+            console.log(res)
+        })
+    }
+
+    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, getItems, addItem, updateItem, deleteItem}
 })

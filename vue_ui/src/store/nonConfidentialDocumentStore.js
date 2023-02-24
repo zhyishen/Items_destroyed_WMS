@@ -1,5 +1,6 @@
 import {defineStore} from 'pinia'
 import { ref } from 'vue'
+import API from "@/plugin/axiosInstance.js";
 
 export const useNonConfidentialDocumentsStore = defineStore('nonConfidentialDocuments',()=>{
 
@@ -19,42 +20,30 @@ export const useNonConfidentialDocumentsStore = defineStore('nonConfidentialDocu
         receiveDate:''
     })
 
-    let tableData = ref([{
-        id: '2016-05-03',
-        department: 'Tom',
-        detail: 'California',
-        quantity: 'Los Angeles',
-        transferor: 'No. 189, Grove St, Los Angeles',
-        recipient: 'CA 90036',
-        receiveDate: 'Home',
-    },
-    {
-        id: '2016-05-02',
-        department: 'Tom',
-        detail: 'California',
-        quantity: 'Los Angeles',
-        transferor: 'No. 189, Grove St, Los Angeles',
-        recipient: 'CA 90036',
-        receiveDate: 'Office',
-    },
-    {
-        id: '2016-05-04',
-        department: 'Tom',
-        detail: 'California',
-        quantity: 'Los Angeles',
-        transferor: 'No. 189, Grove St, Los Angeles',
-        recipient: 'CA 90036',
-        receiveDate: 'Home',
-    },
-    {
-        id: '2016-05-01',
-        department: 'Tom',
-        detail: 'California',
-        quantity: 'Los Angeles',
-        transferor: 'No. 189, Grove St, Los Angeles',
-        recipient: 'CA 90036',
-        receiveDate: 'Office',
-    },])
+    let tableData = ref([])
 
-    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, }
+    function getItems(){
+        API.get("http://localhost:8080/NonConfidentialDocuments").then(res=>{
+            this.tableData = res.data
+        })
+    }
+
+    function addItem(data){
+        API.post("http://localhost:8080/NonConfidentialDocuments", data).then(r =>{
+            console.log(r)
+        })
+    }
+
+    function deleteItem(id){
+        API.delete("http://localhost:8080/NonConfidentialDocuments/"+id).then(res=>{
+            console.log(res)
+        })
+    }
+
+    function updateItem(id,data){
+        API.put("http://localhost:8080/NonConfidentialDocuments/"+id,data).then(res=>{
+            console.log(res)
+        })
+    }
+    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, getItems, addItem, updateItem, deleteItem}
 })
