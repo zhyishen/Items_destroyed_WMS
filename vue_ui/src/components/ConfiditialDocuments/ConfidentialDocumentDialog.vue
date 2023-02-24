@@ -14,7 +14,11 @@
           <el-input-number v-model="cfs.tableForm.quantity" :min="1" />
         </el-form-item>
         <el-form-item label="密级" :label-width="100">
-          <el-input v-model="cfs.tableForm.secretLevel" autocomplete="off" />
+          <el-radio-group v-model="cfs.tableForm.secretLevel" size="large">
+            <el-radio-button label="绝密" />
+            <el-radio-button label="机密" />
+            <el-radio-button label="秘密" />
+          </el-radio-group>
         </el-form-item>
         <el-form-item label="移交部门" :label-width="100">
           <el-input v-model="cfs.tableForm.sendDepartment" autocomplete="off" />
@@ -72,7 +76,8 @@
       let index = cfs.tableData.findIndex(item => item.id===cfs.tableForm.id)
       // console.log(index)
       cfs.tableData[index] = cfs.tableForm
-      API.put("http://localhost:8080/ConfidentialDocuments/"+cfs.tableForm.id,cfs.tableForm)
+      //API.put("http://localhost:8080/ConfidentialDocuments/"+cfs.tableForm.id,cfs.tableForm)
+      cfs.updateItem(cfs.tableForm.id,cfs.tableForm)
     }
   }
 

@@ -58,14 +58,8 @@
 
   // 删除一条
   const handleRowDel = ({id}) =>{
-    API({
-                url:'http://localhost:8080/ConfidentialDocuments/'+id,
-                method:'delete'
-        }).then((res)=>{
-          console.log(res)
-        });
 
-
+    cfs.deleteItem(id)
     console.log(id)
     let index = cfs.tableData.findIndex(item =>item.id===id)
     console.log(index)
@@ -73,9 +67,6 @@
   }
 
   onMounted(()=>{
-    // API.get("http://localhost:8080/ConfidentialDocuments").then(res=>{
-    //   cfs.tableData=res.data
-    // })
     cfs.getItems()
   })
 

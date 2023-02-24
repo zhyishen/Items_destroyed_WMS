@@ -38,13 +38,13 @@ export const useConfidentialDocumentsStore = defineStore('confidentialDocuments'
     }
 
     function deleteItem(id){
-        API.delete("/ConfidentialDocuments/"+id).then(res=>{
+        API.delete("http://localhost:8080/ConfidentialDocuments/"+id).then(res=>{
             console.log(res)
         })
     }
 
     function updateItem(id,data){
-        API.put("/ConfidentialDocuments/"+id,data).then(res=>{
+        API.put("http://localhost:8080/ConfidentialDocuments/"+id,data).then(res=>{
             console.log(res)
         })
     }
