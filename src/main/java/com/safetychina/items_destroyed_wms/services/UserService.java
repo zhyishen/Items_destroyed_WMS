@@ -10,9 +10,6 @@ public class UserService {
 
     private UserRepository userRepository;
 
-    public User loadUser(){
-
-    }
 
 }
 
