@@ -23,7 +23,7 @@ public class TokenUtils {
                 .setSubject(user.getUsername())
                 .setIssuedAt(new Date())
                 .serializeToJsonWith(new GsonSerializer<>(new Gson()))
-                .signWith(SignatureAlgorithm.HS256, user.getPassword());
+                .signWith(SignatureAlgorithm.HS256, "cereshuzhitingnizhenbangcereshuzhitingnizhenbang");
 
         user.setToken(jwtBuilder.compact());
         System.out.println(user.getToken());
