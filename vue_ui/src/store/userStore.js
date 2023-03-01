@@ -14,4 +14,6 @@ export const useUserStore = defineStore('user',()=>{
         password:'',
         token:''
     })
+
+    return{userForm, token, password, username}
 })
