@@ -10,6 +10,8 @@ public class UserService {
 
     private UserRepository userRepository;
 
-
+    public User findUserByName(String name){
+        userRepository
+    }
 }
 

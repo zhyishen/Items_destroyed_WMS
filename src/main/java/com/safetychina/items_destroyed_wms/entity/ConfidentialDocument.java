@@ -26,6 +26,7 @@ public class ConfidentialDocument {
     @Setter(AccessLevel.NONE)
     private Long id;//实体ID
 
+    @Column(unique = true)
     private String documentID;//保密文档编号
     private String title;//保密文档标题
     private Integer quantity;//保密文档数量（单位份数）

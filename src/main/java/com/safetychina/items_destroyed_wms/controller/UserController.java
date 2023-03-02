@@ -33,4 +33,9 @@ public class UserController {
         }
         return user;
     }
+
+    @PostMapping("/register")
+    public void Register(@RequestBody User user){
+
+    }
 }

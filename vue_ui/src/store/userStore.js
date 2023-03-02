@@ -1,19 +1,24 @@
 import {defineStore} from "pinia";
-import {ref} from "vue";
+import {computed, ref} from "vue";
 
-export const useUserStore = defineStore('user',()=>{
-    const username = ref()
+export const useUserStore = defineStore('user',{
 
-    const password = ref()
+    state:()=>({
+        userForm: {
+            uid: '',
+            username: '',
+            password: '',
+            token: ''
+        },
+    }),
 
-    const token = ref()
+    getters:{
+        canSubmit(state){
+            return Boolean(state.userForm.username&&state.userForm.password)
+        }
+    },
 
-    const userForm = ref({
-        uid:'',
-        username:'',
-        password:'',
-        token:''
-    })
+    actions:{
 
-    return{userForm, token, password, username}
+    }
 })

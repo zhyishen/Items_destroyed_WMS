@@ -21,7 +21,12 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="login" class="btn-sub">登录</el-button>
+        <el-button
+            type="primary"
+            @click="login"
+            class="btn-sub"
+            :disabled="!user.canSubmit"
+        >登录</el-button>
       </el-form-item>
 
 
@@ -36,14 +41,13 @@
 
 <script setup>
 
-  import {ref} from "vue";
+import {computed, ref} from "vue";
   import {useUserStore} from "@/store/userStore.js";
   import {storeToRefs} from "pinia";
   import API from "@/plugin/axiosInstance.js";
 
 
   const user = useUserStore()
-
 
 
   function login(){
