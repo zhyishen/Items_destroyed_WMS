@@ -8,27 +8,38 @@ import Login from "@/views/Login.vue";
 const routes = [
     {
         path:"/",
+        name:"Login",
         component: Login
     },
     {
         path:"/getConfidentialDocuments",
+        name:"ConfidentialDocuments",
         component:ConfidentialDocumentView
     },
     {
         path:"/getElectronics",
+        name:"Electronics",
         component:ElectronicView
     },
     {
         path:"/getNonConfidentialDocuments",
+        name:"NonConfidentialDocuments",
         component:NonConfidentialDocumentView
     }
 ]
 
 
 
+
 const router = createRouter({
     history: createWebHistory(),
     routes
+})
+
+router.beforeEach((to, from, next)=>{
+    const token = localStorage.getItem('token')
+    if(to.name !== 'Login' && !token) next({name: 'Login'})
+    else next()
 })
 
 export default router

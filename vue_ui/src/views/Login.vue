@@ -53,8 +53,13 @@ import {computed, ref} from "vue";
   function login(){
     API.post("http://localhost:8080/user/login",user.userForm).then(res=>{
         user.userForm = res.data;
+        if(user.userForm.token!==null){
+          localStorage.setItem("token",user.userForm.token)
+        }
     })
   }
+
+
 
 </script>
 
