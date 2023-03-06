@@ -3,6 +3,7 @@ import ConfidentialDocumentView from "@/views/ConfidentialDocumentView.vue";
 import ElectronicView from "@/views/ElectronicView.vue";
 import NonConfidentialDocumentView from "@/views/NonConfidentialDocumentView.vue";
 import Login from "@/views/Login.vue";
+import RootView from "@/views/RootView.vue";
 
 
 const routes = [
@@ -12,20 +13,27 @@ const routes = [
         component: Login
     },
     {
-        path:"/getConfidentialDocuments",
-        name:"ConfidentialDocuments",
-        component:ConfidentialDocumentView
+        name:"BottomLine",
+        component: RootView,
+        children:[
+            {
+                path:"/getConfidentialDocuments",
+                name:"ConfidentialDocuments",
+                component:ConfidentialDocumentView
+            },
+            {
+                path:"/getElectronics",
+                name:"Electronics",
+                component:ElectronicView
+            },
+            {
+                path:"/getNonConfidentialDocuments",
+                name:"NonConfidentialDocuments",
+                component:NonConfidentialDocumentView
+            }
+        ],
     },
-    {
-        path:"/getElectronics",
-        name:"Electronics",
-        component:ElectronicView
-    },
-    {
-        path:"/getNonConfidentialDocuments",
-        name:"NonConfidentialDocuments",
-        component:NonConfidentialDocumentView
-    }
+
 ]
 
 
