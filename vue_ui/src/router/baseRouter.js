@@ -8,11 +8,12 @@ import RootView from "@/views/RootView.vue";
 
 const routes = [
     {
-        path:"/",
+        path:"/login",
         name:"Login",
         component: Login
     },
     {
+        path:"/",
         name:"BottomLine",
         component: RootView,
         children:[
@@ -30,7 +31,7 @@ const routes = [
                 path:"/getNonConfidentialDocuments",
                 name:"NonConfidentialDocuments",
                 component:NonConfidentialDocumentView
-            }
+            },
         ],
     },
 

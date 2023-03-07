@@ -26,6 +26,21 @@ export const useElectronicStore = defineStore('electronic',()=>{
 
     })
 
+    const typeOptions = [
+        {
+            "value": 'HTML',
+            "label": 'HTML',
+        },
+        {
+            "value": 'CSS',
+            "label": 'CSS',
+        },
+        {
+            "value": 'JavaScript',
+            "label": 'JavaScript',
+        },
+    ]
+
     let tableData = ref([])
 
     function getItems(){
@@ -52,5 +67,5 @@ export const useElectronicStore = defineStore('electronic',()=>{
         })
     }
 
-    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, getItems, addItem, updateItem, deleteItem}
+    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, typeOptions,getItems, addItem, updateItem, deleteItem}
 })

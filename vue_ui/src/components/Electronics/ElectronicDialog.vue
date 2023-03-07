@@ -8,7 +8,22 @@
           <el-input v-model="els.tableForm.equipmentName" autocomplete="off" />
         </el-form-item>
         <el-form-item label="设备类型" :label-width="100">
-          <el-input v-model="els.tableForm.type" autocomplete="off" />
+          <el-select
+              v-model="els.tableForm.type"
+              multiple
+              filterable
+              allow-create
+              default-first-option
+              :reserve-keyword="false"
+              placeholder="Choose tags for your article"
+          >
+            <el-option
+                v-for="item in els.typeOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+            />
+          </el-select>
         </el-form-item>
         <el-form-item label="数量" :label-width="100">
           <el-input-number v-model="els.tableForm.quantity" :min="1" />
