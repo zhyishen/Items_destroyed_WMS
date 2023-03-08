@@ -52,5 +52,19 @@ public class NonConfidentialDocumentController {
     public NonConfidentialDocument getNonConfidentialDocument(@PathVariable("id") Long id){
         return nonConfidentialDocumentService.getNonConfidentialDocument(id);
     }
-    
+
+    @GetMapping("/departments")
+    public String getConfidentialDocumentDepartments(){
+        return nonConfidentialDocumentService.getNonConfidentialDocumentDepartments();
+    }
+
+    @GetMapping("/recipients")
+    public String getConfidentialDocumentRecipients(){
+        return nonConfidentialDocumentService.getNonConfidentialDocumentRecipients();
+    }
+
+    @GetMapping("/transferor")
+    public String getConfidentialDocumentTransferors(){
+        return nonConfidentialDocumentService.getNonConfidentialDocumentTransferors();
+    }
 }

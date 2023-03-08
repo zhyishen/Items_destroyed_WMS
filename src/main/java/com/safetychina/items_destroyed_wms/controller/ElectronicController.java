@@ -44,4 +44,27 @@ public class ElectronicController {
     public Electronic getElectronic(@PathVariable Long id){
         return electronicService.getElectronic(id);
     }
+
+    @GetMapping("/types")
+    public String getElectronicTypes(){
+        return electronicService.getElectronicTypes();
+    }
+
+    @GetMapping("/sendDepartments")
+    public String getElectronicSendDepartments(){return electronicService.getElectronicSendDepartments();}
+
+    @GetMapping("/recipients")
+    public String getElectronicRecipients(){
+        return electronicService.getElectronicRecipients();
+    }
+
+    @GetMapping("/transferors")
+    public String getElectronicTransferors(){
+        return electronicService.getElectronicTransferors();
+    }
+
+    @GetMapping("/personOfUses")
+    public String getElectronicPersonOfUses(){
+        return electronicService.getElectronicPersonOfUses();
+    }
 }

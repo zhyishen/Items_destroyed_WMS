@@ -1,23 +1,23 @@
 package com.safetychina.items_destroyed_wms.services;
 
 
-import com.google.gson.Gson;
+import com.safetychina.items_destroyed_wms.Utils.StringToJsonUtil;
 import com.safetychina.items_destroyed_wms.entity.Electronic;
 import com.safetychina.items_destroyed_wms.exception.ElectronicNotFoundException;
 import com.safetychina.items_destroyed_wms.repository.ElectronicRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-
 public class ElectronicService {
 
     private final ElectronicRepository electronicRepository;
 
-    public ElectronicService(ElectronicRepository electronicRepository){
+    private final StringToJsonUtil stringToJsonUtil;
+
+    public ElectronicService(ElectronicRepository electronicRepository, StringToJsonUtil stringToJsonUtil){
         this.electronicRepository = electronicRepository;
+        this.stringToJsonUtil = stringToJsonUtil;
     }
 
     /**
@@ -57,26 +57,27 @@ public class ElectronicService {
                 .orElseThrow(()->new ElectronicNotFoundException(id));
     }
 
-    public String getElectronicJsonString(){
-        List<String> typestrings = electronicRepository.getAllType();
-        class Type{
-            public Type(String value, String label){
-
-            }
-            private String value;
-            private String label;
-        }
-        List<Type> typesItems = new ArrayList<Type>();
-        for(String typestring : typestrings){
-            Type typeItem = new Type(typestring,typestring);
-            typesItems.add(typeItem);
-        }
-
-        Gson gson = new Gson();
-        String typeJsonString = gson.toJson(typesItems).toString();
-
-        return typeJsonString;
+    public String getElectronicTypes(){
+        List<String> typeStrings = electronicRepository.getAllType();
+        return stringToJsonUtil.stringToJsonString(typeStrings);
     }
 
+    public String getElectronicSendDepartments(){
+        List<String> departmentStrings = electronicRepository.getAllDepartment();
+        return stringToJsonUtil.stringToJsonString(departmentStrings);
+    }
+    public String getElectronicRecipients(){
+        List<String> recipientStrings = electronicRepository.getAllRecipient();
+        return stringToJsonUtil.stringToJsonString(recipientStrings);
+    }
+    public String getElectronicTransferors(){
+        List<String> transferorStrings = electronicRepository.getAllTransferor();
+        return stringToJsonUtil.stringToJsonString(transferorStrings);
+    }
+
+    public String getElectronicPersonOfUses(){
+        List<String> personOfUseStrings = electronicRepository.getAllPersonOfUse();
+        return stringToJsonUtil.stringToJsonString(personOfUseStrings);
+    }
 
 }

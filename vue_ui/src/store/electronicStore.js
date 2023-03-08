@@ -26,20 +26,15 @@ export const useElectronicStore = defineStore('electronic',()=>{
 
     })
 
-    const typeOptions = [
-        {
-            "value": 'HTML',
-            "label": 'HTML',
-        },
-        {
-            "value": 'CSS',
-            "label": 'CSS',
-        },
-        {
-            "value": 'JavaScript',
-            "label": 'JavaScript',
-        },
-    ]
+    const sendDepartments = ref([])
+
+    const recipients = ref([])
+
+    const transferors = ref([])
+
+    const personOfUses = ref([])
+
+    const typeStrings = ref([])
 
     let tableData = ref([])
 
@@ -67,5 +62,55 @@ export const useElectronicStore = defineStore('electronic',()=>{
         })
     }
 
-    return {tableData , dialogFormVisible, dialogType, tableForm, multipleSelection, typeOptions,getItems, addItem, updateItem, deleteItem}
+    function getTypes(){
+        API.get("http://localhost:8080/Electronics/types").then(res=>{
+            this.typeStrings = res.data
+        })
+    }
+
+    function getRecipients(){
+        API.get("http://localhost:8080/Electronics/recipients").then(res=>{
+            this.recipients = res.data
+        })
+    }
+
+    function getTransferors(){
+        API.get("http://localhost:8080/Electronics/transferors").then(res=>{
+            this.transferors = res.data
+        })
+    }
+
+    function getSendDepartments(){
+        API.get("http://localhost:8080/Electronics/sendDepartments").then(res=>{
+            this.sendDepartments = res.data
+        })
+    }
+
+    function getPersonOfUses(){
+        API.get("http://localhost:8080/Electronics/personOfUses").then(res=>{
+            this.personOfUses = res.data
+        })
+    }
+
+
+    return {tableData ,
+        dialogFormVisible,
+        dialogType,
+        tableForm,
+        multipleSelection,
+        sendDepartments,
+        recipients,
+        transferors ,
+        personOfUses,
+        typeStrings,
+        getItems,
+        addItem,
+        updateItem,
+        deleteItem,
+        getTypes,
+        getTransferors,
+        getSendDepartments,
+        getRecipients,
+        getPersonOfUses
+    }
 })

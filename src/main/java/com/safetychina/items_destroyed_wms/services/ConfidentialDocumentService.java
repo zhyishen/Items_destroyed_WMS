@@ -1,6 +1,7 @@
 package com.safetychina.items_destroyed_wms.services;
 
 
+import com.safetychina.items_destroyed_wms.Utils.StringToJsonUtil;
 import com.safetychina.items_destroyed_wms.entity.ConfidentialDocument;
 import com.safetychina.items_destroyed_wms.entity.NonConfidentialDocument;
 import com.safetychina.items_destroyed_wms.exception.ConfidentialDocumentNotFoundException;
@@ -13,9 +14,11 @@ import java.util.List;
 public class ConfidentialDocumentService {
 
     private  final ConfidentialDocumentRepository confidentialDocumentRepository;
+    private  final StringToJsonUtil stringToJsonUtil;
 
-    public ConfidentialDocumentService(ConfidentialDocumentRepository confidentialDocumentRepository) {
+    public ConfidentialDocumentService(ConfidentialDocumentRepository confidentialDocumentRepository, StringToJsonUtil stringToJsonUtil) {
         this.confidentialDocumentRepository = confidentialDocumentRepository;
+        this.stringToJsonUtil = stringToJsonUtil;
     }
 
     public List<ConfidentialDocument> getConfidentialDocuments(){ return  confidentialDocumentRepository.findAll();}
@@ -51,9 +54,24 @@ public class ConfidentialDocumentService {
     }
 
 
+    public String getConfidentialDocumentReceiveDepartments(){
+        List<String> receiveDepartments = confidentialDocumentRepository.getAllReceiveDepartment();
+        return stringToJsonUtil.stringToJsonString(receiveDepartments);
+    }
 
-    public void addNonConfidentialDocuments(NonConfidentialDocument c){
+    public String getConfidentialDocumentRecipients(){
+        List<String> recipients = confidentialDocumentRepository.getAllRecipient();
+        return stringToJsonUtil.stringToJsonString(recipients);
+    }
 
+    public String getConfidentialDocumentSendDepartments(){
+        List<String> sendDepartments = confidentialDocumentRepository.getAllSendDepartment();
+        return stringToJsonUtil.stringToJsonString(sendDepartments);
+    }
+
+    public String getConfidentialDocumentTransferors(){
+        List<String> transferors = confidentialDocumentRepository.getAllTransferor();
+        return stringToJsonUtil.stringToJsonString(transferors);
     }
 
 }

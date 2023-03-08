@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.lang.reflect.Type;
+import java.util.List;
 
 
 @SpringBootTest
@@ -15,7 +16,7 @@ class ElectronicServiceTest {
 
     @Test
     void getElectronicJsonString() {
-        String json = electronicService.getElectronicJsonString();
-        System.out.println(json);
+        String types = electronicService.getElectronicTypes();
+        System.out.println(types);
     }
 }

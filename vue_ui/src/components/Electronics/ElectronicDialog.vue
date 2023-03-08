@@ -10,7 +10,6 @@
         <el-form-item label="设备类型" :label-width="100">
           <el-select
               v-model="els.tableForm.type"
-              multiple
               filterable
               allow-create
               default-first-option
@@ -18,7 +17,7 @@
               placeholder="Choose tags for your article"
           >
             <el-option
-                v-for="item in els.typeOptions"
+                v-for="item in els.typeStrings"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
@@ -73,7 +72,7 @@
 
 <script setup>
 
-  import {ref} from "vue";
+import {onMounted, ref} from "vue";
 
   import {useElectronicStore} from "@/store/electronicStore.js";
   import {zhCn} from "element-plus/lib/locale/index";
@@ -97,8 +96,15 @@
       els.updateItem(els.tableForm.id, els.tableForm)
     }
 
-
   }
+
+  onMounted(()=>{
+    els.getTypes()
+    els.getTransferors()
+    els.getPersonOfUses()
+    els.getRecipients()
+    els.getSendDepartments()
+  })
 
 </script>
 

@@ -68,4 +68,25 @@ public class ConfidentialDocumentController {
     public ConfidentialDocument getConfidentialDocument(@PathVariable Long id){
         return confidentialDocumentService.getConfidentialDocument(id);
     }
+
+    @GetMapping("/receiveDepartments")
+    public String getConfidentialDocumentReceiveDepartments(){
+        return confidentialDocumentService.getConfidentialDocumentReceiveDepartments();
+    }
+
+    @GetMapping("/recipients")
+    public String getConfidentialDocumentRecipients(){
+        return confidentialDocumentService.getConfidentialDocumentRecipients();
+    }
+
+    @GetMapping("/transferors")
+    public String getConfidentialDocumentTransferors(){
+        return confidentialDocumentService.getConfidentialDocumentTransferors();
+    }
+
+    @GetMapping("/sendDepartments")
+    public String getConfidentialDocumentSendDepartments(){
+        return confidentialDocumentService.getConfidentialDocumentSendDepartments();
+    }
+
 }
