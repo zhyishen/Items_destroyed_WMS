@@ -1,5 +1,5 @@
 <script setup>
-    import {ref} from "vue";
+import {onMounted, ref} from "vue";
     import {useNonConfidentialDocumentsStore} from '@/store/nonConfidentialDocumentStore.js'
     import {zhCn} from "element-plus/lib/locale/index";
     const nfs = useNonConfidentialDocumentsStore()
@@ -25,6 +25,12 @@
         
     }
 
+    onMounted(()=>{
+      nfs.getDepartments()
+      nfs.getRecipients()
+      nfs.getTransferors()
+    })
+
 
 
 </script>
@@ -35,7 +41,21 @@
             <el-dialog v-model="nfs.dialogFormVisible" :title="nfs.dialogType=== 'add'? '新增条目' : '编辑条目' ">
                 <el-form :model="nfs.tableForm">
                     <el-form-item label="移交单位" :label-width="100">
-                        <el-input v-model="nfs.tableForm.department" autocomplete="off" />
+                      <el-select
+                          v-model="nfs.tableForm.department"
+                          filterable
+                          allow-create
+                          default-first-option
+                          :reserve-keyword="false"
+                          placeholder="Choose tags for your article"
+                      >
+                        <el-option
+                            v-for="item in nfs.departments"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value"
+                        />
+                      </el-select>
                     </el-form-item>
                     <el-form-item label="内容" :label-width="100">
                         <el-input v-model="nfs.tableForm.detail" autocomplete="off" />
@@ -44,10 +64,38 @@
                       <el-input-number v-model="nfs.tableForm.quantity" :min="1" />
                     </el-form-item>
                     <el-form-item label="移交人" :label-width="100">
-                        <el-input v-model="nfs.tableForm.transferor" autocomplete="off" />
+                      <el-select
+                          v-model="nfs.tableForm.transferor"
+                          filterable
+                          allow-create
+                          default-first-option
+                          :reserve-keyword="false"
+                          placeholder="Choose tags for your article"
+                      >
+                        <el-option
+                            v-for="item in nfs.transferors"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value"
+                        />
+                      </el-select>
                     </el-form-item>
                     <el-form-item label="接收人" :label-width="100">
-                        <el-input v-model="nfs.tableForm.recipient" autocomplete="off" />
+                      <el-select
+                          v-model="nfs.tableForm.recipient"
+                          filterable
+                          allow-create
+                          default-first-option
+                          :reserve-keyword="false"
+                          placeholder="Choose tags for your article"
+                      >
+                        <el-option
+                            v-for="item in nfs.recipients"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value"
+                        />
+                      </el-select>
                     </el-form-item>
                     <el-form-item label="接收日期" :label-width="100">
                       <el-config-provider :locale=zhCn>

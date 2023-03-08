@@ -21,16 +21,72 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="移交部门" :label-width="100">
-          <el-input v-model="cfs.tableForm.sendDepartment" autocomplete="off" />
+          <el-select
+              v-model="cfs.tableForm.sendDepartment"
+              filterable
+              allow-create
+              default-first-option
+              :reserve-keyword="false"
+              placeholder="Choose tags for your article"
+          >
+            <el-option
+                v-for="item in cfs.sendDepartments"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+            />
+          </el-select>
         </el-form-item>
         <el-form-item label="接收部门" :label-width="100">
-          <el-input v-model="cfs.tableForm.receiveDepartment" autocomplete="off" />
+          <el-select
+              v-model="cfs.tableForm.receiveDepartment"
+              filterable
+              allow-create
+              default-first-option
+              :reserve-keyword="false"
+              placeholder="Choose tags for your article"
+          >
+            <el-option
+                v-for="item in cfs.receiveDepartments"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+            />
+          </el-select>
         </el-form-item>
         <el-form-item label="接收人" :label-width="100">
-          <el-input v-model="cfs.tableForm.recipient" autocomplete="off" />
+          <el-select
+              v-model="cfs.tableForm.recipient"
+              filterable
+              allow-create
+              default-first-option
+              :reserve-keyword="false"
+              placeholder="Choose tags for your article"
+          >
+            <el-option
+                v-for="item in cfs.recipients"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+            />
+          </el-select>
         </el-form-item>
         <el-form-item label="移交人" :label-width="100">
-          <el-input v-model="cfs.tableForm.transferor" autocomplete="off" />
+          <el-select
+              v-model="cfs.tableForm.transferor"
+              filterable
+              allow-create
+              default-first-option
+              :reserve-keyword="false"
+              placeholder="Choose tags for your article"
+          >
+            <el-option
+                v-for="item in cfs.transferors"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+            />
+          </el-select>
         </el-form-item>
         <el-form-item label="接收日期" :label-width="100">
           <el-config-provider :locale=zhCn>
@@ -61,6 +117,7 @@
   import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentStore.js";
   import API from "@/plugin/axiosInstance.js";
   import {zhCn} from "element-plus/lib/locale/index";
+  import {onMounted} from "vue";
 
   const cfs = useConfidentialDocumentsStore()
 
@@ -80,6 +137,13 @@
       cfs.updateItem(cfs.tableForm.id,cfs.tableForm)
     }
   }
+
+  onMounted(()=>{
+    cfs.getRecipients()
+    cfs.getTransferors()
+    cfs.getSendDepartments()
+    cfs.getReceiveDepartments()
+  })
 
 </script>
 

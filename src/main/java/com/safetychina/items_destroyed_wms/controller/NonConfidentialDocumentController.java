@@ -63,7 +63,7 @@ public class NonConfidentialDocumentController {
         return nonConfidentialDocumentService.getNonConfidentialDocumentRecipients();
     }
 
-    @GetMapping("/transferor")
+    @GetMapping("/transferors")
     public String getConfidentialDocumentTransferors(){
         return nonConfidentialDocumentService.getNonConfidentialDocumentTransferors();
     }
