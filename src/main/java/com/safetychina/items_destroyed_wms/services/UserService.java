@@ -16,5 +16,14 @@ public class UserService {
     public User findUserByName(String name){
         return userRepository.findByUsername(name);
     }
+
+
+    public void addUser(User user){
+        userRepository.save(user);
+    }
+
+    public void updateUser(User user, Long id){
+        userRepository.findById(String.valueOf(id));
+    }
 }
 

@@ -5,9 +5,8 @@ package com.safetychina.items_destroyed_wms.controller;
  * @version 1.0
  */
 
-import com.safetychina.items_destroyed_wms.entity.NonConfidentialDocument;
+import com.safetychina.items_destroyed_wms.entity.NonConfidentialDocumentIn;
 import com.safetychina.items_destroyed_wms.services.NonConfidentialDocumentService;
-import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +25,8 @@ public class NonConfidentialDocumentController {
 
 
     @PostMapping
-    public void addNonConfidentialDocuments(@RequestBody NonConfidentialDocument nonConfidentialDocument){
-        nonConfidentialDocumentService.addNonConfidentialDocument(nonConfidentialDocument);
+    public void addNonConfidentialDocuments(@RequestBody NonConfidentialDocumentIn nonConfidentialDocumentIn){
+        nonConfidentialDocumentService.addNonConfidentialDocument(nonConfidentialDocumentIn);
 
     }
 
@@ -38,18 +37,18 @@ public class NonConfidentialDocumentController {
 
 
     @PutMapping("/{id}")
-    public NonConfidentialDocument putNonConfidentialDocument(@RequestBody NonConfidentialDocument nonConfidentialDocument, @PathVariable("id") Long id){
-        return nonConfidentialDocumentService.putNonConfidentialDocument(nonConfidentialDocument,id);
+    public NonConfidentialDocumentIn putNonConfidentialDocument(@RequestBody NonConfidentialDocumentIn nonConfidentialDocumentIn, @PathVariable("id") Long id){
+        return nonConfidentialDocumentService.putNonConfidentialDocument(nonConfidentialDocumentIn,id);
     }
 
     @GetMapping
-    public List<NonConfidentialDocument> getNonConfidentialDocuments(){
+    public List<NonConfidentialDocumentIn> getNonConfidentialDocuments(){
         return nonConfidentialDocumentService.getNonConfidentialDocuments();
 
     }
 
     @GetMapping("/{id}")
-    public NonConfidentialDocument getNonConfidentialDocument(@PathVariable("id") Long id){
+    public NonConfidentialDocumentIn getNonConfidentialDocument(@PathVariable("id") Long id){
         return nonConfidentialDocumentService.getNonConfidentialDocument(id);
     }
 

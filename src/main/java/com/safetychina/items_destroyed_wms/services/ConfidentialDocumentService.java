@@ -2,8 +2,7 @@ package com.safetychina.items_destroyed_wms.services;
 
 
 import com.safetychina.items_destroyed_wms.Utils.StringToJsonUtil;
-import com.safetychina.items_destroyed_wms.entity.ConfidentialDocument;
-import com.safetychina.items_destroyed_wms.entity.NonConfidentialDocument;
+import com.safetychina.items_destroyed_wms.entity.ConfidentialDocumentIn;
 import com.safetychina.items_destroyed_wms.exception.ConfidentialDocumentNotFoundException;
 import com.safetychina.items_destroyed_wms.repository.ConfidentialDocumentRepository;
 import org.springframework.stereotype.Service;
@@ -21,26 +20,26 @@ public class ConfidentialDocumentService {
         this.stringToJsonUtil = stringToJsonUtil;
     }
 
-    public List<ConfidentialDocument> getConfidentialDocuments(){ return  confidentialDocumentRepository.findAll();}
+    public List<ConfidentialDocumentIn> getConfidentialDocuments(){ return  confidentialDocumentRepository.findAll();}
 
-    public void addConfidentialDocument(ConfidentialDocument confidentialDocument){
-        confidentialDocumentRepository.save(confidentialDocument);
+    public void addConfidentialDocument(ConfidentialDocumentIn confidentialDocumentIn){
+        confidentialDocumentRepository.save(confidentialDocumentIn);
     }
 
 
-    public ConfidentialDocument putConfidentialDocument(ConfidentialDocument newConfidentialDocument, Long id){
+    public ConfidentialDocumentIn putConfidentialDocument(ConfidentialDocumentIn newConfidentialDocumentIn, Long id){
         return confidentialDocumentRepository.findById(id)
-                .map(confidentialDocument -> {
-                    confidentialDocument.setDocumentID(newConfidentialDocument.getDocumentID());
-                    confidentialDocument.setTitle(newConfidentialDocument.getTitle());
-                    confidentialDocument.setQuantity(newConfidentialDocument.getQuantity());
-                    confidentialDocument.setSecretLevel(newConfidentialDocument.getSecretLevel());
-                    confidentialDocument.setSendDepartment(newConfidentialDocument.getSendDepartment());
-                    confidentialDocument.setReceiveDepartment(newConfidentialDocument.getReceiveDepartment());
-                    confidentialDocument.setRecipient(newConfidentialDocument.getRecipient());
-                    confidentialDocument.setTransferor(newConfidentialDocument.getTransferor());
-                    confidentialDocument.setReceiveDate(newConfidentialDocument.getReceiveDate());
-                    return confidentialDocumentRepository.save(confidentialDocument);
+                .map(confidentialDocumentIn -> {
+                    confidentialDocumentIn.setDocumentID(newConfidentialDocumentIn.getDocumentID());
+                    confidentialDocumentIn.setTitle(newConfidentialDocumentIn.getTitle());
+                    confidentialDocumentIn.setQuantity(newConfidentialDocumentIn.getQuantity());
+                    confidentialDocumentIn.setSecretLevel(newConfidentialDocumentIn.getSecretLevel());
+                    confidentialDocumentIn.setSendDepartment(newConfidentialDocumentIn.getSendDepartment());
+                    confidentialDocumentIn.setReceiveDepartment(newConfidentialDocumentIn.getReceiveDepartment());
+                    confidentialDocumentIn.setRecipient(newConfidentialDocumentIn.getRecipient());
+                    confidentialDocumentIn.setTransferor(newConfidentialDocumentIn.getTransferor());
+                    confidentialDocumentIn.setReceiveDate(newConfidentialDocumentIn.getReceiveDate());
+                    return confidentialDocumentRepository.save(confidentialDocumentIn);
                 })
                 .orElseThrow(()->new ConfidentialDocumentNotFoundException(id));
     }
@@ -48,7 +47,7 @@ public class ConfidentialDocumentService {
 
     public void deleteConfidentialDocument(Long id){confidentialDocumentRepository.deleteById(id);}
 
-    public ConfidentialDocument getConfidentialDocument(Long id){
+    public ConfidentialDocumentIn getConfidentialDocument(Long id){
         return confidentialDocumentRepository.findById(id)
                 .orElseThrow(()-> new ConfidentialDocumentNotFoundException(id));
     }

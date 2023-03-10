@@ -7,16 +7,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
-import java.util.Objects;
 
 @Entity
 @Table(name = "non_confidential_documents_entity")
 @Data
 @NoArgsConstructor
-public class NonConfidentialDocument {
+public class NonConfidentialDocumentIn {
 
 
-    public NonConfidentialDocument(String department, String detail, Integer quantity, String transferor, String recipient, Date receiveDate) {
+    public NonConfidentialDocumentIn(String department, String detail, Integer quantity, String transferor, String recipient, Date receiveDate) {
         this.department = department;
         this.detail = detail;
         this.quantity = quantity;

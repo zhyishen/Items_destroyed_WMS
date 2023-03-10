@@ -4,15 +4,13 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
-import java.util.Objects;
-
 
 
 @Entity
 @Table(name = "confidential_documents_entity")
 @Data
 @NoArgsConstructor
-public class ConfidentialDocument {
+public class ConfidentialDocumentIn {
     @Id
     @SequenceGenerator(
             name = "confidential_documents_generator",
@@ -37,7 +35,7 @@ public class ConfidentialDocument {
     private String transferor;//移交人
     private Date receiveDate;//接收日期
 
-    public ConfidentialDocument(String documentID, String title, Integer quantity, String secretLevel, String sendDepartment, String receiveDepartment, String recipient, String transferor, Date receiveDate) {
+    public ConfidentialDocumentIn(String documentID, String title, Integer quantity, String secretLevel, String sendDepartment, String receiveDepartment, String recipient, String transferor, Date receiveDate) {
         this.documentID = documentID;
         this.title = title;
         this.quantity = quantity;

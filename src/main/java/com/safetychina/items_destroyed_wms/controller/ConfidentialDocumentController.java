@@ -1,7 +1,7 @@
 package com.safetychina.items_destroyed_wms.controller;
 
 
-import com.safetychina.items_destroyed_wms.entity.ConfidentialDocument;
+import com.safetychina.items_destroyed_wms.entity.ConfidentialDocumentIn;
 import com.safetychina.items_destroyed_wms.services.ConfidentialDocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,11 +22,11 @@ public class ConfidentialDocumentController {
     /**
      * 增加保密文件项目
      *
-     * @param newConfidentialDocument 新保密文件实体
+     * @param newConfidentialDocumentIn 新保密文件实体
      */
     @PostMapping
-    public void addConfidentialDocuments(@RequestBody ConfidentialDocument newConfidentialDocument){
-        confidentialDocumentService.addConfidentialDocument(newConfidentialDocument);
+    public void addConfidentialDocuments(@RequestBody ConfidentialDocumentIn newConfidentialDocumentIn){
+        confidentialDocumentService.addConfidentialDocument(newConfidentialDocumentIn);
     }
 
     /**
@@ -40,13 +40,13 @@ public class ConfidentialDocumentController {
 
     /**
      *
-     * @param confidentialDocument 新保密文件实体替换原有实体
+     * @param confidentialDocumentIn 新保密文件实体替换原有实体
      * @param id 从链接参数中提取id作为传入参数
      * @return 更改过后的新保密文件实体
      */
     @PutMapping("/{id}")
-    public ConfidentialDocument putConfidentialDocuments(@RequestBody ConfidentialDocument confidentialDocument, @PathVariable Long id){
-        return confidentialDocumentService.putConfidentialDocument(confidentialDocument, id);
+    public ConfidentialDocumentIn putConfidentialDocuments(@RequestBody ConfidentialDocumentIn confidentialDocumentIn, @PathVariable Long id){
+        return confidentialDocumentService.putConfidentialDocument(confidentialDocumentIn, id);
     }
 
     /**
@@ -54,7 +54,7 @@ public class ConfidentialDocumentController {
      * @return 所有保密文件实体
      */
     @GetMapping
-    public List<ConfidentialDocument> getConfidentialDocuments(){
+    public List<ConfidentialDocumentIn> getConfidentialDocuments(){
         return confidentialDocumentService.getConfidentialDocuments();
     }
 
@@ -65,7 +65,7 @@ public class ConfidentialDocumentController {
      * @return 根据id找到的保密文件实体
      */
     @GetMapping("/{id}")
-    public ConfidentialDocument getConfidentialDocument(@PathVariable Long id){
+    public ConfidentialDocumentIn getConfidentialDocument(@PathVariable Long id){
         return confidentialDocumentService.getConfidentialDocument(id);
     }
 

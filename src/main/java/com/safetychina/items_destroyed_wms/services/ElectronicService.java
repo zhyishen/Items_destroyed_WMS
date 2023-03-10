@@ -2,7 +2,7 @@ package com.safetychina.items_destroyed_wms.services;
 
 
 import com.safetychina.items_destroyed_wms.Utils.StringToJsonUtil;
-import com.safetychina.items_destroyed_wms.entity.Electronic;
+import com.safetychina.items_destroyed_wms.entity.ElectronicIn;
 import com.safetychina.items_destroyed_wms.exception.ElectronicNotFoundException;
 import com.safetychina.items_destroyed_wms.repository.ElectronicRepository;
 import org.springframework.stereotype.Service;
@@ -24,35 +24,35 @@ public class ElectronicService {
      * 把所有的电子类项目进行列表
      * @return 返回所有的电子类项目
      */
-    public List<Electronic> getElectronics(){
+    public List<ElectronicIn> getElectronics(){
         return electronicRepository.findAll();
     }
 
-    public void addElectronic(Electronic electronic){
-        electronicRepository.save(electronic);
+    public void addElectronic(ElectronicIn electronicIn){
+        electronicRepository.save(electronicIn);
     }
 
-    public Electronic putElectronic(Electronic newElectronic, Long id){
+    public ElectronicIn putElectronic(ElectronicIn newElectronicIn, Long id){
         return electronicRepository.findById(id)
-                .map(electronic -> {
-                    electronic.setQuantity(newElectronic.getQuantity());
-                    electronic.setRecipient(newElectronic.getRecipient());
-                    electronic.setTransferor(newElectronic.getTransferor());
-                    electronic.setReceiveDate(newElectronic.getReceiveDate());
-                    electronic.setSendDepartment(newElectronic.getSendDepartment());
-                    electronic.setEquipmentName(newElectronic.getEquipmentName());
-                    electronic.setPersonOfUse(newElectronic.getPersonOfUse());
-                    electronic.setType(newElectronic.getType());
-                    electronic.setSecretLevel(newElectronic.getSecretLevel());
-                    electronic.setNotes(newElectronic.getNotes());
-                    return electronicRepository.save(electronic);
+                .map(electronicIn -> {
+                    electronicIn.setQuantity(newElectronicIn.getQuantity());
+                    electronicIn.setRecipient(newElectronicIn.getRecipient());
+                    electronicIn.setTransferor(newElectronicIn.getTransferor());
+                    electronicIn.setReceiveDate(newElectronicIn.getReceiveDate());
+                    electronicIn.setSendDepartment(newElectronicIn.getSendDepartment());
+                    electronicIn.setEquipmentName(newElectronicIn.getEquipmentName());
+                    electronicIn.setPersonOfUse(newElectronicIn.getPersonOfUse());
+                    electronicIn.setType(newElectronicIn.getType());
+                    electronicIn.setSecretLevel(newElectronicIn.getSecretLevel());
+                    electronicIn.setNotes(newElectronicIn.getNotes());
+                    return electronicRepository.save(electronicIn);
                 })
                 .orElseThrow(()->new ElectronicNotFoundException(id));
     }
 
     public void deleteElectronic(Long id){electronicRepository.deleteById(id);}
 
-    public Electronic getElectronic(Long id){
+    public ElectronicIn getElectronic(Long id){
         return electronicRepository.findById(id)
                 .orElseThrow(()->new ElectronicNotFoundException(id));
     }

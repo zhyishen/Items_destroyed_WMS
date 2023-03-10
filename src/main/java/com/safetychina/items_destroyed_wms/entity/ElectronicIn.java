@@ -7,13 +7,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
-import java.util.Objects;
 
 @Entity
 @Table(name = "electronics_entity")
 @Data
 @NoArgsConstructor
-public class Electronic {
+public class ElectronicIn {
 
     @Id
     @SequenceGenerator(name = "electronics_generator",
@@ -34,7 +33,7 @@ public class Electronic {
     private String recipient;//接收人
     private String notes;//备注
 
-    public Electronic(String equipmentName, String type, String secretLevel, Integer quantity, String sendDepartment, String personOfUse, Date receiveDate, String transferor, String recipient, String notes) {
+    public ElectronicIn(String equipmentName, String type, String secretLevel, Integer quantity, String sendDepartment, String personOfUse, Date receiveDate, String transferor, String recipient, String notes) {
         this.equipmentName = equipmentName;
         this.type = type;
         this.secretLevel = secretLevel;

@@ -2,7 +2,7 @@ package com.safetychina.items_destroyed_wms.services;
 
 
 import com.safetychina.items_destroyed_wms.Utils.StringToJsonUtil;
-import com.safetychina.items_destroyed_wms.entity.NonConfidentialDocument;
+import com.safetychina.items_destroyed_wms.entity.NonConfidentialDocumentIn;
 import com.safetychina.items_destroyed_wms.exception.NonConfidentialDocumentNotFoundException;
 import com.safetychina.items_destroyed_wms.repository.NonConfidentialDocumentRepository;
 import org.springframework.stereotype.Service;
@@ -19,26 +19,26 @@ public class NonConfidentialDocumentService {
         this.stringToJsonUtil = stringToJsonUtil;
     }
 
-    public List<NonConfidentialDocument> getNonConfidentialDocuments(){
+    public List<NonConfidentialDocumentIn> getNonConfidentialDocuments(){
         return nonConfidentialDocumentRepository.findAll();
 
     }
 
 
-    public void addNonConfidentialDocument(NonConfidentialDocument nonConfidentialDocument){
-        nonConfidentialDocumentRepository.save(nonConfidentialDocument);
+    public void addNonConfidentialDocument(NonConfidentialDocumentIn nonConfidentialDocumentIn){
+        nonConfidentialDocumentRepository.save(nonConfidentialDocumentIn);
     }
     
-    public NonConfidentialDocument putNonConfidentialDocument(NonConfidentialDocument newNonConfidentialDocument, Long id){
+    public NonConfidentialDocumentIn putNonConfidentialDocument(NonConfidentialDocumentIn newNonConfidentialDocumentIn, Long id){
         return nonConfidentialDocumentRepository.findById(id)
-                .map(nonConfidentialDocument ->{
-                    nonConfidentialDocument.setDepartment(newNonConfidentialDocument.getDepartment());
-                    nonConfidentialDocument.setQuantity(newNonConfidentialDocument.getQuantity());
-                    nonConfidentialDocument.setDetail(newNonConfidentialDocument.getDetail());
-                    nonConfidentialDocument.setReceiveDate(newNonConfidentialDocument.getReceiveDate());
-                    nonConfidentialDocument.setRecipient(newNonConfidentialDocument.getRecipient());
-                    nonConfidentialDocument.setTransferor(newNonConfidentialDocument.getTransferor());
-                    return nonConfidentialDocumentRepository.save(nonConfidentialDocument);
+                .map(nonConfidentialDocumentIn ->{
+                    nonConfidentialDocumentIn.setDepartment(newNonConfidentialDocumentIn.getDepartment());
+                    nonConfidentialDocumentIn.setQuantity(newNonConfidentialDocumentIn.getQuantity());
+                    nonConfidentialDocumentIn.setDetail(newNonConfidentialDocumentIn.getDetail());
+                    nonConfidentialDocumentIn.setReceiveDate(newNonConfidentialDocumentIn.getReceiveDate());
+                    nonConfidentialDocumentIn.setRecipient(newNonConfidentialDocumentIn.getRecipient());
+                    nonConfidentialDocumentIn.setTransferor(newNonConfidentialDocumentIn.getTransferor());
+                    return nonConfidentialDocumentRepository.save(nonConfidentialDocumentIn);
                 } )
                 .orElseThrow(()->new NonConfidentialDocumentNotFoundException(id));
     }
@@ -47,7 +47,7 @@ public class NonConfidentialDocumentService {
         nonConfidentialDocumentRepository.deleteById(id);
     }
 
-    public NonConfidentialDocument getNonConfidentialDocument(Long id){
+    public NonConfidentialDocumentIn getNonConfidentialDocument(Long id){
         return nonConfidentialDocumentRepository.findById(id)
                 .orElseThrow(()->new NonConfidentialDocumentNotFoundException(id));
     }

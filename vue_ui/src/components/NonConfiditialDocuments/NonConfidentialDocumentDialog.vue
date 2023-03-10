@@ -4,6 +4,9 @@ import {onMounted, ref} from "vue";
     import {zhCn} from "element-plus/lib/locale/index";
     const nfs = useNonConfidentialDocumentsStore()
 
+    const rules= {
+
+    }
 
     const dialogConfirm = ()=>{
         nfs.dialogFormVisible = false
@@ -40,7 +43,7 @@ import {onMounted, ref} from "vue";
             <!-- input window -->
             <el-dialog v-model="nfs.dialogFormVisible" :title="nfs.dialogType=== 'add'? '新增条目' : '编辑条目' ">
                 <el-form :model="nfs.tableForm">
-                    <el-form-item label="移交单位" :label-width="100">
+                    <el-form-item label="移交单位" :label-width="100" prop="department">
                       <el-select
                           v-model="nfs.tableForm.department"
                           filterable

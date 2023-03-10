@@ -16,7 +16,7 @@ public class User {
     allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
     generator = "users_generator")
-//    @Setter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     private Long uid;
 
     @NonNull

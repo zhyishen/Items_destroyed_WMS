@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @SpringBootTest
-class ElectronicServiceTest {
+class ElectronicInServiceTest {
 
     @Autowired
     ElectronicService electronicService;
