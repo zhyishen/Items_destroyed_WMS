@@ -27,7 +27,6 @@ public class UserController {
         System.out.println(user.getUsername());
         System.out.println(user.getPassword());
         if(user.getUsername().equals(username)&&user.getPassword().equals(password)){
-            user.setUid(123L);
             TokenUtils tokenUtils = new TokenUtils();
             tokenUtils.createToken(user);
         }
