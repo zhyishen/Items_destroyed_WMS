@@ -1,4 +1,9 @@
 <template>
+  <div class="title">
+    <h2>
+      非涉密文件入库
+    </h2>
+  </div>
   <div class = "input-window">
     <!-- input window -->
 

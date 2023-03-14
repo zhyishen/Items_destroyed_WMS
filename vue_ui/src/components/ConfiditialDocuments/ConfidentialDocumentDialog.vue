@@ -124,18 +124,13 @@
   const dialogConfirm = ()=>{
     cfs.dialogFormVisible = false
     // 判断
-    if(cfs.dialogType==='add'){
-      // 拿到数据
-      // 添加到table
-      cfs.addItem(cfs.tableForm)
-      cfs.getItems()
-    }else if(cfs.dialogType ==='edit'){
-      let index = cfs.tableData.findIndex(item => item.id===cfs.tableForm.id)
-      // console.log(index)
-      cfs.tableData[index] = cfs.tableForm
-      //API.put("http://localhost:8080/ConfidentialDocuments/"+cfs.tableForm.id,cfs.tableForm)
-      cfs.updateItem(cfs.tableForm.id,cfs.tableForm)
-    }
+
+    let index = cfs.tableData.findIndex(item => item.id===cfs.tableForm.id)
+    // console.log(index)
+    cfs.tableData[index] = cfs.tableForm
+    //API.put("http://localhost:8080/ConfidentialDocuments/"+cfs.tableForm.id,cfs.tableForm)
+    cfs.updateItem(cfs.tableForm.id,cfs.tableForm)
+
   }
 
   onMounted(()=>{

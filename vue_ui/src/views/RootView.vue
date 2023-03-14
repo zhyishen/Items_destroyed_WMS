@@ -15,9 +15,9 @@
               <span>进库管理</span>
             </template>
 
-            <el-menu-item index="1-1" @click="">电子设备入库</el-menu-item>
+            <el-menu-item index="1-1" @click="toPage('ElectronicsIn')">电子设备入库</el-menu-item>
             <el-menu-item index="1-2" @click="toPage('ConfidentialDocumentsIn')">涉密文件入库</el-menu-item>
-            <el-menu-item index="1-3" @click="">非涉密文件入库</el-menu-item>
+            <el-menu-item index="1-3" @click="toPage('NonConfidentialDocumentsIn')">非涉密文件入库</el-menu-item>
 
           </el-sub-menu>
 

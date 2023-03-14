@@ -2,7 +2,6 @@
 
   <el-input class="query-input" v-model="queryInput" placeholder="Please input" />
   <div class="btn-list">
-    <el-button type="primary" @click="handleAdd">增加</el-button>
     <el-button type="danger" @click="handleDelList" v-if="cfs.multipleSelection.length>0">批量删除</el-button>
   </div>
 
@@ -24,12 +23,6 @@
       handleRowDel({id})
     })
     cfs.multipleSelection = []
-  }
-
-  // 新增
-  const handleAdd = () =>{
-    cfs.dialogFormVisible = true
-    cfs.tableForm = {}
   }
 
   const handleRowDel = ({id}) =>{

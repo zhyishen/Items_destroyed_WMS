@@ -5,6 +5,8 @@ import NonConfidentialDocumentView from "@/views/NonConfidentialDocumentView.vue
 import Login from "@/views/Login.vue";
 import RootView from "@/views/RootView.vue";
 import ConfidentialInView from "@/views/ConfidentialDocumentInView.vue";
+import NonConfidentialDocumentInView from "@/views/NonConfidentialDocumentInView.vue";
+import ElectronicInView from "@/views/ElectronicInView.vue";
 
 
 const routes = [
@@ -37,6 +39,16 @@ const routes = [
                 path:"/inputConfidentialDocuments",
                 name:"ConfidentialDocumentsIn",
                 component: ConfidentialInView
+            },
+            {
+                path: "/inputNonConfidentialDocuments",
+                name: "NonConfidentialDocumentsIn",
+                component: NonConfidentialDocumentInView
+            },
+            {
+                path: "/inputElectronics",
+                name: "ElectronicsIn",
+                component: ElectronicInView
             }
         ],
     },

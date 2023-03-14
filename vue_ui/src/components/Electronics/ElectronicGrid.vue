@@ -52,7 +52,6 @@
 
   const handleEdit=(row)=>{
     els.dialogFormVisible = true;
-    els.dialogType = 'edit'
     els.tableForm = {...row}
 
   }

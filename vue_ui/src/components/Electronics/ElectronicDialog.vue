@@ -138,19 +138,10 @@ import {onMounted, ref} from "vue";
   const dialogConfirm = ()=>{
     els.dialogFormVisible = false
     // 判断
-    if(els.dialogType==='add'){
-      // 拿到数据
-      // 添加到table
-      els.tableData.push({
-        ...els.tableForm
-      })
-      els.addItem(els.tableForm)
-    }else if(els.dialogType ==='edit'){
-      let index = els.tableData.findIndex(item => item.id===els.tableForm.id)
-      // console.log(index)
-      els.tableData[index] = els.tableForm
-      els.updateItem(els.tableForm.id, els.tableForm)
-    }
+    let index = els.tableData.findIndex(item => item.id===els.tableForm.id)
+    // console.log(index)
+    els.tableData[index] = els.tableForm
+    els.updateItem(els.tableForm.id, els.tableForm)
 
   }
 

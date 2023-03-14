@@ -51,7 +51,6 @@
 
   const handleEdit=(row)=>{
     cfs.dialogFormVisible = true;
-    cfs.dialogType = 'edit'
     cfs.tableForm = {...row}
 
   }
