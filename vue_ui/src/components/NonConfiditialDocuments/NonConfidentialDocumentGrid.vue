@@ -18,7 +18,6 @@ import {onMounted, ref} from "vue";
 
     const handleEdit=(row)=>{
         nfs.dialogFormVisible = true;
-        nfs.dialogType = 'edit'
         nfs.tableForm = {...row}
 
     }

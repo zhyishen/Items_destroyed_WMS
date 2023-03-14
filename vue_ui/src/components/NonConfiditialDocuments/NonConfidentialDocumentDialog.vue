@@ -11,21 +11,10 @@ import {onMounted, ref} from "vue";
     const dialogConfirm = ()=>{
         nfs.dialogFormVisible = false
         // 判断
-        if(nfs.dialogType==='add'){
-            // 拿到数据
-            // 添加到table
-            nfs.tableData.push({
-            ...nfs.tableForm
-            })
-            nfs.addItem(nfs.tableForm)
-        }else if(nfs.dialogType ==='edit'){
-            let index = nfs.tableData.findIndex(item => item.id===nfs.tableForm.id)
-            // console.log(index)
-            nfs.tableData[index] = nfs.tableForm
-            nfs.updateItem(nfs.tableForm.id,nfs.tableForm)
-        }
-
-        
+        let index = nfs.tableData.findIndex(item => item.id===nfs.tableForm.id)
+        // console.log(index)
+        nfs.tableData[index] = nfs.tableForm
+        nfs.updateItem(nfs.tableForm.id,nfs.tableForm)
     }
 
     onMounted(()=>{
