@@ -9,7 +9,7 @@ import lombok.Setter;
 import java.util.Date;
 
 @Entity
-@Table(name = "non_confidential_documents_entity")
+@Table(name = "non_confidential_documents_entity_in")
 @Data
 @NoArgsConstructor
 public class NonConfidentialDocumentIn {

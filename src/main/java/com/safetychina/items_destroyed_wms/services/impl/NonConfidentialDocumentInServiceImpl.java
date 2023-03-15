@@ -1,36 +1,36 @@
-package com.safetychina.items_destroyed_wms.services;
+package com.safetychina.items_destroyed_wms.services.impl;
 
 
 import com.safetychina.items_destroyed_wms.Utils.StringToJsonUtil;
 import com.safetychina.items_destroyed_wms.entity.NonConfidentialDocumentIn;
 import com.safetychina.items_destroyed_wms.exception.NonConfidentialDocumentNotFoundException;
-import com.safetychina.items_destroyed_wms.repository.NonConfidentialDocumentRepository;
+import com.safetychina.items_destroyed_wms.repository.NonConfidentialDocumentInRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class NonConfidentialDocumentService {
-    private final NonConfidentialDocumentRepository nonConfidentialDocumentRepository;
+public class NonConfidentialDocumentInServiceImpl {
+    private final NonConfidentialDocumentInRepository nonConfidentialDocumentInRepository;
     private final StringToJsonUtil stringToJsonUtil;
 
-    public NonConfidentialDocumentService(NonConfidentialDocumentRepository nonConfidentialDocumentRepository, StringToJsonUtil stringToJsonUtil) {
-        this.nonConfidentialDocumentRepository = nonConfidentialDocumentRepository;
+    public NonConfidentialDocumentInServiceImpl(NonConfidentialDocumentInRepository nonConfidentialDocumentInRepository, StringToJsonUtil stringToJsonUtil) {
+        this.nonConfidentialDocumentInRepository = nonConfidentialDocumentInRepository;
         this.stringToJsonUtil = stringToJsonUtil;
     }
 
     public List<NonConfidentialDocumentIn> getNonConfidentialDocuments(){
-        return nonConfidentialDocumentRepository.findAll();
+        return nonConfidentialDocumentInRepository.findAll();
 
     }
 
 
     public void addNonConfidentialDocument(NonConfidentialDocumentIn nonConfidentialDocumentIn){
-        nonConfidentialDocumentRepository.save(nonConfidentialDocumentIn);
+        nonConfidentialDocumentInRepository.save(nonConfidentialDocumentIn);
     }
     
     public NonConfidentialDocumentIn putNonConfidentialDocument(NonConfidentialDocumentIn newNonConfidentialDocumentIn, Long id){
-        return nonConfidentialDocumentRepository.findById(id)
+        return nonConfidentialDocumentInRepository.findById(id)
                 .map(nonConfidentialDocumentIn ->{
                     nonConfidentialDocumentIn.setDepartment(newNonConfidentialDocumentIn.getDepartment());
                     nonConfidentialDocumentIn.setQuantity(newNonConfidentialDocumentIn.getQuantity());
@@ -38,32 +38,32 @@ public class NonConfidentialDocumentService {
                     nonConfidentialDocumentIn.setReceiveDate(newNonConfidentialDocumentIn.getReceiveDate());
                     nonConfidentialDocumentIn.setRecipient(newNonConfidentialDocumentIn.getRecipient());
                     nonConfidentialDocumentIn.setTransferor(newNonConfidentialDocumentIn.getTransferor());
-                    return nonConfidentialDocumentRepository.save(nonConfidentialDocumentIn);
+                    return nonConfidentialDocumentInRepository.save(nonConfidentialDocumentIn);
                 } )
                 .orElseThrow(()->new NonConfidentialDocumentNotFoundException(id));
     }
 
     public void deleteNonConfidentialDocument(Long id){
-        nonConfidentialDocumentRepository.deleteById(id);
+        nonConfidentialDocumentInRepository.deleteById(id);
     }
 
     public NonConfidentialDocumentIn getNonConfidentialDocument(Long id){
-        return nonConfidentialDocumentRepository.findById(id)
+        return nonConfidentialDocumentInRepository.findById(id)
                 .orElseThrow(()->new NonConfidentialDocumentNotFoundException(id));
     }
 
     public String getNonConfidentialDocumentDepartments(){
-        List<String> departments = nonConfidentialDocumentRepository.getAllDepartment();
+        List<String> departments = nonConfidentialDocumentInRepository.getAllDepartment();
         return stringToJsonUtil.stringToJsonString(departments);
     }
 
     public String getNonConfidentialDocumentRecipients(){
-        List<String> recipients = nonConfidentialDocumentRepository.getAllRecipient();
+        List<String> recipients = nonConfidentialDocumentInRepository.getAllRecipient();
         return stringToJsonUtil.stringToJsonString(recipients);
     }
 
     public String getNonConfidentialDocumentTransferors(){
-        List<String> transferors = nonConfidentialDocumentRepository.getAllTransferor();
+        List<String> transferors = nonConfidentialDocumentInRepository.getAllTransferor();
         return stringToJsonUtil.stringToJsonString(transferors);
     }
 

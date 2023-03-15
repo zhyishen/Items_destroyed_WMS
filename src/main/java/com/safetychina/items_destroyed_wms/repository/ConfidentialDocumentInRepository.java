@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface ConfidentialDocumentRepository extends JpaRepository<ConfidentialDocumentIn, Long> {
+public interface ConfidentialDocumentInRepository extends JpaRepository<ConfidentialDocumentIn, Long> {
 
     @Query("select distinct c.receiveDepartment FROM ConfidentialDocumentIn c")
     List<String> getAllReceiveDepartment();

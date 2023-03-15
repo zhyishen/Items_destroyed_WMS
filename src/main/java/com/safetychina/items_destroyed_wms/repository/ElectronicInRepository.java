@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface ElectronicRepository extends JpaRepository<ElectronicIn, Long> {
+public interface ElectronicInRepository extends JpaRepository<ElectronicIn, Long> {
     @Query("select distinct e.type FROM ElectronicIn e")
     List<String> getAllType();
 

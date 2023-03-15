@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface NonConfidentialDocumentRepository extends JpaRepository<NonConfidentialDocumentIn, Long> {
+public interface NonConfidentialDocumentInRepository extends JpaRepository<NonConfidentialDocumentIn, Long> {
 
     @Query("select distinct n.department FROM NonConfidentialDocumentIn n")
     List<String> getAllDepartment();

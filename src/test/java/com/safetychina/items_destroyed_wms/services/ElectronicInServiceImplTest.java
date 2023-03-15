@@ -1,22 +1,20 @@
 package com.safetychina.items_destroyed_wms.services;
 
+import com.safetychina.items_destroyed_wms.services.impl.ElectronicInServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.lang.reflect.Type;
-import java.util.List;
-
 
 @SpringBootTest
-class ElectronicInServiceTest {
+class ElectronicInServiceImplTest {
 
     @Autowired
-    ElectronicService electronicService;
+    ElectronicInServiceImpl electronicInServiceImpl;
 
     @Test
     void getElectronicJsonString() {
-        String types = electronicService.getElectronicTypes();
+        String types = electronicInServiceImpl.getElectronicTypes();
         System.out.println(types);
     }
 }

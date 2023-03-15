@@ -1,34 +1,38 @@
-package com.safetychina.items_destroyed_wms.services;
+package com.safetychina.items_destroyed_wms.services.impl;
 
 
 import com.safetychina.items_destroyed_wms.Utils.StringToJsonUtil;
 import com.safetychina.items_destroyed_wms.entity.ConfidentialDocumentIn;
 import com.safetychina.items_destroyed_wms.exception.ConfidentialDocumentNotFoundException;
-import com.safetychina.items_destroyed_wms.repository.ConfidentialDocumentRepository;
+import com.safetychina.items_destroyed_wms.repository.ConfidentialDocumentInRepository;
+import com.safetychina.items_destroyed_wms.services.ConfidentialDocumentInService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ConfidentialDocumentService {
+public class ConfidentialDocumentInServiceImpl implements ConfidentialDocumentInService {
 
-    private  final ConfidentialDocumentRepository confidentialDocumentRepository;
+    private  final ConfidentialDocumentInRepository confidentialDocumentInRepository;
     private  final StringToJsonUtil stringToJsonUtil;
 
-    public ConfidentialDocumentService(ConfidentialDocumentRepository confidentialDocumentRepository, StringToJsonUtil stringToJsonUtil) {
-        this.confidentialDocumentRepository = confidentialDocumentRepository;
+
+    public ConfidentialDocumentInServiceImpl(ConfidentialDocumentInRepository confidentialDocumentInRepository, StringToJsonUtil stringToJsonUtil) {
+        this.confidentialDocumentInRepository = confidentialDocumentInRepository;
         this.stringToJsonUtil = stringToJsonUtil;
     }
 
-    public List<ConfidentialDocumentIn> getConfidentialDocuments(){ return  confidentialDocumentRepository.findAll();}
+    @Override
+    public List<ConfidentialDocumentIn> getConfidentialDocuments(){ return  confidentialDocumentInRepository.findAll();}
 
+    @Override
     public void addConfidentialDocument(ConfidentialDocumentIn confidentialDocumentIn){
-        confidentialDocumentRepository.save(confidentialDocumentIn);
+        confidentialDocumentInRepository.save(confidentialDocumentIn);
     }
 
-
+    @Override
     public ConfidentialDocumentIn putConfidentialDocument(ConfidentialDocumentIn newConfidentialDocumentIn, Long id){
-        return confidentialDocumentRepository.findById(id)
+        return confidentialDocumentInRepository.findById(id)
                 .map(confidentialDocumentIn -> {
                     confidentialDocumentIn.setDocumentID(newConfidentialDocumentIn.getDocumentID());
                     confidentialDocumentIn.setTitle(newConfidentialDocumentIn.getTitle());
@@ -39,37 +43,39 @@ public class ConfidentialDocumentService {
                     confidentialDocumentIn.setRecipient(newConfidentialDocumentIn.getRecipient());
                     confidentialDocumentIn.setTransferor(newConfidentialDocumentIn.getTransferor());
                     confidentialDocumentIn.setReceiveDate(newConfidentialDocumentIn.getReceiveDate());
-                    return confidentialDocumentRepository.save(confidentialDocumentIn);
+                    return confidentialDocumentInRepository.save(confidentialDocumentIn);
                 })
                 .orElseThrow(()->new ConfidentialDocumentNotFoundException(id));
     }
 
+    @Override
+    public void deleteConfidentialDocument(Long id){
+        confidentialDocumentInRepository.deleteById(id);}
 
-    public void deleteConfidentialDocument(Long id){confidentialDocumentRepository.deleteById(id);}
-
+    @Override
     public ConfidentialDocumentIn getConfidentialDocument(Long id){
-        return confidentialDocumentRepository.findById(id)
+        return confidentialDocumentInRepository.findById(id)
                 .orElseThrow(()-> new ConfidentialDocumentNotFoundException(id));
     }
 
-
+    @Override
     public String getConfidentialDocumentReceiveDepartments(){
-        List<String> receiveDepartments = confidentialDocumentRepository.getAllReceiveDepartment();
+        List<String> receiveDepartments = confidentialDocumentInRepository.getAllReceiveDepartment();
         return stringToJsonUtil.stringToJsonString(receiveDepartments);
     }
-
+    @Override
     public String getConfidentialDocumentRecipients(){
-        List<String> recipients = confidentialDocumentRepository.getAllRecipient();
+        List<String> recipients = confidentialDocumentInRepository.getAllRecipient();
         return stringToJsonUtil.stringToJsonString(recipients);
     }
-
+    @Override
     public String getConfidentialDocumentSendDepartments(){
-        List<String> sendDepartments = confidentialDocumentRepository.getAllSendDepartment();
+        List<String> sendDepartments = confidentialDocumentInRepository.getAllSendDepartment();
         return stringToJsonUtil.stringToJsonString(sendDepartments);
     }
-
+    @Override
     public String getConfidentialDocumentTransferors(){
-        List<String> transferors = confidentialDocumentRepository.getAllTransferor();
+        List<String> transferors = confidentialDocumentInRepository.getAllTransferor();
         return stringToJsonUtil.stringToJsonString(transferors);
     }
 

@@ -1,22 +1,22 @@
-package com.safetychina.items_destroyed_wms.services;
+package com.safetychina.items_destroyed_wms.services.impl;
 
 
 import com.safetychina.items_destroyed_wms.Utils.StringToJsonUtil;
 import com.safetychina.items_destroyed_wms.entity.ElectronicIn;
 import com.safetychina.items_destroyed_wms.exception.ElectronicNotFoundException;
-import com.safetychina.items_destroyed_wms.repository.ElectronicRepository;
+import com.safetychina.items_destroyed_wms.repository.ElectronicInRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ElectronicService {
+public class ElectronicInServiceImpl {
 
-    private final ElectronicRepository electronicRepository;
+    private final ElectronicInRepository electronicInRepository;
 
     private final StringToJsonUtil stringToJsonUtil;
 
-    public ElectronicService(ElectronicRepository electronicRepository, StringToJsonUtil stringToJsonUtil){
-        this.electronicRepository = electronicRepository;
+    public ElectronicInServiceImpl(ElectronicInRepository electronicInRepository, StringToJsonUtil stringToJsonUtil){
+        this.electronicInRepository = electronicInRepository;
         this.stringToJsonUtil = stringToJsonUtil;
     }
 
@@ -25,15 +25,15 @@ public class ElectronicService {
      * @return 返回所有的电子类项目
      */
     public List<ElectronicIn> getElectronics(){
-        return electronicRepository.findAll();
+        return electronicInRepository.findAll();
     }
 
     public void addElectronic(ElectronicIn electronicIn){
-        electronicRepository.save(electronicIn);
+        electronicInRepository.save(electronicIn);
     }
 
     public ElectronicIn putElectronic(ElectronicIn newElectronicIn, Long id){
-        return electronicRepository.findById(id)
+        return electronicInRepository.findById(id)
                 .map(electronicIn -> {
                     electronicIn.setQuantity(newElectronicIn.getQuantity());
                     electronicIn.setRecipient(newElectronicIn.getRecipient());
@@ -45,38 +45,39 @@ public class ElectronicService {
                     electronicIn.setType(newElectronicIn.getType());
                     electronicIn.setSecretLevel(newElectronicIn.getSecretLevel());
                     electronicIn.setNotes(newElectronicIn.getNotes());
-                    return electronicRepository.save(electronicIn);
+                    return electronicInRepository.save(electronicIn);
                 })
                 .orElseThrow(()->new ElectronicNotFoundException(id));
     }
 
-    public void deleteElectronic(Long id){electronicRepository.deleteById(id);}
+    public void deleteElectronic(Long id){
+        electronicInRepository.deleteById(id);}
 
     public ElectronicIn getElectronic(Long id){
-        return electronicRepository.findById(id)
+        return electronicInRepository.findById(id)
                 .orElseThrow(()->new ElectronicNotFoundException(id));
     }
 
     public String getElectronicTypes(){
-        List<String> typeStrings = electronicRepository.getAllType();
+        List<String> typeStrings = electronicInRepository.getAllType();
         return stringToJsonUtil.stringToJsonString(typeStrings);
     }
 
     public String getElectronicSendDepartments(){
-        List<String> departmentStrings = electronicRepository.getAllDepartment();
+        List<String> departmentStrings = electronicInRepository.getAllDepartment();
         return stringToJsonUtil.stringToJsonString(departmentStrings);
     }
     public String getElectronicRecipients(){
-        List<String> recipientStrings = electronicRepository.getAllRecipient();
+        List<String> recipientStrings = electronicInRepository.getAllRecipient();
         return stringToJsonUtil.stringToJsonString(recipientStrings);
     }
     public String getElectronicTransferors(){
-        List<String> transferorStrings = electronicRepository.getAllTransferor();
+        List<String> transferorStrings = electronicInRepository.getAllTransferor();
         return stringToJsonUtil.stringToJsonString(transferorStrings);
     }
 
     public String getElectronicPersonOfUses(){
-        List<String> personOfUseStrings = electronicRepository.getAllPersonOfUse();
+        List<String> personOfUseStrings = electronicInRepository.getAllPersonOfUse();
         return stringToJsonUtil.stringToJsonString(personOfUseStrings);
     }
 

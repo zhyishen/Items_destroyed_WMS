@@ -7,7 +7,7 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "confidential_documents_entity")
+@Table(name = "confidential_documents_entity_in")
 @Data
 @NoArgsConstructor
 public class ConfidentialDocumentIn {

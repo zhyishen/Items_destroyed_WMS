@@ -2,7 +2,7 @@ package com.safetychina.items_destroyed_wms.controller;
 
 
 import com.safetychina.items_destroyed_wms.entity.ConfidentialDocumentIn;
-import com.safetychina.items_destroyed_wms.services.ConfidentialDocumentService;
+import com.safetychina.items_destroyed_wms.services.impl.ConfidentialDocumentInServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,11 +12,11 @@ import java.util.List;
 @RequestMapping("/ConfidentialDocuments")
 public class ConfidentialDocumentController {
 
-    private final ConfidentialDocumentService confidentialDocumentService;
+    private final ConfidentialDocumentInServiceImpl confidentialDocumentInServiceImpl;
 
     @Autowired
-    public ConfidentialDocumentController(ConfidentialDocumentService confidentialDocumentService) {
-        this.confidentialDocumentService = confidentialDocumentService;
+    public ConfidentialDocumentController(ConfidentialDocumentInServiceImpl confidentialDocumentInServiceImpl) {
+        this.confidentialDocumentInServiceImpl = confidentialDocumentInServiceImpl;
     }
 
     /**
@@ -26,7 +26,7 @@ public class ConfidentialDocumentController {
      */
     @PostMapping
     public void addConfidentialDocuments(@RequestBody ConfidentialDocumentIn newConfidentialDocumentIn){
-        confidentialDocumentService.addConfidentialDocument(newConfidentialDocumentIn);
+        confidentialDocumentInServiceImpl.addConfidentialDocument(newConfidentialDocumentIn);
     }
 
     /**
@@ -35,7 +35,7 @@ public class ConfidentialDocumentController {
      */
     @DeleteMapping("/{id}")
     public void deleteConfidentialDocuments(@PathVariable Long id){
-        confidentialDocumentService.deleteConfidentialDocument(id);
+        confidentialDocumentInServiceImpl.deleteConfidentialDocument(id);
     }
 
     /**
@@ -46,7 +46,7 @@ public class ConfidentialDocumentController {
      */
     @PutMapping("/{id}")
     public ConfidentialDocumentIn putConfidentialDocuments(@RequestBody ConfidentialDocumentIn confidentialDocumentIn, @PathVariable Long id){
-        return confidentialDocumentService.putConfidentialDocument(confidentialDocumentIn, id);
+        return confidentialDocumentInServiceImpl.putConfidentialDocument(confidentialDocumentIn, id);
     }
 
     /**
@@ -55,7 +55,7 @@ public class ConfidentialDocumentController {
      */
     @GetMapping
     public List<ConfidentialDocumentIn> getConfidentialDocuments(){
-        return confidentialDocumentService.getConfidentialDocuments();
+        return confidentialDocumentInServiceImpl.getConfidentialDocuments();
     }
 
 
@@ -66,27 +66,27 @@ public class ConfidentialDocumentController {
      */
     @GetMapping("/{id}")
     public ConfidentialDocumentIn getConfidentialDocument(@PathVariable Long id){
-        return confidentialDocumentService.getConfidentialDocument(id);
+        return confidentialDocumentInServiceImpl.getConfidentialDocument(id);
     }
 
     @GetMapping("/receiveDepartments")
     public String getConfidentialDocumentReceiveDepartments(){
-        return confidentialDocumentService.getConfidentialDocumentReceiveDepartments();
+        return confidentialDocumentInServiceImpl.getConfidentialDocumentReceiveDepartments();
     }
 
     @GetMapping("/recipients")
     public String getConfidentialDocumentRecipients(){
-        return confidentialDocumentService.getConfidentialDocumentRecipients();
+        return confidentialDocumentInServiceImpl.getConfidentialDocumentRecipients();
     }
 
     @GetMapping("/transferors")
     public String getConfidentialDocumentTransferors(){
-        return confidentialDocumentService.getConfidentialDocumentTransferors();
+        return confidentialDocumentInServiceImpl.getConfidentialDocumentTransferors();
     }
 
     @GetMapping("/sendDepartments")
     public String getConfidentialDocumentSendDepartments(){
-        return confidentialDocumentService.getConfidentialDocumentSendDepartments();
+        return confidentialDocumentInServiceImpl.getConfidentialDocumentSendDepartments();
     }
 
 }

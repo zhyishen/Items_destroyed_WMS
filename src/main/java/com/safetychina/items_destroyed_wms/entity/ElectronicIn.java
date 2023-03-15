@@ -9,17 +9,17 @@ import lombok.Setter;
 import java.util.Date;
 
 @Entity
-@Table(name = "electronics_entity")
+@Table(name = "electronics_entity_in")
 @Data
 @NoArgsConstructor
 public class ElectronicIn {
 
     @Id
-    @SequenceGenerator(name = "electronics_generator",
-            sequenceName = "electronics_generator",
+    @SequenceGenerator(name = "input_electronics_generator",
+            sequenceName = "input_electronics_generator",
             allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "electronics_generator")
+            generator = "input_electronics_generator")
     @Setter(AccessLevel.NONE)
     private Long id;//电子类实体ID
     private String equipmentName;//设备名称

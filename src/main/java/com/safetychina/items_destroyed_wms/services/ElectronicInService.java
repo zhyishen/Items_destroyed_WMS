@@ -1,4 +1,4 @@
 package com.safetychina.items_destroyed_wms.services;
 
-public interface UserService {
+public interface ElectronicInService {
 }
