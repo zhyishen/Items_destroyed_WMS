@@ -5,11 +5,12 @@ import com.safetychina.items_destroyed_wms.Utils.StringToJsonUtil;
 import com.safetychina.items_destroyed_wms.entity.ElectronicIn;
 import com.safetychina.items_destroyed_wms.exception.ElectronicNotFoundException;
 import com.safetychina.items_destroyed_wms.repository.ElectronicInRepository;
+import com.safetychina.items_destroyed_wms.services.ElectronicInService;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ElectronicInServiceImpl {
+public class ElectronicInServiceImpl implements ElectronicInService {
 
     private final ElectronicInRepository electronicInRepository;
 
@@ -20,18 +21,15 @@ public class ElectronicInServiceImpl {
         this.stringToJsonUtil = stringToJsonUtil;
     }
 
-    /**
-     * 把所有的电子类项目进行列表
-     * @return 返回所有的电子类项目
-     */
+    @Override
     public List<ElectronicIn> getElectronics(){
         return electronicInRepository.findAll();
     }
-
+    @Override
     public void addElectronic(ElectronicIn electronicIn){
         electronicInRepository.save(electronicIn);
     }
-
+    @Override
     public ElectronicIn putElectronic(ElectronicIn newElectronicIn, Long id){
         return electronicInRepository.findById(id)
                 .map(electronicIn -> {
@@ -49,33 +47,37 @@ public class ElectronicInServiceImpl {
                 })
                 .orElseThrow(()->new ElectronicNotFoundException(id));
     }
-
+    @Override
     public void deleteElectronic(Long id){
         electronicInRepository.deleteById(id);}
-
+    @Override
     public ElectronicIn getElectronic(Long id){
         return electronicInRepository.findById(id)
                 .orElseThrow(()->new ElectronicNotFoundException(id));
     }
-
+    @Override
     public String getElectronicTypes(){
         List<String> typeStrings = electronicInRepository.getAllType();
         return stringToJsonUtil.stringToJsonString(typeStrings);
     }
-
+    @Override
     public String getElectronicSendDepartments(){
         List<String> departmentStrings = electronicInRepository.getAllDepartment();
         return stringToJsonUtil.stringToJsonString(departmentStrings);
     }
+
+    @Override
     public String getElectronicRecipients(){
         List<String> recipientStrings = electronicInRepository.getAllRecipient();
         return stringToJsonUtil.stringToJsonString(recipientStrings);
     }
+
+    @Override
     public String getElectronicTransferors(){
         List<String> transferorStrings = electronicInRepository.getAllTransferor();
         return stringToJsonUtil.stringToJsonString(transferorStrings);
     }
-
+    @Override
     public String getElectronicPersonOfUses(){
         List<String> personOfUseStrings = electronicInRepository.getAllPersonOfUse();
         return stringToJsonUtil.stringToJsonString(personOfUseStrings);
