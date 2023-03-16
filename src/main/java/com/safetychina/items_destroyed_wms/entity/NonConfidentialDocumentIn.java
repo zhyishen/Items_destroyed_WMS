@@ -43,7 +43,7 @@ public class NonConfidentialDocumentIn {
     @NotNull(message = "内容不能为空")
     private String detail;//内容（明细）
     @NotNull(message = "数量不能为空")
-    @Min(value = 0, message = "数量")
+    @Min(value = 0, message = "数量不为负数")
     private Double quantity;//数量（单位公斤）
     @NotNull(message = "移交人不能为空")
     private String transferor;//移交人
