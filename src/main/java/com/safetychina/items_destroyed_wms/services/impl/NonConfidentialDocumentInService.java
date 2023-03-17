@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class NonConfidentialDocumentInServiceImpl {
+public class NonConfidentialDocumentInService {
     private final NonConfidentialDocumentInRepository nonConfidentialDocumentInRepository;
     private final StringToJsonUtil stringToJsonUtil;
 
-    public NonConfidentialDocumentInServiceImpl(NonConfidentialDocumentInRepository nonConfidentialDocumentInRepository, StringToJsonUtil stringToJsonUtil) {
+    public NonConfidentialDocumentInService(NonConfidentialDocumentInRepository nonConfidentialDocumentInRepository, StringToJsonUtil stringToJsonUtil) {
         this.nonConfidentialDocumentInRepository = nonConfidentialDocumentInRepository;
         this.stringToJsonUtil = stringToJsonUtil;
     }

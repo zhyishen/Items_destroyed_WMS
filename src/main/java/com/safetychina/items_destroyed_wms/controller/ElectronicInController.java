@@ -2,7 +2,7 @@ package com.safetychina.items_destroyed_wms.controller;
 
 
 import com.safetychina.items_destroyed_wms.entity.ElectronicIn;
-import com.safetychina.items_destroyed_wms.services.impl.ElectronicInServiceImpl;
+import com.safetychina.items_destroyed_wms.services.impl.ElectronicInService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,61 +10,61 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Electronics")
-public class ElectronicController {
+public class ElectronicInController {
 
-    private final ElectronicInServiceImpl electronicInServiceImpl;
+    private final ElectronicInService electronicInService;
 
     @Autowired
-    public ElectronicController(ElectronicInServiceImpl electronicInServiceImpl) {
-        this.electronicInServiceImpl = electronicInServiceImpl;
+    public ElectronicInController(ElectronicInService electronicInService) {
+        this.electronicInService = electronicInService;
     }
 
     @PostMapping
     public void addElectronics(@RequestBody ElectronicIn electronicIn){
-        electronicInServiceImpl.addElectronic(electronicIn);
+        electronicInService.addElectronic(electronicIn);
     }
 
     @DeleteMapping("{id}")
     public void deleteElectronics(@PathVariable Long id){
-        electronicInServiceImpl.deleteElectronic(id);
+        electronicInService.deleteElectronic(id);
     }
 
 
     @PutMapping("{id}")
     public ElectronicIn putElectronics(@RequestBody ElectronicIn electronicIn, @PathVariable Long id){
-        return electronicInServiceImpl.putElectronic(electronicIn,id);
+        return electronicInService.putElectronic(electronicIn,id);
     }
 
     @GetMapping
     public List<ElectronicIn> getElectronics(){
-        return electronicInServiceImpl.getElectronics();
+        return electronicInService.getElectronics();
     }
 
     @GetMapping("{id}")
     public ElectronicIn getElectronic(@PathVariable Long id){
-        return electronicInServiceImpl.getElectronic(id);
+        return electronicInService.getElectronic(id);
     }
 
     @GetMapping("/types")
     public String getElectronicTypes(){
-        return electronicInServiceImpl.getElectronicTypes();
+        return electronicInService.getElectronicTypes();
     }
 
     @GetMapping("/sendDepartments")
-    public String getElectronicSendDepartments(){return electronicInServiceImpl.getElectronicSendDepartments();}
+    public String getElectronicSendDepartments(){return electronicInService.getElectronicSendDepartments();}
 
     @GetMapping("/recipients")
     public String getElectronicRecipients(){
-        return electronicInServiceImpl.getElectronicRecipients();
+        return electronicInService.getElectronicRecipients();
     }
 
     @GetMapping("/transferors")
     public String getElectronicTransferors(){
-        return electronicInServiceImpl.getElectronicTransferors();
+        return electronicInService.getElectronicTransferors();
     }
 
     @GetMapping("/personOfUses")
     public String getElectronicPersonOfUses(){
-        return electronicInServiceImpl.getElectronicPersonOfUses();
+        return electronicInService.getElectronicPersonOfUses();
     }
 }

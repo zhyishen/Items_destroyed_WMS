@@ -5,19 +5,18 @@ import com.safetychina.items_destroyed_wms.Utils.StringToJsonUtil;
 import com.safetychina.items_destroyed_wms.entity.ConfidentialDocumentIn;
 import com.safetychina.items_destroyed_wms.exception.ConfidentialDocumentNotFoundException;
 import com.safetychina.items_destroyed_wms.repository.ConfidentialDocumentInRepository;
-import com.safetychina.items_destroyed_wms.services.ConfidentialDocumentInService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ConfidentialDocumentInServiceImpl implements ConfidentialDocumentInService {
+public class ConfidentialDocumentInService implements com.safetychina.items_destroyed_wms.services.ConfidentialDocumentInService {
 
     private  final ConfidentialDocumentInRepository confidentialDocumentInRepository;
     private  final StringToJsonUtil stringToJsonUtil;
 
 
-    public ConfidentialDocumentInServiceImpl(ConfidentialDocumentInRepository confidentialDocumentInRepository, StringToJsonUtil stringToJsonUtil) {
+    public ConfidentialDocumentInService(ConfidentialDocumentInRepository confidentialDocumentInRepository, StringToJsonUtil stringToJsonUtil) {
         this.confidentialDocumentInRepository = confidentialDocumentInRepository;
         this.stringToJsonUtil = stringToJsonUtil;
     }

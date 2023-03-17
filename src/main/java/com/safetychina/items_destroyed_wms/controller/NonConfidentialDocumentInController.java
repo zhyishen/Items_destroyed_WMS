@@ -6,7 +6,7 @@ package com.safetychina.items_destroyed_wms.controller;
  */
 
 import com.safetychina.items_destroyed_wms.entity.NonConfidentialDocumentIn;
-import com.safetychina.items_destroyed_wms.services.impl.NonConfidentialDocumentInServiceImpl;
+import com.safetychina.items_destroyed_wms.services.impl.NonConfidentialDocumentInService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,55 +15,55 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/NonConfidentialDocuments")
-public class NonConfidentialDocumentController {
-    private NonConfidentialDocumentInServiceImpl nonConfidentialDocumentInServiceImpl;
+public class NonConfidentialDocumentInController {
+    private NonConfidentialDocumentInService nonConfidentialDocumentInService;
 
     @Autowired
-    public NonConfidentialDocumentController(NonConfidentialDocumentInServiceImpl nonConfidentialDocumentInServiceImpl) {
-        this.nonConfidentialDocumentInServiceImpl = nonConfidentialDocumentInServiceImpl;
+    public NonConfidentialDocumentInController(NonConfidentialDocumentInService nonConfidentialDocumentInService) {
+        this.nonConfidentialDocumentInService = nonConfidentialDocumentInService;
     }
 
 
     @PostMapping
     public void addNonConfidentialDocuments(@RequestBody NonConfidentialDocumentIn nonConfidentialDocumentIn){
-        nonConfidentialDocumentInServiceImpl.addNonConfidentialDocument(nonConfidentialDocumentIn);
+        nonConfidentialDocumentInService.addNonConfidentialDocument(nonConfidentialDocumentIn);
 
     }
 
     @DeleteMapping("/{id}")
     public void deleteNonConfidentialDocuments(@PathVariable("id") Long id){
-        nonConfidentialDocumentInServiceImpl.deleteNonConfidentialDocument(id);
+        nonConfidentialDocumentInService.deleteNonConfidentialDocument(id);
     }
 
 
     @PutMapping("/{id}")
     public NonConfidentialDocumentIn putNonConfidentialDocument(@RequestBody NonConfidentialDocumentIn nonConfidentialDocumentIn, @PathVariable("id") Long id){
-        return nonConfidentialDocumentInServiceImpl.putNonConfidentialDocument(nonConfidentialDocumentIn,id);
+        return nonConfidentialDocumentInService.putNonConfidentialDocument(nonConfidentialDocumentIn,id);
     }
 
     @GetMapping
     public List<NonConfidentialDocumentIn> getNonConfidentialDocuments(){
-        return nonConfidentialDocumentInServiceImpl.getNonConfidentialDocuments();
+        return nonConfidentialDocumentInService.getNonConfidentialDocuments();
 
     }
 
     @GetMapping("/{id}")
     public NonConfidentialDocumentIn getNonConfidentialDocument(@PathVariable("id") Long id){
-        return nonConfidentialDocumentInServiceImpl.getNonConfidentialDocument(id);
+        return nonConfidentialDocumentInService.getNonConfidentialDocument(id);
     }
 
     @GetMapping("/departments")
     public String getConfidentialDocumentDepartments(){
-        return nonConfidentialDocumentInServiceImpl.getNonConfidentialDocumentDepartments();
+        return nonConfidentialDocumentInService.getNonConfidentialDocumentDepartments();
     }
 
     @GetMapping("/recipients")
     public String getConfidentialDocumentRecipients(){
-        return nonConfidentialDocumentInServiceImpl.getNonConfidentialDocumentRecipients();
+        return nonConfidentialDocumentInService.getNonConfidentialDocumentRecipients();
     }
 
     @GetMapping("/transferors")
     public String getConfidentialDocumentTransferors(){
-        return nonConfidentialDocumentInServiceImpl.getNonConfidentialDocumentTransferors();
+        return nonConfidentialDocumentInService.getNonConfidentialDocumentTransferors();
     }
 }

@@ -5,18 +5,17 @@ import com.safetychina.items_destroyed_wms.Utils.StringToJsonUtil;
 import com.safetychina.items_destroyed_wms.entity.ElectronicIn;
 import com.safetychina.items_destroyed_wms.exception.ElectronicNotFoundException;
 import com.safetychina.items_destroyed_wms.repository.ElectronicInRepository;
-import com.safetychina.items_destroyed_wms.services.ElectronicInService;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ElectronicInServiceImpl implements ElectronicInService {
+public class ElectronicInService implements com.safetychina.items_destroyed_wms.services.ElectronicInService {
 
     private final ElectronicInRepository electronicInRepository;
 
     private final StringToJsonUtil stringToJsonUtil;
 
-    public ElectronicInServiceImpl(ElectronicInRepository electronicInRepository, StringToJsonUtil stringToJsonUtil){
+    public ElectronicInService(ElectronicInRepository electronicInRepository, StringToJsonUtil stringToJsonUtil){
         this.electronicInRepository = electronicInRepository;
         this.stringToJsonUtil = stringToJsonUtil;
     }

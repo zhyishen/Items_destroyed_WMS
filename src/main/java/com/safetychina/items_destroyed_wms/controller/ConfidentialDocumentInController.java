@@ -2,21 +2,23 @@ package com.safetychina.items_destroyed_wms.controller;
 
 
 import com.safetychina.items_destroyed_wms.entity.ConfidentialDocumentIn;
-import com.safetychina.items_destroyed_wms.services.impl.ConfidentialDocumentInServiceImpl;
+import com.safetychina.items_destroyed_wms.services.impl.ConfidentialDocumentInService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/ConfidentialDocuments")
-public class ConfidentialDocumentController {
+@Validated
+public class ConfidentialDocumentInController {
 
-    private final ConfidentialDocumentInServiceImpl confidentialDocumentInServiceImpl;
+    private final ConfidentialDocumentInService confidentialDocumentInService;
 
     @Autowired
-    public ConfidentialDocumentController(ConfidentialDocumentInServiceImpl confidentialDocumentInServiceImpl) {
-        this.confidentialDocumentInServiceImpl = confidentialDocumentInServiceImpl;
+    public ConfidentialDocumentInController(ConfidentialDocumentInService confidentialDocumentInService) {
+        this.confidentialDocumentInService = confidentialDocumentInService;
     }
 
     /**
@@ -25,8 +27,8 @@ public class ConfidentialDocumentController {
      * @param newConfidentialDocumentIn 新保密文件实体
      */
     @PostMapping
-    public void addConfidentialDocuments(@RequestBody ConfidentialDocumentIn newConfidentialDocumentIn){
-        confidentialDocumentInServiceImpl.addConfidentialDocument(newConfidentialDocumentIn);
+    public void addConfidentialDocuments(@Validated @RequestBody ConfidentialDocumentIn newConfidentialDocumentIn){
+        confidentialDocumentInService.addConfidentialDocument(newConfidentialDocumentIn);
     }
 
     /**
@@ -35,7 +37,7 @@ public class ConfidentialDocumentController {
      */
     @DeleteMapping("/{id}")
     public void deleteConfidentialDocuments(@PathVariable Long id){
-        confidentialDocumentInServiceImpl.deleteConfidentialDocument(id);
+        confidentialDocumentInService.deleteConfidentialDocument(id);
     }
 
     /**
@@ -46,7 +48,7 @@ public class ConfidentialDocumentController {
      */
     @PutMapping("/{id}")
     public ConfidentialDocumentIn putConfidentialDocuments(@RequestBody ConfidentialDocumentIn confidentialDocumentIn, @PathVariable Long id){
-        return confidentialDocumentInServiceImpl.putConfidentialDocument(confidentialDocumentIn, id);
+        return confidentialDocumentInService.putConfidentialDocument(confidentialDocumentIn, id);
     }
 
     /**
@@ -55,7 +57,7 @@ public class ConfidentialDocumentController {
      */
     @GetMapping
     public List<ConfidentialDocumentIn> getConfidentialDocuments(){
-        return confidentialDocumentInServiceImpl.getConfidentialDocuments();
+        return confidentialDocumentInService.getConfidentialDocuments();
     }
 
 
@@ -66,27 +68,27 @@ public class ConfidentialDocumentController {
      */
     @GetMapping("/{id}")
     public ConfidentialDocumentIn getConfidentialDocument(@PathVariable Long id){
-        return confidentialDocumentInServiceImpl.getConfidentialDocument(id);
+        return confidentialDocumentInService.getConfidentialDocument(id);
     }
 
     @GetMapping("/receiveDepartments")
     public String getConfidentialDocumentReceiveDepartments(){
-        return confidentialDocumentInServiceImpl.getConfidentialDocumentReceiveDepartments();
+        return confidentialDocumentInService.getConfidentialDocumentReceiveDepartments();
     }
 
     @GetMapping("/recipients")
     public String getConfidentialDocumentRecipients(){
-        return confidentialDocumentInServiceImpl.getConfidentialDocumentRecipients();
+        return confidentialDocumentInService.getConfidentialDocumentRecipients();
     }
 
     @GetMapping("/transferors")
     public String getConfidentialDocumentTransferors(){
-        return confidentialDocumentInServiceImpl.getConfidentialDocumentTransferors();
+        return confidentialDocumentInService.getConfidentialDocumentTransferors();
     }
 
     @GetMapping("/sendDepartments")
     public String getConfidentialDocumentSendDepartments(){
-        return confidentialDocumentInServiceImpl.getConfidentialDocumentSendDepartments();
+        return confidentialDocumentInService.getConfidentialDocumentSendDepartments();
     }
 
 }
