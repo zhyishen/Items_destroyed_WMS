@@ -3,6 +3,8 @@ package com.safetychina.items_destroyed_wms.controller;
 
 import com.safetychina.items_destroyed_wms.entity.ConfidentialDocumentIn;
 import com.safetychina.items_destroyed_wms.services.impl.ConfidentialDocumentInService;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ConfidentialDocuments")
+@RequestMapping("/ConfidentialDocumentsIn")
 @Validated
 public class ConfidentialDocumentInController {
 
@@ -36,7 +38,7 @@ public class ConfidentialDocumentInController {
      * @param id 从链接参数中提取id作为传入参数
      */
     @DeleteMapping("/{id}")
-    public void deleteConfidentialDocuments(@PathVariable Long id){
+    public void deleteConfidentialDocuments(@PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") Long id){
         confidentialDocumentInService.deleteConfidentialDocument(id);
     }
 
@@ -47,7 +49,7 @@ public class ConfidentialDocumentInController {
      * @return 更改过后的新保密文件实体
      */
     @PutMapping("/{id}")
-    public ConfidentialDocumentIn putConfidentialDocuments(@RequestBody ConfidentialDocumentIn confidentialDocumentIn, @PathVariable Long id){
+    public ConfidentialDocumentIn putConfidentialDocuments(@RequestBody ConfidentialDocumentIn confidentialDocumentIn, @PathVariable(name = "id") @Pattern(regexp = "[0-9]", message = "输入id格式错误") Long id){
         return confidentialDocumentInService.putConfidentialDocument(confidentialDocumentIn, id);
     }
 
@@ -67,7 +69,7 @@ public class ConfidentialDocumentInController {
      * @return 根据id找到的保密文件实体
      */
     @GetMapping("/{id}")
-    public ConfidentialDocumentIn getConfidentialDocument(@PathVariable Long id){
+    public ConfidentialDocumentIn getConfidentialDocument(@PathVariable(name = "id") Long id){
         return confidentialDocumentInService.getConfidentialDocument(id);
     }
 

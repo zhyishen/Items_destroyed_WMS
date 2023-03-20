@@ -7,6 +7,7 @@ package com.safetychina.items_destroyed_wms.controller;
 
 import com.safetychina.items_destroyed_wms.entity.NonConfidentialDocumentIn;
 import com.safetychina.items_destroyed_wms.services.impl.NonConfidentialDocumentInService;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,13 +32,13 @@ public class NonConfidentialDocumentInController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteNonConfidentialDocuments(@PathVariable("id") Long id){
+    public void deleteNonConfidentialDocuments(@PathVariable("id") @Pattern(regexp = "[0-9]", message = "输入id格式错误") Long id){
         nonConfidentialDocumentInService.deleteNonConfidentialDocument(id);
     }
 
 
     @PutMapping("/{id}")
-    public NonConfidentialDocumentIn putNonConfidentialDocument(@RequestBody NonConfidentialDocumentIn nonConfidentialDocumentIn, @PathVariable("id") Long id){
+    public NonConfidentialDocumentIn putNonConfidentialDocument(@RequestBody NonConfidentialDocumentIn nonConfidentialDocumentIn, @PathVariable("id") @Pattern(regexp = "[0-9]", message = "输入id格式错误") Long id){
         return nonConfidentialDocumentInService.putNonConfidentialDocument(nonConfidentialDocumentIn,id);
     }
 
@@ -48,7 +49,7 @@ public class NonConfidentialDocumentInController {
     }
 
     @GetMapping("/{id}")
-    public NonConfidentialDocumentIn getNonConfidentialDocument(@PathVariable("id") Long id){
+    public NonConfidentialDocumentIn getNonConfidentialDocument(@PathVariable("id") @Pattern(regexp = "[0-9]", message = "输入id格式错误") Long id){
         return nonConfidentialDocumentInService.getNonConfidentialDocument(id);
     }
 

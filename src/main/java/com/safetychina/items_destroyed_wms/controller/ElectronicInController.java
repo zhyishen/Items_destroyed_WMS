@@ -3,6 +3,7 @@ package com.safetychina.items_destroyed_wms.controller;
 
 import com.safetychina.items_destroyed_wms.entity.ElectronicIn;
 import com.safetychina.items_destroyed_wms.services.impl.ElectronicInService;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,13 +26,13 @@ public class ElectronicInController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteElectronics(@PathVariable Long id){
+    public void deleteElectronics(@PathVariable @Pattern(regexp = "[0-9]", message = "输入id格式错误") Long id){
         electronicInService.deleteElectronic(id);
     }
 
 
     @PutMapping("{id}")
-    public ElectronicIn putElectronics(@RequestBody ElectronicIn electronicIn, @PathVariable Long id){
+    public ElectronicIn putElectronics(@RequestBody ElectronicIn electronicIn, @PathVariable @Pattern(regexp = "[0-9]", message = "输入id格式错误") Long id){
         return electronicInService.putElectronic(electronicIn,id);
     }
 
@@ -41,7 +42,7 @@ public class ElectronicInController {
     }
 
     @GetMapping("{id}")
-    public ElectronicIn getElectronic(@PathVariable Long id){
+    public ElectronicIn getElectronic(@PathVariable @Pattern(regexp = "[0-9]", message = "输入id格式错误") Long id){
         return electronicInService.getElectronic(id);
     }
 
