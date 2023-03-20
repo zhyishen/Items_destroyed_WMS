@@ -32,14 +32,14 @@ public class NonConfidentialDocumentInController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteNonConfidentialDocuments(@PathVariable("id") @Pattern(regexp = "[0-9]", message = "输入id格式错误") Long id){
-        nonConfidentialDocumentInService.deleteNonConfidentialDocument(id);
+    public void deleteNonConfidentialDocuments(@PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){
+        nonConfidentialDocumentInService.deleteNonConfidentialDocument(Long.parseLong(id));
     }
 
 
     @PutMapping("/{id}")
-    public NonConfidentialDocumentIn putNonConfidentialDocument(@RequestBody NonConfidentialDocumentIn nonConfidentialDocumentIn, @PathVariable("id") @Pattern(regexp = "[0-9]", message = "输入id格式错误") Long id){
-        return nonConfidentialDocumentInService.putNonConfidentialDocument(nonConfidentialDocumentIn,id);
+    public NonConfidentialDocumentIn putNonConfidentialDocument(@RequestBody NonConfidentialDocumentIn nonConfidentialDocumentIn, @PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){
+        return nonConfidentialDocumentInService.putNonConfidentialDocument(nonConfidentialDocumentIn,Long.parseLong(id));
     }
 
     @GetMapping
@@ -49,8 +49,8 @@ public class NonConfidentialDocumentInController {
     }
 
     @GetMapping("/{id}")
-    public NonConfidentialDocumentIn getNonConfidentialDocument(@PathVariable("id") @Pattern(regexp = "[0-9]", message = "输入id格式错误") Long id){
-        return nonConfidentialDocumentInService.getNonConfidentialDocument(id);
+    public NonConfidentialDocumentIn getNonConfidentialDocument(@PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){
+        return nonConfidentialDocumentInService.getNonConfidentialDocument(Long.parseLong(id));
     }
 
     @GetMapping("/departments")

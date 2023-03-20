@@ -38,8 +38,8 @@ public class ConfidentialDocumentInController {
      * @param id 从链接参数中提取id作为传入参数
      */
     @DeleteMapping("/{id}")
-    public void deleteConfidentialDocuments(@PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") Long id){
-        confidentialDocumentInService.deleteConfidentialDocument(id);
+    public void deleteConfidentialDocuments(@PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){
+        confidentialDocumentInService.deleteConfidentialDocument(Long.parseLong(id));
     }
 
     /**
@@ -49,8 +49,8 @@ public class ConfidentialDocumentInController {
      * @return 更改过后的新保密文件实体
      */
     @PutMapping("/{id}")
-    public ConfidentialDocumentIn putConfidentialDocuments(@RequestBody ConfidentialDocumentIn confidentialDocumentIn, @PathVariable(name = "id") @Pattern(regexp = "[0-9]", message = "输入id格式错误") Long id){
-        return confidentialDocumentInService.putConfidentialDocument(confidentialDocumentIn, id);
+    public ConfidentialDocumentIn putConfidentialDocuments(@RequestBody ConfidentialDocumentIn confidentialDocumentIn, @PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){
+        return confidentialDocumentInService.putConfidentialDocument(confidentialDocumentIn, Long.parseLong(id));
     }
 
     /**
@@ -69,8 +69,8 @@ public class ConfidentialDocumentInController {
      * @return 根据id找到的保密文件实体
      */
     @GetMapping("/{id}")
-    public ConfidentialDocumentIn getConfidentialDocument(@PathVariable(name = "id") Long id){
-        return confidentialDocumentInService.getConfidentialDocument(id);
+    public ConfidentialDocumentIn getConfidentialDocument(@PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){
+        return confidentialDocumentInService.getConfidentialDocument(Long.parseLong(id));
     }
 
     @GetMapping("/receiveDepartments")

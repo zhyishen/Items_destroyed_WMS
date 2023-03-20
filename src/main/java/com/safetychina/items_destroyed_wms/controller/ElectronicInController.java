@@ -26,14 +26,14 @@ public class ElectronicInController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteElectronics(@PathVariable @Pattern(regexp = "[0-9]", message = "输入id格式错误") Long id){
-        electronicInService.deleteElectronic(id);
+    public void deleteElectronics(@PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){
+        electronicInService.deleteElectronic(Long.parseLong(id));
     }
 
 
     @PutMapping("{id}")
-    public ElectronicIn putElectronics(@RequestBody ElectronicIn electronicIn, @PathVariable @Pattern(regexp = "[0-9]", message = "输入id格式错误") Long id){
-        return electronicInService.putElectronic(electronicIn,id);
+    public ElectronicIn putElectronics(@RequestBody ElectronicIn electronicIn, @PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){
+        return electronicInService.putElectronic(electronicIn,Long.parseLong(id));
     }
 
     @GetMapping
@@ -42,8 +42,8 @@ public class ElectronicInController {
     }
 
     @GetMapping("{id}")
-    public ElectronicIn getElectronic(@PathVariable @Pattern(regexp = "[0-9]", message = "输入id格式错误") Long id){
-        return electronicInService.getElectronic(id);
+    public ElectronicIn getElectronic(@PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){
+        return electronicInService.getElectronic(Long.parseLong(id));
     }
 
     @GetMapping("/types")
