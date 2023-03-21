@@ -1,5 +1,4 @@
 import {defineStore} from 'pinia'
-import { ref } from 'vue'
 import API from "@/plugin/axiosInstance.js";
 import {ElMessage} from "element-plus";
 
@@ -54,5 +53,16 @@ export const useConfidentialDocumentOutsStore = defineStore('confidentialDocumen
                 }
             })
         },
+
+        updateItem(id,data){
+            API.put("http://localhost:8080/ConfidentialDocumentOuts/"+id,data).then(res=>{
+                const {code, msg, data} = res.data
+                if(code === 200){
+                    ElMessage.success(msg)
+                }else{
+                    ElMessage.error(msg)
+                }
+            })
+        }
     }
 })

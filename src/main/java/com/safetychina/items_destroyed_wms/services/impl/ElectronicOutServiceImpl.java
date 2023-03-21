@@ -33,6 +33,7 @@ public class ElectronicOutServiceImpl implements ElectronicOutService {
             electronicOut.setRecipient(newElectronicOut.getRecipient());
             electronicOut.setTransferor(newElectronicOut.getTransferor());
             electronicOut.setSendDepartment(newElectronicOut.getSendDepartment());
+            electronicOut.setReceiveDepartment(newElectronicOut.getReceiveDepartment());
             electronicOut.setType(newElectronicOut.getType());
             electronicOut.setSecretLevel(newElectronicOut.getSecretLevel());
             electronicOut.setSendDate(newElectronicOut.getSendDate());

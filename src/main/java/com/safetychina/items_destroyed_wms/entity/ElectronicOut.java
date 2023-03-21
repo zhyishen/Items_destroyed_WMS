@@ -35,6 +35,8 @@ public class ElectronicOut {
     private Integer quantity;//设备数量
     @NotNull(message = "移交部门不能为空")
     private String sendDepartment;//移交部门
+    @NotNull(message = "接收部门不能为空")
+    private String receiveDepartment;//接收部门
     @NotNull(message = "出库时间不能为空")
     private Date sendDate;//出库时间
     @NotNull(message = "移交人不能为空")
@@ -42,11 +44,12 @@ public class ElectronicOut {
     @NotNull(message = "接收人不能为空")
     private String recipient;//接收人
 
-    public ElectronicOut(String type, String secretLevel, Integer quantity, String sendDepartment, Date sendDate, String transferor, String recipient) {
+    public ElectronicOut(String type, String secretLevel, Integer quantity, String sendDepartment, String receiveDepartment, Date sendDate, String transferor, String recipient) {
         this.type = type;
         this.secretLevel = secretLevel;
         this.quantity = quantity;
         this.sendDepartment = sendDepartment;
+        this.receiveDepartment = receiveDepartment;
         this.sendDate = sendDate;
         this.transferor = transferor;
         this.recipient = recipient;
