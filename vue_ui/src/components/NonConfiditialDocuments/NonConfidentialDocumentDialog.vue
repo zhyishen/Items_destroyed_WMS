@@ -1,6 +1,6 @@
 <script setup>
 import {onMounted, ref} from "vue";
-    import {useNonConfidentialDocumentsStore} from '@/store/nonConfidentialDocumentStore.js'
+    import {useNonConfidentialDocumentsStore} from '@/store/nonConfidentialDocumentInStore.js'
     import {zhCn} from "element-plus/lib/locale/index";
     const nfs = useNonConfidentialDocumentsStore()
 

@@ -127,7 +127,7 @@
 <script setup>
 import {onMounted, ref} from "vue";
 
-import {useElectronicStore} from "@/store/electronicStore.js";
+import {useElectronicStore} from "@/store/electronicInStore.js";
 import {zhCn} from "element-plus/lib/locale/index";
 
 const els = useElectronicStore()

@@ -1,6 +1,7 @@
 import {defineStore} from "pinia";
 import {ref} from "vue";
 import API from "@/plugin/axiosInstance.js";
+import {ElMessage} from "element-plus";
 
 
 export const useElectronicStore = defineStore('electronic',()=>{
@@ -39,55 +40,76 @@ export const useElectronicStore = defineStore('electronic',()=>{
     let tableData = ref([])
 
     function getItems(){
-        API.get("http://localhost:8080/Electronics").then(res=>{
-            this.tableData = res.data
+        API.get("http://localhost:8080/ElectronicIns").then(res=>{
+            const {code, msg, data} = res.data
+            if(code === 200){
+                ElMessage.success(msg)
+                this.tableData = data
+            }else{
+                ElMessage.error(msg)
+            }
         })
     }
 
     function addItem(data){
-        API.post("http://localhost:8080/Electronics", data).then(r =>{
-            console.log(r)
+        API.post("http://localhost:8080/ElectronicIns", data).then(res =>{
+            const {code, msg, data} = res.data
+            if(code === 200){
+                ElMessage.success(msg)
+            }else{
+                ElMessage.error(msg)
+            }
         })
     }
 
     function deleteItem(id){
-        API.delete("http://localhost:8080/Electronics/"+id).then(res=>{
-            console.log(res)
+        API.delete("http://localhost:8080/ElectronicIns/"+id).then(res=>{
+            const {code, msg, data} = res.data
+            if(code === 200){
+                ElMessage.success(msg)
+            }else{
+                ElMessage.error(msg)
+            }
         })
     }
 
     function updateItem(id,data){
-        API.put("http://localhost:8080/Electronics/"+id,data).then(res=>{
-            console.log(res)
+        API.put("http://localhost:8080/ElectronicIns/"+id,data).then(res=>{
+            const {code, msg, data} = res.data
+            if(code === 200){
+                ElMessage.success(msg)
+            }else{
+                ElMessage.error(msg)
+            }
         })
     }
 
     function getTypes(){
-        API.get("http://localhost:8080/Electronics/types").then(res=>{
+        API.get("http://localhost:8080/ElectronicIns/types").then(res=>{
             this.typeStrings = res.data
         })
     }
 
     function getRecipients(){
-        API.get("http://localhost:8080/Electronics/recipients").then(res=>{
+        API.get("http://localhost:8080/ElectronicIns/recipients").then(res=>{
             this.recipients = res.data
         })
     }
 
     function getTransferors(){
-        API.get("http://localhost:8080/Electronics/transferors").then(res=>{
+        API.get("http://localhost:8080/ElectronicIns/transferors").then(res=>{
             this.transferors = res.data
         })
     }
 
     function getSendDepartments(){
-        API.get("http://localhost:8080/Electronics/sendDepartments").then(res=>{
+        API.get("http://localhost:8080/ElectronicIns/sendDepartments").then(res=>{
             this.sendDepartments = res.data
         })
     }
 
     function getPersonOfUses(){
-        API.get("http://localhost:8080/Electronics/personOfUses").then(res=>{
+        API.get("http://localhost:8080/ElectronicIns/personOfUses").then(res=>{
             this.personOfUses = res.data
         })
     }

@@ -3,19 +3,21 @@ package com.safetychina.items_destroyed_wms.services.impl;
 
 import com.safetychina.items_destroyed_wms.Utils.StringToJsonUtil;
 import com.safetychina.items_destroyed_wms.entity.ElectronicIn;
-import com.safetychina.items_destroyed_wms.exception.ElectronicNotFoundException;
+import com.safetychina.items_destroyed_wms.exception.ElectronicInNotFoundException;
 import com.safetychina.items_destroyed_wms.repository.ElectronicInRepository;
+import com.safetychina.items_destroyed_wms.services.ElectronicInService;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
-public class ElectronicInService implements com.safetychina.items_destroyed_wms.services.ElectronicInService {
+public class ElectronicInServiceImpl implements ElectronicInService {
 
     private final ElectronicInRepository electronicInRepository;
 
     private final StringToJsonUtil stringToJsonUtil;
 
-    public ElectronicInService(ElectronicInRepository electronicInRepository, StringToJsonUtil stringToJsonUtil){
+    public ElectronicInServiceImpl(ElectronicInRepository electronicInRepository, StringToJsonUtil stringToJsonUtil){
         this.electronicInRepository = electronicInRepository;
         this.stringToJsonUtil = stringToJsonUtil;
     }
@@ -44,7 +46,7 @@ public class ElectronicInService implements com.safetychina.items_destroyed_wms.
                     electronicIn.setNotes(newElectronicIn.getNotes());
                     return electronicInRepository.save(electronicIn);
                 })
-                .orElseThrow(()->new ElectronicNotFoundException(id));
+                .orElseThrow(()->new ElectronicInNotFoundException(id));
     }
     @Override
     public void deleteElectronic(Long id){
@@ -52,7 +54,7 @@ public class ElectronicInService implements com.safetychina.items_destroyed_wms.
     @Override
     public ElectronicIn getElectronic(Long id){
         return electronicInRepository.findById(id)
-                .orElseThrow(()->new ElectronicNotFoundException(id));
+                .orElseThrow(()->new ElectronicInNotFoundException(id));
     }
     @Override
     public String getElectronicTypes(){

@@ -1,9 +1,9 @@
 package com.safetychina.items_destroyed_wms.controller;
 
 
+import com.safetychina.items_destroyed_wms.common.NotControllerResponseAdvice;
 import com.safetychina.items_destroyed_wms.entity.ConfidentialDocumentIn;
-import com.safetychina.items_destroyed_wms.services.impl.ConfidentialDocumentInService;
-import jakarta.validation.constraints.Min;
+import com.safetychina.items_destroyed_wms.services.ConfidentialDocumentInService;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ConfidentialDocumentsIn")
+@RequestMapping("/ConfidentialDocumentIns")
 @Validated
 public class ConfidentialDocumentInController {
 
     private final ConfidentialDocumentInService confidentialDocumentInService;
-
     @Autowired
     public ConfidentialDocumentInController(ConfidentialDocumentInService confidentialDocumentInService) {
         this.confidentialDocumentInService = confidentialDocumentInService;
     }
+
 
     /**
      * 增加保密文件项目
@@ -49,7 +49,7 @@ public class ConfidentialDocumentInController {
      * @return 更改过后的新保密文件实体
      */
     @PutMapping("/{id}")
-    public ConfidentialDocumentIn putConfidentialDocuments(@RequestBody ConfidentialDocumentIn confidentialDocumentIn, @PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){
+    public ConfidentialDocumentIn putConfidentialDocuments(@Validated @RequestBody ConfidentialDocumentIn confidentialDocumentIn, @PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){
         return confidentialDocumentInService.putConfidentialDocument(confidentialDocumentIn, Long.parseLong(id));
     }
 
@@ -74,21 +74,25 @@ public class ConfidentialDocumentInController {
     }
 
     @GetMapping("/receiveDepartments")
+    @NotControllerResponseAdvice
     public String getConfidentialDocumentReceiveDepartments(){
         return confidentialDocumentInService.getConfidentialDocumentReceiveDepartments();
     }
 
     @GetMapping("/recipients")
+    @NotControllerResponseAdvice
     public String getConfidentialDocumentRecipients(){
         return confidentialDocumentInService.getConfidentialDocumentRecipients();
     }
 
     @GetMapping("/transferors")
+    @NotControllerResponseAdvice
     public String getConfidentialDocumentTransferors(){
         return confidentialDocumentInService.getConfidentialDocumentTransferors();
     }
 
     @GetMapping("/sendDepartments")
+    @NotControllerResponseAdvice
     public String getConfidentialDocumentSendDepartments(){
         return confidentialDocumentInService.getConfidentialDocumentSendDepartments();
     }

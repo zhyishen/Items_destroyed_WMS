@@ -114,7 +114,7 @@
 
 <script setup>
 
-  import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentStore.js";
+  import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentInStore.js";
   import API from "@/plugin/axiosInstance.js";
   import {zhCn} from "element-plus/lib/locale/index";
   import {onMounted} from "vue";

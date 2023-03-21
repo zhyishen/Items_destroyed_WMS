@@ -8,7 +8,7 @@
 <script setup>
 
   import {ref} from "vue";
-  import {useNonConfidentialDocumentsStore} from '@/store/nonConfidentialDocumentStore.js'
+  import {useNonConfidentialDocumentsStore} from '@/store/nonConfidentialDocumentInStore.js'
   const nfs = useNonConfidentialDocumentsStore()
 
   // 数据   $无法监听

@@ -87,7 +87,7 @@
 </template>
 
 <script setup>
-import {useNonConfidentialDocumentsStore} from '@/store/nonConfidentialDocumentStore.js'
+import {useNonConfidentialDocumentsStore} from '@/store/nonConfidentialDocumentInStore.js'
 import {zhCn} from "element-plus/lib/locale/index";
 import {onMounted} from "vue";
 const nfs = useNonConfidentialDocumentsStore()

@@ -114,7 +114,7 @@
 </template>
 
 <script setup>
-import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentStore.js";
+import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentInStore.js";
 import {onMounted} from "vue";
 
 const cfs = useConfidentialDocumentsStore()

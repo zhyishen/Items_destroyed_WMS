@@ -10,7 +10,7 @@
 <script setup>
 
   import {ref} from "vue";
-  import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentStore.js";
+  import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentInStore.js";
 
   const cfs = useConfidentialDocumentsStore()
 

@@ -3,18 +3,18 @@ package com.safetychina.items_destroyed_wms.services.impl;
 
 import com.safetychina.items_destroyed_wms.Utils.StringToJsonUtil;
 import com.safetychina.items_destroyed_wms.entity.NonConfidentialDocumentIn;
-import com.safetychina.items_destroyed_wms.exception.NonConfidentialDocumentNotFoundException;
+import com.safetychina.items_destroyed_wms.exception.NonConfidentialDocumentInNotFoundException;
 import com.safetychina.items_destroyed_wms.repository.NonConfidentialDocumentInRepository;
+import com.safetychina.items_destroyed_wms.services.NonConfidentialDocumentInService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
-public class NonConfidentialDocumentInService {
+public class NonConfidentialDocumentInServiceImpl implements NonConfidentialDocumentInService {
     private final NonConfidentialDocumentInRepository nonConfidentialDocumentInRepository;
     private final StringToJsonUtil stringToJsonUtil;
 
-    public NonConfidentialDocumentInService(NonConfidentialDocumentInRepository nonConfidentialDocumentInRepository, StringToJsonUtil stringToJsonUtil) {
+    public NonConfidentialDocumentInServiceImpl(NonConfidentialDocumentInRepository nonConfidentialDocumentInRepository, StringToJsonUtil stringToJsonUtil) {
         this.nonConfidentialDocumentInRepository = nonConfidentialDocumentInRepository;
         this.stringToJsonUtil = stringToJsonUtil;
     }
@@ -40,7 +40,7 @@ public class NonConfidentialDocumentInService {
                     nonConfidentialDocumentIn.setTransferor(newNonConfidentialDocumentIn.getTransferor());
                     return nonConfidentialDocumentInRepository.save(nonConfidentialDocumentIn);
                 } )
-                .orElseThrow(()->new NonConfidentialDocumentNotFoundException(id));
+                .orElseThrow(()->new NonConfidentialDocumentInNotFoundException(id));
     }
 
     public void deleteNonConfidentialDocument(Long id){
@@ -49,7 +49,7 @@ public class NonConfidentialDocumentInService {
 
     public NonConfidentialDocumentIn getNonConfidentialDocument(Long id){
         return nonConfidentialDocumentInRepository.findById(id)
-                .orElseThrow(()->new NonConfidentialDocumentNotFoundException(id));
+                .orElseThrow(()->new NonConfidentialDocumentInNotFoundException(id));
     }
 
     public String getNonConfidentialDocumentDepartments(){

@@ -10,7 +10,7 @@
 <script setup>
 
   import {ref} from "vue";
-  import {useElectronicStore} from "@/store/electronicStore.js";
+  import {useElectronicStore} from "@/store/electronicInStore.js";
 
   const els = useElectronicStore()
 

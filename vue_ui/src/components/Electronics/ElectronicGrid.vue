@@ -33,7 +33,7 @@
 
 <script setup>
 
-  import {useElectronicStore} from "@/store/electronicStore.js";
+  import {useElectronicStore} from "@/store/electronicInStore.js";
   import {storeToRefs} from "pinia";
   import {onMounted} from "vue";
 

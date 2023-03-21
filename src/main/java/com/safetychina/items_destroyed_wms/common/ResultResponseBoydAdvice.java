@@ -16,7 +16,8 @@ public class ResultResponseBoydAdvice implements ResponseBodyAdvice<Object> {
     @Override
     public boolean supports(MethodParameter methodParameter, Class <? extends HttpMessageConverter<?>> aClass) {
         // response是CommRes类型，或者注释了NotControllerResponseAdvice都不进行包装
-        return !methodParameter.getParameterType().isAssignableFrom(CommRes.class);
+        return !(methodParameter.getParameterType().isAssignableFrom(CommRes.class)
+                || methodParameter.hasMethodAnnotation(NotControllerResponseAdvice.class));
     }
 
 

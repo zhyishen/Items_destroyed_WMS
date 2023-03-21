@@ -3,20 +3,21 @@ package com.safetychina.items_destroyed_wms.services.impl;
 
 import com.safetychina.items_destroyed_wms.Utils.StringToJsonUtil;
 import com.safetychina.items_destroyed_wms.entity.ConfidentialDocumentIn;
-import com.safetychina.items_destroyed_wms.exception.ConfidentialDocumentNotFoundException;
+import com.safetychina.items_destroyed_wms.exception.ConfidentialDocumentInNotFoundException;
 import com.safetychina.items_destroyed_wms.repository.ConfidentialDocumentInRepository;
+import com.safetychina.items_destroyed_wms.services.ConfidentialDocumentInService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ConfidentialDocumentInService implements com.safetychina.items_destroyed_wms.services.ConfidentialDocumentInService {
+public class ConfidentialDocumentInServiceImpl implements ConfidentialDocumentInService {
 
     private  final ConfidentialDocumentInRepository confidentialDocumentInRepository;
     private  final StringToJsonUtil stringToJsonUtil;
 
 
-    public ConfidentialDocumentInService(ConfidentialDocumentInRepository confidentialDocumentInRepository, StringToJsonUtil stringToJsonUtil) {
+    public ConfidentialDocumentInServiceImpl(ConfidentialDocumentInRepository confidentialDocumentInRepository, StringToJsonUtil stringToJsonUtil) {
         this.confidentialDocumentInRepository = confidentialDocumentInRepository;
         this.stringToJsonUtil = stringToJsonUtil;
     }
@@ -44,7 +45,7 @@ public class ConfidentialDocumentInService implements com.safetychina.items_dest
                     confidentialDocumentIn.setReceiveDate(newConfidentialDocumentIn.getReceiveDate());
                     return confidentialDocumentInRepository.save(confidentialDocumentIn);
                 })
-                .orElseThrow(()->new ConfidentialDocumentNotFoundException(id));
+                .orElseThrow(()->new ConfidentialDocumentInNotFoundException(id));
     }
 
     @Override
@@ -54,7 +55,7 @@ public class ConfidentialDocumentInService implements com.safetychina.items_dest
     @Override
     public ConfidentialDocumentIn getConfidentialDocument(Long id){
         return confidentialDocumentInRepository.findById(id)
-                .orElseThrow(()-> new ConfidentialDocumentNotFoundException(id));
+                .orElseThrow(()-> new ConfidentialDocumentInNotFoundException(id));
     }
 
     @Override

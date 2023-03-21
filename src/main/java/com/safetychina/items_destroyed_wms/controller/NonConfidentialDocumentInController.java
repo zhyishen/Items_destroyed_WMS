@@ -6,65 +6,66 @@ package com.safetychina.items_destroyed_wms.controller;
  */
 
 import com.safetychina.items_destroyed_wms.entity.NonConfidentialDocumentIn;
-import com.safetychina.items_destroyed_wms.services.impl.NonConfidentialDocumentInService;
+import com.safetychina.items_destroyed_wms.services.impl.NonConfidentialDocumentInServiceImpl;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 @RestController
-@RequestMapping(path = "/NonConfidentialDocuments")
+@RequestMapping(path = "/NonConfidentialDocumentIns")
 public class NonConfidentialDocumentInController {
-    private NonConfidentialDocumentInService nonConfidentialDocumentInService;
+    private NonConfidentialDocumentInServiceImpl nonConfidentialDocumentInServiceImpl;
 
     @Autowired
-    public NonConfidentialDocumentInController(NonConfidentialDocumentInService nonConfidentialDocumentInService) {
-        this.nonConfidentialDocumentInService = nonConfidentialDocumentInService;
+    public NonConfidentialDocumentInController(NonConfidentialDocumentInServiceImpl nonConfidentialDocumentInServiceImpl) {
+        this.nonConfidentialDocumentInServiceImpl = nonConfidentialDocumentInServiceImpl;
     }
 
 
     @PostMapping
-    public void addNonConfidentialDocuments(@RequestBody NonConfidentialDocumentIn nonConfidentialDocumentIn){
-        nonConfidentialDocumentInService.addNonConfidentialDocument(nonConfidentialDocumentIn);
+    public void addNonConfidentialDocuments(@Validated @RequestBody NonConfidentialDocumentIn nonConfidentialDocumentIn){
+        nonConfidentialDocumentInServiceImpl.addNonConfidentialDocument(nonConfidentialDocumentIn);
 
     }
 
     @DeleteMapping("/{id}")
     public void deleteNonConfidentialDocuments(@PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){
-        nonConfidentialDocumentInService.deleteNonConfidentialDocument(Long.parseLong(id));
+        nonConfidentialDocumentInServiceImpl.deleteNonConfidentialDocument(Long.parseLong(id));
     }
 
 
     @PutMapping("/{id}")
-    public NonConfidentialDocumentIn putNonConfidentialDocument(@RequestBody NonConfidentialDocumentIn nonConfidentialDocumentIn, @PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){
-        return nonConfidentialDocumentInService.putNonConfidentialDocument(nonConfidentialDocumentIn,Long.parseLong(id));
+    public NonConfidentialDocumentIn putNonConfidentialDocument(@Validated @RequestBody NonConfidentialDocumentIn nonConfidentialDocumentIn, @PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){
+        return nonConfidentialDocumentInServiceImpl.putNonConfidentialDocument(nonConfidentialDocumentIn,Long.parseLong(id));
     }
 
     @GetMapping
     public List<NonConfidentialDocumentIn> getNonConfidentialDocuments(){
-        return nonConfidentialDocumentInService.getNonConfidentialDocuments();
+        return nonConfidentialDocumentInServiceImpl.getNonConfidentialDocuments();
 
     }
 
     @GetMapping("/{id}")
     public NonConfidentialDocumentIn getNonConfidentialDocument(@PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){
-        return nonConfidentialDocumentInService.getNonConfidentialDocument(Long.parseLong(id));
+        return nonConfidentialDocumentInServiceImpl.getNonConfidentialDocument(Long.parseLong(id));
     }
 
     @GetMapping("/departments")
     public String getConfidentialDocumentDepartments(){
-        return nonConfidentialDocumentInService.getNonConfidentialDocumentDepartments();
+        return nonConfidentialDocumentInServiceImpl.getNonConfidentialDocumentDepartments();
     }
 
     @GetMapping("/recipients")
     public String getConfidentialDocumentRecipients(){
-        return nonConfidentialDocumentInService.getNonConfidentialDocumentRecipients();
+        return nonConfidentialDocumentInServiceImpl.getNonConfidentialDocumentRecipients();
     }
 
     @GetMapping("/transferors")
     public String getConfidentialDocumentTransferors(){
-        return nonConfidentialDocumentInService.getNonConfidentialDocumentTransferors();
+        return nonConfidentialDocumentInServiceImpl.getNonConfidentialDocumentTransferors();
     }
 }
