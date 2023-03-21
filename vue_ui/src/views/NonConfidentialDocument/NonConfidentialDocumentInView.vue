@@ -1,9 +1,9 @@
 <script setup>
 
 import {ref} from "vue";
-import NonConfiditialDocumentGrid from "@/components/NonConfiditialDocuments/NonConfidentialDocumentGrid.vue";
-import NonConfiditialDocumentDialog from "@/components/NonConfiditialDocuments/NonConfidentialDocumentDialog.vue";
-import NonConfiditialDocumentQueryBox from "@/components/NonConfiditialDocuments/NonConfidentialDocumentQueryBox.vue";
+import NonConfiditialDocumentGrid from "@/components/NonConfiditialDocuments/NonConfidentialDocumentInGrid.vue";
+import NonConfiditialDocumentDialog from "@/components/NonConfiditialDocuments/NonConfidentialDocumentInDialog.vue";
+import NonConfiditialDocumentQueryBox from "@/components/NonConfiditialDocuments/NonConfidentialDocumentInQueryBox.vue";
 
 // 方法
 

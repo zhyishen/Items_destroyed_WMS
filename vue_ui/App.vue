@@ -1,8 +1,8 @@
 <script setup>
 
-    import NonConfidentialDocumentView from "@/views/NonConfidentialDocumentView.vue";
-    import ConfidentialDocumentView from "@/views/ConfidentialDocumentView.vue";
-    import ElectronicView from "@/views/ElectronicView.vue";
+    import NonConfidentialDocumentView from "@/views/NonConfidentialDocument/NonConfidentialDocumentInView.vue";
+    import ConfidentialDocumentView from "@/views/ConfidentialDocument/ConfidentialDocumentInView.vue";
+    import ElectronicView from "@/views/Electronic/ElectronicInView.vue";
 
 
     

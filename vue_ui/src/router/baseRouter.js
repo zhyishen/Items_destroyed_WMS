@@ -1,12 +1,12 @@
 import {createRouter, createWebHistory} from "vue-router";
-import ConfidentialDocumentView from "@/views/ConfidentialDocumentView.vue";
-import ElectronicView from "@/views/ElectronicView.vue";
-import NonConfidentialDocumentView from "@/views/NonConfidentialDocumentView.vue";
+import ConfidentialDocumentView from "@/views/ConfidentialDocument/ConfidentialDocumentInView.vue";
+import ElectronicView from "@/views/Electronic/ElectronicInView.vue";
+import NonConfidentialDocumentView from "@/views/NonConfidentialDocument/NonConfidentialDocumentInView.vue";
 import Login from "@/views/Login.vue";
 import RootView from "@/views/RootView.vue";
-import ConfidentialInView from "@/views/ConfidentialDocumentInView.vue";
-import NonConfidentialDocumentInView from "@/views/NonConfidentialDocumentInView.vue";
-import ElectronicInView from "@/views/ElectronicInView.vue";
+import ConfidentialInView from "@/views/ConfidentialDocument/ConfidentialDocumentInAddView.vue";
+import NonConfidentialDocumentInView from "@/views/NonConfidentialDocument/NonConfidentialDocumentInAddView.vue";
+import ElectronicInView from "@/views/Electronic/ElectronicInAddView.vue";
 
 
 const routes = [

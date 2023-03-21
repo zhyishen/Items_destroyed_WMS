@@ -29,9 +29,9 @@
 
 <script setup>
 
-import ElectronicQueryBox from "@/components/Electronics/ElectronicQueryBox.vue";
-import ElectronicGrid from "@/components/Electronics/ElectronicGrid.vue";
-import ElectronicDialog from "@/components/Electronics/ElectronicDialog.vue";
+import ElectronicQueryBox from "@/components/Electronics/ElectronicInQueryBox.vue";
+import ElectronicGrid from "@/components/Electronics/ElectronicInGrid.vue";
+import ElectronicDialog from "@/components/Electronics/ElectronicInDialog.vue";
 </script>
 
 <style scoped>

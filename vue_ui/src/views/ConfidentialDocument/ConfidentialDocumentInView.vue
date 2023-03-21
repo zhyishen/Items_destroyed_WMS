@@ -35,9 +35,9 @@
 
 <script setup>
 
-import ConfidentialDocumentDialog from "@/components/ConfiditialDocuments/ConfidentialDocumentDialog.vue";
-import ConfidentialDocumentGrid from "@/components/ConfiditialDocuments/ConfidentialDocumentGrid.vue";
-import ConfidentialDocumentQueryBox from "@/components/ConfiditialDocuments/ConfidentialDocumentQueryBox.vue";
+import ConfidentialDocumentDialog from "@/components/ConfiditialDocuments/ConfidentialDocumentInDialog.vue";
+import ConfidentialDocumentGrid from "@/components/ConfiditialDocuments/ConfidentialDocumentInGrid.vue";
+import ConfidentialDocumentQueryBox from "@/components/ConfiditialDocuments/ConfidentialDocumentInQueryBox.vue";
 </script>
 
 <style scoped>
