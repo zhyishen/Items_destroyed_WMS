@@ -1,18 +1,17 @@
 package com.safetychina.items_destroyed_wms.exception;
 
 
+import com.safetychina.items_destroyed_wms.common.CommRes;
+import com.safetychina.items_destroyed_wms.common.ResultCode;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
-@ControllerAdvice
+@RestControllerAdvice
 public class NonConfidentialDocumentNotFoundAdvice {
     @ResponseBody
     @ExceptionHandler(NonConfidentialDocumentNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String nonConfidentialDocumentNotFoundHandler(NonConfidentialDocumentNotFoundException exception){
-        return exception.getMessage();
+    public CommRes nonConfidentialDocumentNotFoundHandler(NonConfidentialDocumentNotFoundException nonConfidentialDocumentNotFoundException){
+        return new CommRes(ResultCode.ENTITY_NOT_FOUND,nonConfidentialDocumentNotFoundException.getMessage());
     }
 }
