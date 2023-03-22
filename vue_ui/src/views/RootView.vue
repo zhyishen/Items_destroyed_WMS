@@ -15,9 +15,9 @@
               <span>进库管理</span>
             </template>
 
-            <el-menu-item index="1-1" @click="toPage('ElectronicsIn')">电子设备入库</el-menu-item>
-            <el-menu-item index="1-2" @click="toPage('ConfidentialDocumentsIn')">涉密文件入库</el-menu-item>
-            <el-menu-item index="1-3" @click="toPage('NonConfidentialDocumentsIn')">非涉密文件入库</el-menu-item>
+            <el-menu-item index="1-1" @click="toPage('AddElectronicsIn')">电子设备入库</el-menu-item>
+            <el-menu-item index="1-2" @click="toPage('AddConfidentialDocumentsIn')">涉密文件入库</el-menu-item>
+            <el-menu-item index="1-3" @click="toPage('AddNonConfidentialDocumentsIn')">非涉密文件入库</el-menu-item>
 
           </el-sub-menu>
 
@@ -26,9 +26,9 @@
               <el-icon><location /></el-icon>
               <span>出库管理</span>
             </template>
-            <el-menu-item  @click="">电子设备出库</el-menu-item>
-            <el-menu-item  @click="">涉密文件出库</el-menu-item>
-            <el-menu-item  @click="">非涉密文件出库</el-menu-item>
+            <el-menu-item  @click="toPage('AddElectronicOuts')">电子设备出库</el-menu-item>
+            <el-menu-item  @click="toPage('AddConfidentialDocumentOuts')">涉密文件出库</el-menu-item>
+            <el-menu-item  @click="toPage('AddNonConfidentialDocumentOuts')">非涉密文件出库</el-menu-item>
 
           </el-sub-menu>
 
@@ -37,10 +37,15 @@
               <el-icon><icon-menu /></el-icon>
               <span>仓库管理</span>
             </template>
-            <el-menu-item index="2-1" @click="toPage('Electronics')">电子设备列表</el-menu-item>
-            <el-menu-item index="2-2" @click="toPage('ConfidentialDocuments')">涉密文件列表</el-menu-item>
-            <el-menu-item index="2-3" @click="toPage('NonConfidentialDocuments')">非涉密文件列表</el-menu-item>
+            <el-menu-item index="2-1" @click="toPage('GetElectronicIns')">电子设备入库列表</el-menu-item>
+            <el-menu-item index="2-2" @click="toPage('GetConfidentialDocumentIns')">涉密文件入库列表</el-menu-item>
+            <el-menu-item index="2-3" @click="toPage('GetNonConfidentialDocumentIns')">非涉密文件入库列表</el-menu-item>
+            <el-menu-item index="2-4" @click="toPage('GetElectronicOuts')">电子设备出库列表</el-menu-item>
+            <el-menu-item index="2-5" @click="toPage('GetConfidentialDocumentOuts')">涉密文件出库列表</el-menu-item>
+            <el-menu-item index="2-6" @click="toPage('GetNonConfidentialDocumentOuts')">非涉密文件出库列表</el-menu-item>
           </el-sub-menu>
+
+
           <el-menu-item index="3" >
             <el-icon><document /></el-icon>
             <span>基础管理</span>

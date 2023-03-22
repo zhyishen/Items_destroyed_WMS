@@ -2,7 +2,7 @@
 
   <div>
     <!-- input window -->
-    <el-dialog v-model="cfs.dialogFormVisible" :title="cfs.dialogType=== 'add'? '新增条目' : '编辑条目' ">
+    <el-dialog v-model="cfs.dialogFormVisible" :title="'编辑条目' ">
       <el-form :model="cfs.tableForm">
         <el-form-item label="文件编号" :label-width="100">
           <el-input v-model="cfs.tableForm.documentID" autocomplete="off" />

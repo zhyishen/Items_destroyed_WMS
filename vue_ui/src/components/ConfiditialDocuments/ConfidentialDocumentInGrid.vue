@@ -32,7 +32,6 @@
 </template>
 
 <script setup>
- import API from "@/plugin/axiosInstance.js";
  import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentInStore.js";
  import {onMounted} from "vue";
  import {storeToRefs} from "pinia";

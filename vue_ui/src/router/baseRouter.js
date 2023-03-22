@@ -7,6 +7,12 @@ import RootView from "@/views/RootView.vue";
 import ConfidentialInView from "@/views/ConfidentialDocument/ConfidentialDocumentInAddView.vue";
 import NonConfidentialDocumentInView from "@/views/NonConfidentialDocument/NonConfidentialDocumentInAddView.vue";
 import ElectronicInView from "@/views/Electronic/ElectronicInAddView.vue";
+import ElectronicOutView from "@/views/Electronic/ElectronicOutView.vue";
+import ElectronicOutAddView from "@/views/Electronic/ElectronicOutAddView.vue";
+import ConfidentialDocumentOutView from "@/views/ConfidentialDocument/ConfidentialDocumentOutView.vue";
+import ConfidentialDocumentOutAddView from "@/views/ConfidentialDocument/ConfidentialDocumentOutAddView.vue";
+import NonConfidentialDocumentOutView from "@/views/NonConfidentialDocument/NonConfidentialDocumentOutView.vue";
+import NonConfidentialDocumentOutAddView from "@/views/NonConfidentialDocument/NonConfidentialDocumentOutAddView.vue";
 
 
 const routes = [
@@ -21,34 +27,64 @@ const routes = [
         component: RootView,
         children:[
             {
-                path:"/getConfidentialDocuments",
-                name:"ConfidentialDocuments",
+                path:"/getConfidentialDocumentIns",
+                name:"GetConfidentialDocumentIns",
                 component:ConfidentialDocumentView
             },
             {
-                path:"/getElectronics",
-                name:"Electronics",
+                path:"/getElectronicIns",
+                name:"GetElectronicIns",
                 component:ElectronicView
             },
             {
-                path:"/getNonConfidentialDocuments",
-                name:"NonConfidentialDocuments",
+                path:"/getNonConfidentialDocumentIns",
+                name:"GetNonConfidentialDocumentIns",
                 component:NonConfidentialDocumentView
             },
             {
-                path:"/inputConfidentialDocuments",
-                name:"ConfidentialDocumentsIn",
+                path:"/addConfidentialDocumentIns",
+                name:"AddConfidentialDocumentsIn",
                 component: ConfidentialInView
             },
             {
-                path: "/inputNonConfidentialDocuments",
-                name: "NonConfidentialDocumentsIn",
+                path: "/addNonConfidentialDocumentIns",
+                name: "AddNonConfidentialDocumentsIn",
                 component: NonConfidentialDocumentInView
             },
             {
-                path: "/inputElectronics",
-                name: "ElectronicsIn",
+                path: "/addElectronicIns",
+                name: "AddElectronicsIn",
                 component: ElectronicInView
+            },
+            {
+                path: "/getElectronicOuts",
+                name:"GetElectronicOuts",
+                component: ElectronicOutView
+            },
+            {
+                path:"/addElectronicOuts",
+                name: "AddElectronicOuts",
+                component: ElectronicOutAddView,
+            },
+            {
+                path:"/getConfidentialDocumentOuts",
+                name:"GetConfidentialDocumentOuts",
+                component: ConfidentialDocumentOutView,
+            },
+            {
+                path: "/addConfidentialDocumentOuts",
+                name: "AddConfidentialDocumentOuts",
+                component: ConfidentialDocumentOutAddView
+            },
+            {
+                path: "/getNonConfidentialDocumentOuts",
+                name: "GetNonConfidentialDocumentOuts",
+                component: NonConfidentialDocumentOutView,
+            },
+            {
+                path: "/addNonConfidentialDocumentOuts",
+                name: "AddNonConfidentialDocumentOuts",
+                component: NonConfidentialDocumentOutAddView,
             }
         ],
     },
