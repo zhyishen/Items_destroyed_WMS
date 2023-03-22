@@ -80,7 +80,7 @@ const dialogConfirm = ()=>{
   nfso.addItem(nfso.tableForm)
 }
 onMounted(()=>{
-  nfso.tableForm = []
+  nfso.tableForm = {}
 })
 </script>
 

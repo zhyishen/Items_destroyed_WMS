@@ -106,7 +106,7 @@ const dialogConfirm = ()=>{
 }
 
 onMounted(()=>{
-  nfs.tableForm=[]
+  nfs.tableForm={}
   nfs.getDepartments()
   nfs.getRecipients()
   nfs.getTransferors()

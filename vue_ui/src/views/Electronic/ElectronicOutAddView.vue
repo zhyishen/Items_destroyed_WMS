@@ -103,7 +103,7 @@ const dialogConfirm = ()=>{
   elso.addItem(elso.tableForm)
 }
 onMounted(()=>{
-  elso.tableForm = []
+  elso.tableForm = {}
 })
 </script>
 

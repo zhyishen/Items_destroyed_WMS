@@ -16,7 +16,9 @@ export const useConfidentialDocumentOutsStore = defineStore('confidentialDocumen
             transferor: '',
             sendDate: ''
         },
+
         tableData:[]
+
     }),
 
     actions:{

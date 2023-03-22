@@ -26,12 +26,7 @@
             :reserve-keyword="false"
             placeholder="Choose tags for your article"
         >
-          <el-option
-              v-for="item in cfso.sendDepartments"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-          />
+
         </el-select>
       </el-form-item>
       <el-form-item label="接收部门" :label-width="100">
@@ -43,12 +38,7 @@
             :reserve-keyword="false"
             placeholder="Choose tags for your article"
         >
-          <el-option
-              v-for="item in cfso.receiveDepartments"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-          />
+
         </el-select>
       </el-form-item>
       <el-form-item label="接收人" :label-width="100">
@@ -77,12 +67,7 @@
             :reserve-keyword="false"
             placeholder="Choose tags for your article"
         >
-          <el-option
-              v-for="item in cfso.transferors"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-          />
+
         </el-select>
       </el-form-item>
       <el-form-item label="移交日期" :label-width="100">
@@ -107,6 +92,7 @@
 <script setup>
 
 import {useConfidentialDocumentOutsStore} from "@/store/confidentialDocumentOutStore.js";
+import {zhCn} from "element-plus/lib/locale/index";
 import {onMounted} from "vue";
 
 const cfso = useConfidentialDocumentOutsStore()
@@ -121,7 +107,7 @@ const dialogConfirm = ()=>{
 }
 
 onMounted(()=>{
-  cfso.tableForm=[]
+  cfso.tableForm = {}
 })
 </script>
 

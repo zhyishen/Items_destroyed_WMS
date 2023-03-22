@@ -145,7 +145,7 @@ const dialogConfirm = ()=>{
 }
 
 onMounted(()=>{
-  els.tableForm=[]
+  els.tableForm={}
   els.getTypes()
   els.getTransferors()
   els.getPersonOfUses()

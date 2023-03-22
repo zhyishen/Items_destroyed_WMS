@@ -115,6 +115,7 @@
 
 <script setup>
 import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentInStore.js";
+import {zhCn} from "element-plus/lib/locale/index";
 import {onMounted} from "vue";
 
 const cfs = useConfidentialDocumentsStore()
@@ -129,7 +130,7 @@ const dialogConfirm = ()=>{
 }
 
 onMounted(()=>{
-  cfs.tableForm=[]
+  cfs.tableForm={}
   cfs.getRecipients()
   cfs.getTransferors()
   cfs.getSendDepartments()
