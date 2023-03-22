@@ -129,6 +129,7 @@ const dialogConfirm = ()=>{
 }
 
 onMounted(()=>{
+  cfs.tableForm=[]
   cfs.getRecipients()
   cfs.getTransferors()
   cfs.getSendDepartments()

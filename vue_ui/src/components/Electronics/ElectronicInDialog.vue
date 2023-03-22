@@ -2,7 +2,7 @@
 
   <div>
     <!-- input window -->
-    <el-dialog v-model="els.dialogFormVisible" :title="els.dialogType=== 'add'? '新增条目' : '编辑条目' ">
+    <el-dialog v-model="els.dialogFormVisible" :title="'编辑条目' ">
       <el-form :model="els.tableForm">
         <el-form-item label="设备名称" :label-width="100">
           <el-input v-model="els.tableForm.equipmentName" autocomplete="off" />

@@ -30,7 +30,7 @@ import {onMounted, ref} from "vue";
 <template>
     <div>
             <!-- input window -->
-            <el-dialog v-model="nfs.dialogFormVisible" :title="nfs.dialogType=== 'add'? '新增条目' : '编辑条目' ">
+            <el-dialog v-model="nfs.dialogFormVisible" :title="'编辑条目' ">
                 <el-form :model="nfs.tableForm">
                     <el-form-item label="移交单位" :label-width="100" prop="department">
                       <el-select

@@ -104,7 +104,6 @@ export const useConfidentialDocumentsStore = defineStore('confidentialDocuments'
 
     return {tableData ,
         dialogFormVisible,
-        dialogType,
         tableForm,
         multipleSelection,
         transferors,

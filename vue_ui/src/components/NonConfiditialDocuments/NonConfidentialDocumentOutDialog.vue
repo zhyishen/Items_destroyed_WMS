@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-dialog v-model="nfso.dialogFormVisible" :title="nfso.dialogType=== 'add'? '新增条目' : '编辑条目' ">
+    <el-dialog v-model="nfso.dialogFormVisible" :title=" '编辑条目' ">
     <el-form :model="nfso.tableForm">
       <el-form-item label="移交单位" :label-width="100" prop="department">
         <el-select

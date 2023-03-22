@@ -68,6 +68,7 @@
 <script setup>
 import {useNonConfidentialDocumentOutsStore} from "@/store/nonConfidentialDocumentOutStore.js";
 import {zhCn} from "element-plus/lib/locale/index";
+import {onMounted} from "vue";
 const nfso = useNonConfidentialDocumentOutsStore()
 
 const dialogConfirm = ()=>{
@@ -78,8 +79,17 @@ const dialogConfirm = ()=>{
   })
   nfso.addItem(nfso.tableForm)
 }
+onMounted(()=>{
+  nfso.tableForm = []
+})
 </script>
 
 <style scoped>
-
+.title{
+  text-align: center;
+}
+.input-window{
+  width: 800px;
+  margin: 200px auto;
+}
 </style>

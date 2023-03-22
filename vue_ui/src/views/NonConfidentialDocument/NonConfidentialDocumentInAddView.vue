@@ -106,6 +106,7 @@ const dialogConfirm = ()=>{
 }
 
 onMounted(()=>{
+  nfs.tableForm=[]
   nfs.getDepartments()
   nfs.getRecipients()
   nfs.getTransferors()
@@ -113,5 +114,11 @@ onMounted(()=>{
 </script>
 
 <style scoped>
-
+.title{
+  text-align: center;
+}
+.input-window{
+  width: 800px;
+  margin: 200px auto;
+}
 </style>

@@ -7,7 +7,6 @@ export const useNonConfidentialDocumentsStore = defineStore('nonConfidentialDocu
 
     let dialogFormVisible = ref(false)
 
-    let dialogType = ref('add')
 
     let multipleSelection = ref([])
 
@@ -94,7 +93,6 @@ export const useNonConfidentialDocumentsStore = defineStore('nonConfidentialDocu
 
     return {tableData ,
         dialogFormVisible,
-        dialogType,
         tableForm,
         multipleSelection,
         transferors,
