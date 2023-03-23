@@ -51,4 +51,12 @@ public class EntityNotFoundAdvice {
     public CommRes electronicOutNotFoundHandler(ElectronicOutNotFoundException electronicOutNotFoundException){
         return new CommRes(ResultCode.ENTITY_NOT_FOUND,electronicOutNotFoundException.getMessage());
     }
+
+    @ResponseBody
+    @ExceptionHandler(CompanyNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public CommRes companyNotFoundHandler(CompanyNotFoundException companyNotFoundException){
+        return new CommRes(ResultCode.ENTITY_NOT_FOUND,companyNotFoundException.getMessage());
+    }
+
 }

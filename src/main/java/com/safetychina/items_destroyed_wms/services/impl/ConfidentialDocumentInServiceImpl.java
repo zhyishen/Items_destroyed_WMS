@@ -38,10 +38,8 @@ public class ConfidentialDocumentInServiceImpl implements ConfidentialDocumentIn
                     confidentialDocumentIn.setTitle(newConfidentialDocumentIn.getTitle());
                     confidentialDocumentIn.setQuantity(newConfidentialDocumentIn.getQuantity());
                     confidentialDocumentIn.setSecretLevel(newConfidentialDocumentIn.getSecretLevel());
-                    confidentialDocumentIn.setSendDepartment(newConfidentialDocumentIn.getSendDepartment());
-                    confidentialDocumentIn.setReceiveDepartment(newConfidentialDocumentIn.getReceiveDepartment());
+                    confidentialDocumentIn.setSendCompany(newConfidentialDocumentIn.getSendCompany());
                     confidentialDocumentIn.setRecipient(newConfidentialDocumentIn.getRecipient());
-                    confidentialDocumentIn.setTransferor(newConfidentialDocumentIn.getTransferor());
                     confidentialDocumentIn.setReceiveDate(newConfidentialDocumentIn.getReceiveDate());
                     return confidentialDocumentInRepository.save(confidentialDocumentIn);
                 })
@@ -59,24 +57,9 @@ public class ConfidentialDocumentInServiceImpl implements ConfidentialDocumentIn
     }
 
     @Override
-    public String getConfidentialDocumentReceiveDepartments(){
-        List<String> receiveDepartments = confidentialDocumentInRepository.getAllReceiveDepartment();
-        return stringToJsonUtil.stringToJsonString(receiveDepartments);
-    }
-    @Override
     public String getConfidentialDocumentRecipients(){
         List<String> recipients = confidentialDocumentInRepository.getAllRecipient();
         return stringToJsonUtil.stringToJsonString(recipients);
-    }
-    @Override
-    public String getConfidentialDocumentSendDepartments(){
-        List<String> sendDepartments = confidentialDocumentInRepository.getAllSendDepartment();
-        return stringToJsonUtil.stringToJsonString(sendDepartments);
-    }
-    @Override
-    public String getConfidentialDocumentTransferors(){
-        List<String> transferors = confidentialDocumentInRepository.getAllTransferor();
-        return stringToJsonUtil.stringToJsonString(transferors);
     }
 
 }

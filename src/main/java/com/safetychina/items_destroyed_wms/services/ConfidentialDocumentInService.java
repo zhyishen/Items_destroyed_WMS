@@ -20,11 +20,7 @@ public interface ConfidentialDocumentInService {
 
     ConfidentialDocumentIn getConfidentialDocument(Long id);
 
-    public String getConfidentialDocumentReceiveDepartments();
 
     public String getConfidentialDocumentRecipients();
 
-    public String getConfidentialDocumentSendDepartments();
-
-    public String getConfidentialDocumentTransferors();
 }

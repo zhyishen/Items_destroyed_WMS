@@ -73,11 +73,6 @@ public class ConfidentialDocumentInController {
         return confidentialDocumentInService.getConfidentialDocument(Long.parseLong(id));
     }
 
-    @GetMapping("/receiveDepartments")
-    @NotControllerResponseAdvice
-    public String getConfidentialDocumentReceiveDepartments(){
-        return confidentialDocumentInService.getConfidentialDocumentReceiveDepartments();
-    }
 
     @GetMapping("/recipients")
     @NotControllerResponseAdvice
@@ -85,16 +80,6 @@ public class ConfidentialDocumentInController {
         return confidentialDocumentInService.getConfidentialDocumentRecipients();
     }
 
-    @GetMapping("/transferors")
-    @NotControllerResponseAdvice
-    public String getConfidentialDocumentTransferors(){
-        return confidentialDocumentInService.getConfidentialDocumentTransferors();
-    }
 
-    @GetMapping("/sendDepartments")
-    @NotControllerResponseAdvice
-    public String getConfidentialDocumentSendDepartments(){
-        return confidentialDocumentInService.getConfidentialDocumentSendDepartments();
-    }
 
 }

@@ -28,12 +28,12 @@ public class NonConfidentialDocumentIn {
 
     @Id
     @SequenceGenerator(
-            name = "non_confidential_documents",
-            sequenceName = "non_confidential_documents",
+            name = "input_non_confidential_documents_generator",
+            sequenceName = "input_non_confidential_documents_generator",
             allocationSize = 1
     )
     @GeneratedValue(
-            generator = "non_confidential_documents",
+            generator = "input_non_confidential_documents_generator",
             strategy = GenerationType.SEQUENCE
     )
     @Setter(AccessLevel.NONE)

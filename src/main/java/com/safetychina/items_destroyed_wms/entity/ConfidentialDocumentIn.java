@@ -16,13 +16,13 @@ import java.util.Date;
 public class ConfidentialDocumentIn {
     @Id
     @SequenceGenerator(
-            name = "confidential_documents_generator",
-            sequenceName = "confidential_documents_generator",
+            name = "input_confidential_documents_generator",
+            sequenceName = "input_confidential_documents_generator",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "confidential_documents_generator"
+            generator = "input_confidential_documents_generator"
     )
     @Setter(AccessLevel.NONE)
     private Long id;//实体ID
@@ -37,26 +37,25 @@ public class ConfidentialDocumentIn {
     private Integer quantity;//涉密文档数量（单位份数）
     @NotEmpty(message = "涉密级别不能为空")
     private String secretLevel;//涉密级别
-    @NotEmpty(message = "移交部门不能为空")
-    private String sendDepartment;//移交部门名称
-    @NotEmpty(message = "接收部门不能为空")
-    private String receiveDepartment;//接收部门名称
+
+    @ManyToOne
+    @JoinColumn(name = "company_id", referencedColumnName = "companyId")
+    @NotNull(message = "移交部门不能为空")
+    private Company sendCompany;
+
     @NotEmpty(message = "接收人不能为空")
     private String recipient;//接收人
-    @NotEmpty(message = "移交人不能为空")
-    private String transferor;//移交人
+
     @NotNull(message = "接收日期不能为空")
     private Date receiveDate;//接收日期
 
-    public ConfidentialDocumentIn(String documentID, String title, Integer quantity, String secretLevel, String sendDepartment, String receiveDepartment, String recipient, String transferor, Date receiveDate) {
+    public ConfidentialDocumentIn(String documentID, String title, Integer quantity, String secretLevel, Company sendCompany, String recipient, Date receiveDate) {
         this.documentID = documentID;
         this.title = title;
         this.quantity = quantity;
         this.secretLevel = secretLevel;
-        this.sendDepartment = sendDepartment;
-        this.receiveDepartment = receiveDepartment;
+        this.sendCompany = sendCompany;
         this.recipient = recipient;
-        this.transferor = transferor;
         this.receiveDate = receiveDate;
     }
 }
