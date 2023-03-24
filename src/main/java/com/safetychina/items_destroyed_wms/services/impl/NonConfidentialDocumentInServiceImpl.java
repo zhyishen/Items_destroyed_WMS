@@ -32,12 +32,11 @@ public class NonConfidentialDocumentInServiceImpl implements NonConfidentialDocu
     public NonConfidentialDocumentIn putNonConfidentialDocument(NonConfidentialDocumentIn newNonConfidentialDocumentIn, Long id){
         return nonConfidentialDocumentInRepository.findById(id)
                 .map(nonConfidentialDocumentIn ->{
-                    nonConfidentialDocumentIn.setDepartment(newNonConfidentialDocumentIn.getDepartment());
                     nonConfidentialDocumentIn.setQuantity(newNonConfidentialDocumentIn.getQuantity());
                     nonConfidentialDocumentIn.setDetail(newNonConfidentialDocumentIn.getDetail());
                     nonConfidentialDocumentIn.setReceiveDate(newNonConfidentialDocumentIn.getReceiveDate());
                     nonConfidentialDocumentIn.setRecipient(newNonConfidentialDocumentIn.getRecipient());
-                    nonConfidentialDocumentIn.setTransferor(newNonConfidentialDocumentIn.getTransferor());
+                    nonConfidentialDocumentIn.setSendDepartment(newNonConfidentialDocumentIn.getSendDepartment());
                     return nonConfidentialDocumentInRepository.save(nonConfidentialDocumentIn);
                 } )
                 .orElseThrow(()->new NonConfidentialDocumentInNotFoundException(id));
@@ -52,20 +51,9 @@ public class NonConfidentialDocumentInServiceImpl implements NonConfidentialDocu
                 .orElseThrow(()->new NonConfidentialDocumentInNotFoundException(id));
     }
 
-    public String getNonConfidentialDocumentDepartments(){
-        List<String> departments = nonConfidentialDocumentInRepository.getAllDepartment();
-        return stringToJsonUtil.stringToJsonString(departments);
-    }
 
     public String getNonConfidentialDocumentRecipients(){
         List<String> recipients = nonConfidentialDocumentInRepository.getAllRecipient();
         return stringToJsonUtil.stringToJsonString(recipients);
     }
-
-    public String getNonConfidentialDocumentTransferors(){
-        List<String> transferors = nonConfidentialDocumentInRepository.getAllTransferor();
-        return stringToJsonUtil.stringToJsonString(transferors);
-    }
-
-
 }

@@ -38,7 +38,7 @@ public class ConfidentialDocumentInServiceImpl implements ConfidentialDocumentIn
                     confidentialDocumentIn.setTitle(newConfidentialDocumentIn.getTitle());
                     confidentialDocumentIn.setQuantity(newConfidentialDocumentIn.getQuantity());
                     confidentialDocumentIn.setSecretLevel(newConfidentialDocumentIn.getSecretLevel());
-                    confidentialDocumentIn.setSendCompany(newConfidentialDocumentIn.getSendCompany());
+                    confidentialDocumentIn.setSendDepartment(newConfidentialDocumentIn.getSendDepartment());
                     confidentialDocumentIn.setRecipient(newConfidentialDocumentIn.getRecipient());
                     confidentialDocumentIn.setReceiveDate(newConfidentialDocumentIn.getReceiveDate());
                     return confidentialDocumentInRepository.save(confidentialDocumentIn);

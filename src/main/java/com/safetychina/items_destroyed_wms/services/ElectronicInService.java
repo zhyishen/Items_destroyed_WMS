@@ -20,11 +20,7 @@ public interface ElectronicInService {
 
     String getElectronicTypes();
 
-    String getElectronicSendDepartments();
-
     String getElectronicRecipients();
-
-    String getElectronicTransferors();
 
     String getElectronicPersonOfUses();
 }

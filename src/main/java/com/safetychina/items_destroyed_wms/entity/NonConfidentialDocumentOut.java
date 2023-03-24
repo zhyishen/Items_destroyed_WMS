@@ -25,23 +25,21 @@ public class NonConfidentialDocumentOut {
     @Setter(AccessLevel.NONE)
     private Long id;
 
-    @NotNull(message = "移交单位不能为空")
-    private String department;//移交单位
+    @ManyToOne
+    @NotNull(message = "接收单位不能为空")
+    private Department receiveDepartment;//接收单位
     @NotNull(message = "数量不能为空")
     @Min(value = 0, message = "数量不为负数")
     private Double quantity;//数量（单位公斤）
     @NotNull(message = "移交人不能为空")
     private String transferor;//移交人
-    @NotNull(message = "接收人不能为空")
-    private String recipient;//接收人
     @NotNull(message = "移交日期不能为空")
     private Date sendDate;//移交日期
 
-    public NonConfidentialDocumentOut(String department, Double quantity, String transferor, String recipient, Date sendDate) {
-        this.department = department;
+    public NonConfidentialDocumentOut(Department receiveDepartment, Double quantity, String transferor, String recipient, Date sendDate) {
+        this.receiveDepartment = receiveDepartment;
         this.quantity = quantity;
         this.transferor = transferor;
-        this.recipient = recipient;
         this.sendDate = sendDate;
     }
 }

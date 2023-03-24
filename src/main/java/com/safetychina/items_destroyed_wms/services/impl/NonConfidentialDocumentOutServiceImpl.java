@@ -29,9 +29,8 @@ public class NonConfidentialDocumentOutServiceImpl implements NonConfidentialDoc
     public NonConfidentialDocumentOut putNonConfidentialDocument(NonConfidentialDocumentOut newNonConfidentialDocumentOut, Long id) {
         return nonConfidentialDocumentOutRepository.findById(id).map(nonConfidentialDocumentOut -> {
             nonConfidentialDocumentOut.setQuantity(nonConfidentialDocumentOut.getQuantity());
-            nonConfidentialDocumentOut.setRecipient(newNonConfidentialDocumentOut.getRecipient());
             nonConfidentialDocumentOut.setTransferor(newNonConfidentialDocumentOut.getTransferor());
-            nonConfidentialDocumentOut.setDepartment(newNonConfidentialDocumentOut.getDepartment());
+            nonConfidentialDocumentOut.setReceiveDepartment(newNonConfidentialDocumentOut.getReceiveDepartment());
             nonConfidentialDocumentOut.setSendDate(newNonConfidentialDocumentOut.getSendDate());
             return nonConfidentialDocumentOutRepository.save(nonConfidentialDocumentOut);
         }).orElseThrow(()->new NonConfidentialDocumentOutNotFoundException(id));

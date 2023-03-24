@@ -31,10 +31,8 @@ public class ConfidentialDocumentOutServiceImpl implements ConfidentialDocumentO
     public ConfidentialDocumentOut putConfidentialDocumentOut(ConfidentialDocumentOut newConfidentialDocumentOut, Long id) {
         return confidentialDocumentOutRepository.findById(id).map(confidentialDocumentOut -> {
             confidentialDocumentOut.setQuantity(newConfidentialDocumentOut.getQuantity());
-            confidentialDocumentOut.setRecipient(newConfidentialDocumentOut.getRecipient());
             confidentialDocumentOut.setTransferor(newConfidentialDocumentOut.getTransferor());
             confidentialDocumentOut.setSecretLevel(newConfidentialDocumentOut.getSecretLevel());
-            confidentialDocumentOut.setSendDepartment(newConfidentialDocumentOut.getSendDepartment());
             confidentialDocumentOut.setReceiveDepartment(newConfidentialDocumentOut.getReceiveDepartment());
             confidentialDocumentOut.setSendDate(newConfidentialDocumentOut.getSendDate());
             return confidentialDocumentOutRepository.save(confidentialDocumentOut);

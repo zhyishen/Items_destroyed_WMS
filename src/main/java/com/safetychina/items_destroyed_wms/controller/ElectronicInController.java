@@ -52,18 +52,12 @@ public class ElectronicInController {
         return electronicInService.getElectronicTypes();
     }
 
-    @GetMapping("/sendDepartments")
-    public String getElectronicSendDepartments(){return electronicInService.getElectronicSendDepartments();}
 
     @GetMapping("/recipients")
     public String getElectronicRecipients(){
         return electronicInService.getElectronicRecipients();
     }
 
-    @GetMapping("/transferors")
-    public String getElectronicTransferors(){
-        return electronicInService.getElectronicTransferors();
-    }
 
     @GetMapping("/personOfUses")
     public String getElectronicPersonOfUses(){

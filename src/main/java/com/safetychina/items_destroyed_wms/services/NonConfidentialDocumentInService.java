@@ -12,7 +12,5 @@ public interface NonConfidentialDocumentInService {
     NonConfidentialDocumentIn putNonConfidentialDocument(NonConfidentialDocumentIn newNonConfidentialDocumentIn, Long id);
     void deleteNonConfidentialDocument(Long id);
     NonConfidentialDocumentIn getNonConfidentialDocument(Long id);
-    String getNonConfidentialDocumentDepartments();
     String getNonConfidentialDocumentRecipients();
-    String getNonConfidentialDocumentTransferors();
 }

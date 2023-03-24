@@ -30,9 +30,7 @@ public class ElectronicOutServiceImpl implements ElectronicOutService {
     public ElectronicOut putElectronicOut(ElectronicOut newElectronicOut, Long id) {
         return electronicOutRepository.findById(id).map(electronicOut -> {
             electronicOut.setQuantity(newElectronicOut.getQuantity());
-            electronicOut.setRecipient(newElectronicOut.getRecipient());
             electronicOut.setTransferor(newElectronicOut.getTransferor());
-            electronicOut.setSendDepartment(newElectronicOut.getSendDepartment());
             electronicOut.setReceiveDepartment(newElectronicOut.getReceiveDepartment());
             electronicOut.setType(newElectronicOut.getType());
             electronicOut.setSecretLevel(newElectronicOut.getSecretLevel());

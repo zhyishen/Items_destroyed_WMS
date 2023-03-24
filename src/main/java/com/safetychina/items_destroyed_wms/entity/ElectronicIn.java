@@ -34,19 +34,18 @@ public class ElectronicIn {
 
     @Min(value = 0, message = "设备数量不能为空")
     private Integer quantity;//设备数量
+    @ManyToOne
     @NotNull(message = "移交部门不能为空")
-    private String sendDepartment;//移交部门
+    private Department sendDepartment;//移交部门
     @NotNull(message = "使用责任人不能为空")
     private String personOfUse;//使用责任人
     @NotNull(message = "入库时间不能为空")
     private Date receiveDate;//入库时间
-    @NotNull(message = "移交人不能为空")
-    private String transferor;//移交人
     @NotNull(message = "接收人不能为空")
     private String recipient;//接收人
     private String notes;//备注
 
-    public ElectronicIn(String equipmentName, String type, String secretLevel, Integer quantity, String sendDepartment, String personOfUse, Date receiveDate, String transferor, String recipient, String notes) {
+    public ElectronicIn(String equipmentName, String type, String secretLevel, Integer quantity, Department sendDepartment, String personOfUse, Date receiveDate, String recipient, String notes) {
         this.equipmentName = equipmentName;
         this.type = type;
         this.secretLevel = secretLevel;
@@ -54,7 +53,6 @@ public class ElectronicIn {
         this.sendDepartment = sendDepartment;
         this.personOfUse = personOfUse;
         this.receiveDate = receiveDate;
-        this.transferor = transferor;
         this.recipient = recipient;
         this.notes = notes;
     }

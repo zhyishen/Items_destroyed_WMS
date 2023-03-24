@@ -36,7 +36,6 @@ public class ElectronicInServiceImpl implements ElectronicInService {
                 .map(electronicIn -> {
                     electronicIn.setQuantity(newElectronicIn.getQuantity());
                     electronicIn.setRecipient(newElectronicIn.getRecipient());
-                    electronicIn.setTransferor(newElectronicIn.getTransferor());
                     electronicIn.setReceiveDate(newElectronicIn.getReceiveDate());
                     electronicIn.setSendDepartment(newElectronicIn.getSendDepartment());
                     electronicIn.setEquipmentName(newElectronicIn.getEquipmentName());
@@ -61,11 +60,6 @@ public class ElectronicInServiceImpl implements ElectronicInService {
         List<String> typeStrings = electronicInRepository.getAllType();
         return stringToJsonUtil.stringToJsonString(typeStrings);
     }
-    @Override
-    public String getElectronicSendDepartments(){
-        List<String> departmentStrings = electronicInRepository.getAllDepartment();
-        return stringToJsonUtil.stringToJsonString(departmentStrings);
-    }
 
     @Override
     public String getElectronicRecipients(){
@@ -73,11 +67,6 @@ public class ElectronicInServiceImpl implements ElectronicInService {
         return stringToJsonUtil.stringToJsonString(recipientStrings);
     }
 
-    @Override
-    public String getElectronicTransferors(){
-        List<String> transferorStrings = electronicInRepository.getAllTransferor();
-        return stringToJsonUtil.stringToJsonString(transferorStrings);
-    }
     @Override
     public String getElectronicPersonOfUses(){
         List<String> personOfUseStrings = electronicInRepository.getAllPersonOfUse();

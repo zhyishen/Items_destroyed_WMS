@@ -39,9 +39,8 @@ public class ConfidentialDocumentIn {
     private String secretLevel;//涉密级别
 
     @ManyToOne
-    @JoinColumn(name = "company_id", referencedColumnName = "companyId")
     @NotNull(message = "移交部门不能为空")
-    private Company sendCompany;
+    private Department sendDepartment;
 
     @NotEmpty(message = "接收人不能为空")
     private String recipient;//接收人
@@ -49,12 +48,12 @@ public class ConfidentialDocumentIn {
     @NotNull(message = "接收日期不能为空")
     private Date receiveDate;//接收日期
 
-    public ConfidentialDocumentIn(String documentID, String title, Integer quantity, String secretLevel, Company sendCompany, String recipient, Date receiveDate) {
+    public ConfidentialDocumentIn(String documentID, String title, Integer quantity, String secretLevel, Department sendDepartment, String recipient, Date receiveDate) {
         this.documentID = documentID;
         this.title = title;
         this.quantity = quantity;
         this.secretLevel = secretLevel;
-        this.sendCompany = sendCompany;
+        this.sendDepartment = sendDepartment;
         this.recipient = recipient;
         this.receiveDate = receiveDate;
     }
