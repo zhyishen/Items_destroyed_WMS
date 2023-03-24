@@ -16,22 +16,20 @@ export const useConfidentialDocumentsStore = defineStore('confidentialDocuments'
         title: '',
         quantity: '',
         secretLevel: '',
-        sendDepartment: '',
-        receiveDepartment: '',
+        sendDepartment:{
+            departmentID:'',
+            departmentName:'',
+            contact:'',
+            type:''
+        },
         recipient: '',
-        transferor: '',
         receiveDate: ''
     })
 
     let tableData = ref([])
 
-    const sendDepartments = ref([])
-
-    const receiveDepartments = ref([])
-
     const recipients = ref([])
 
-    const transferors = ref([])
 
     function getItems(){
         API.get("http://localhost:8080/ConfidentialDocumentIns").then(res=>{
@@ -78,11 +76,6 @@ export const useConfidentialDocumentsStore = defineStore('confidentialDocuments'
         })
     }
 
-    function getTransferors(){
-        API.get("http://localhost:8080/ConfidentialDocumentIns/transferors").then(res=>{
-            this.transferors = res.data
-        })
-    }
 
     function getRecipients(){
         API.get("http://localhost:8080/ConfidentialDocumentIns/recipients").then(res=>{
@@ -90,33 +83,16 @@ export const useConfidentialDocumentsStore = defineStore('confidentialDocuments'
         })
     }
 
-    function getSendDepartments(){
-        API.get("http://localhost:8080/ConfidentialDocumentIns/sendDepartments").then(res=>{
-            this.sendDepartments = res.data
-        })
-    }
-
-    function getReceiveDepartments(){
-        API.get("http://localhost:8080/ConfidentialDocumentIns/receiveDepartments").then(res=>{
-            this.receiveDepartments = res.data
-        })
-    }
 
     return {tableData ,
         dialogFormVisible,
         tableForm,
         multipleSelection,
-        transferors,
         recipients,
-        sendDepartments,
-        receiveDepartments,
         getItems,
         addItem,
         deleteItem,
         updateItem,
         getRecipients,
-        getTransferors,
-        getReceiveDepartments,
-        getSendDepartments
     }
 })

@@ -13,8 +13,14 @@ export default defineConfig({
 
     server:{
         proxy:{
-            target: "http://localhost:8080",
-
+            '/dev-server':{
+                target: "http://localhost:8080",
+                changeOrigin: true,
+                // 路径重写
+                pathRewrite:{
+                    '^/api': '/'
+                }
+            }
         }
     },
 

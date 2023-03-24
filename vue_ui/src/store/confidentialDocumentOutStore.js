@@ -11,8 +11,12 @@ export const useConfidentialDocumentOutsStore = defineStore('confidentialDocumen
             quantity: '',
             secretLevel: '',
             sendDepartment: '',
-            receiveDepartment: '',
-            recipient: '',
+            receiveDepartment:{
+                departmentID:'',
+                departmentName:'',
+                contact:'',
+                type:''
+            },
             transferor: '',
             sendDate: ''
         },

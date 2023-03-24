@@ -17,11 +17,15 @@ export const useElectronicStore = defineStore('electronic',()=>{
         equipmentName:'',
         type:'',
         quantity:'',
-        transferor:'',
         recipient:'',
         receiveDate:'',
         secretLevel:'',
-        sendDepartment:'',
+        sendDepartment:{
+            departmentID:'',
+            departmentName:'',
+            contact:'',
+            type:''
+        },
         personOfUse:''
 
 
@@ -96,17 +100,6 @@ export const useElectronicStore = defineStore('electronic',()=>{
         })
     }
 
-    function getTransferors(){
-        API.get("http://localhost:8080/ElectronicIns/transferors").then(res=>{
-            this.transferors = res.data
-        })
-    }
-
-    function getSendDepartments(){
-        API.get("http://localhost:8080/ElectronicIns/sendDepartments").then(res=>{
-            this.sendDepartments = res.data
-        })
-    }
 
     function getPersonOfUses(){
         API.get("http://localhost:8080/ElectronicIns/personOfUses").then(res=>{
@@ -122,7 +115,6 @@ export const useElectronicStore = defineStore('electronic',()=>{
         multipleSelection,
         sendDepartments,
         recipients,
-        transferors ,
         personOfUses,
         typeStrings,
         getItems,
@@ -130,8 +122,6 @@ export const useElectronicStore = defineStore('electronic',()=>{
         updateItem,
         deleteItem,
         getTypes,
-        getTransferors,
-        getSendDepartments,
         getRecipients,
         getPersonOfUses
     }

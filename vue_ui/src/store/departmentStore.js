@@ -1,31 +1,21 @@
-import {defineStore} from 'pinia'
+import {defineStore} from "pinia";
 import API from "@/plugin/axiosInstance.js";
 import {ElMessage} from "element-plus";
 
-export const useElectronicOutsStore = defineStore('electronicOutsStore',{
+export const useDepartmentStore = defineStore('departments',{
     state:()=>({
         dialogFormVisible : false,
         multipleSelection :[],
-        tableForm : {
-            id:'',
-            type:'',
-            quantity: '',
-            secretLevel: '',
-            receiveDepartment:{
-                departmentID:'',
-                departmentName:'',
-                contact:'',
-                type:''
-            },
-            transferor: '',
-            sendDate: ''
+        tableForm:{
+            departmentName:'',
+            contact:'',
+            type:''
         },
         tableData:[]
     }),
-
     actions:{
         getItems(){
-            API.get("http://localhost:8080/ElectronicOuts").then(res=>{
+            API.get("http://localhost:8080/Departments").then(res=>{
                 const {code, msg, data} = res.data
                 if(code === 200){
                     ElMessage.success(msg)
@@ -37,7 +27,7 @@ export const useElectronicOutsStore = defineStore('electronicOutsStore',{
         },
 
         addItem(data){
-            API.post("http://localhost:8080/ElectronicOuts", data).then(res =>{
+            API.post("http://localhost:8080/Departments", data).then(res =>{
                 const {code, msg, data} = res.data
                 if(code === 200){
                     ElMessage.success(msg)
@@ -48,7 +38,7 @@ export const useElectronicOutsStore = defineStore('electronicOutsStore',{
         },
 
         deleteItem(id){
-            API.delete("http://localhost:8080/ElectronicOuts/"+id).then(res=>{
+            API.delete("http://localhost:8080/Departments/"+id).then(res=>{
                 const {code, msg, data} = res.data
                 if(code === 200){
                     ElMessage.success(msg)
@@ -59,7 +49,7 @@ export const useElectronicOutsStore = defineStore('electronicOutsStore',{
         },
 
         updateItem(id,data){
-            API.put("http://localhost:8080/ElectronicOuts/"+id,data).then(res=>{
+            API.put("http://localhost:8080/Departments/"+id,data).then(res=>{
                 const {code, msg, data} = res.data
                 if(code === 200){
                     ElMessage.success(msg)
@@ -70,3 +60,4 @@ export const useElectronicOutsStore = defineStore('electronicOutsStore',{
         }
     }
 })
+
