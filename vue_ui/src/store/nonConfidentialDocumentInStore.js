@@ -12,17 +12,19 @@ export const useNonConfidentialDocumentsStore = defineStore('nonConfidentialDocu
 
     let tableForm = ref({
         id:'',
-        department:'',
+        sendDepartment:{
+            departmentID:'',
+            departmentName:'',
+            contact:'',
+            type:''
+        },
         detail:'',
         quantity:'',
-        transferor:'',
         recipient:'',
         receiveDate:''
     })
 
     let tableData = ref([])
-
-    const departments = ref([])
 
     const recipients = ref([])
 
@@ -73,30 +75,19 @@ export const useNonConfidentialDocumentsStore = defineStore('nonConfidentialDocu
         })
     }
 
-    function getDepartments(){
-        API.get("http://localhost:8080/NonConfidentialDocumentIns/departments").then(res=>{
-            this.departments = res.data
-        })
-    }
-
     function getRecipients(){
         API.get("http://localhost:8080/NonConfidentialDocumentIns/recipients").then(res=>{
             this.recipients = res.data
         })
     }
 
-    function getTransferors(){
-        API.get("http://localhost:8080/NonConfidentialDocumentIns/transferors").then(res=>{
-            this.transferors = res.data
-        })
-    }
 
     return {tableData ,
         dialogFormVisible,
         tableForm,
         multipleSelection,
         transferors,
-        departments,
+        sendDepartments,
         recipients,
         getItems,
         addItem,
