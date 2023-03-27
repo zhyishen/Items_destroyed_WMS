@@ -48,10 +48,10 @@
               placeholder="Choose tags for your article"
           >
             <el-option
-                v-for="item in els.sendDepartments"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
+                v-for="item in dep.tableData"
+                :key="item.departmentID"
+                :label="item.departmentName"
+                :value="item"
             />
           </el-select>
         </el-form-item>
@@ -89,23 +89,6 @@
             />
           </el-select>
         </el-form-item>
-        <el-form-item label="移交人" :label-width="100">
-          <el-select
-              v-model="els.tableForm.transferor"
-              filterable
-              allow-create
-              default-first-option
-              :reserve-keyword="false"
-              placeholder="Choose tags for your article"
-          >
-            <el-option
-                v-for="item in els.transferors"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-            />
-          </el-select>
-        </el-form-item>
         <el-form-item label="接收日期" :label-width="100">
           <el-config-provider :locale=zhCn>
             <el-date-picker
@@ -128,12 +111,14 @@
 </template>
 
 <script setup>
-import {onMounted, ref} from "vue";
+import {onMounted} from "vue";
 
 import {useElectronicStore} from "@/store/electronicInStore.js";
 import {zhCn} from "element-plus/lib/locale/index";
+import {useDepartmentStore} from "@/store/departmentStore.js";
 
 const els = useElectronicStore()
+const dep = useDepartmentStore()
 
 const dialogConfirm = ()=>{
   // 拿到数据
@@ -147,10 +132,8 @@ const dialogConfirm = ()=>{
 onMounted(()=>{
   els.tableForm={}
   els.getTypes()
-  els.getTransferors()
   els.getPersonOfUses()
   els.getRecipients()
-  els.getSendDepartments()
 })
 </script>
 

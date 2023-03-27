@@ -30,30 +30,14 @@
               placeholder="Choose tags for your article"
           >
             <el-option
-                v-for="item in cfs.sendDepartments"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
+                v-for="item in dep.tableData"
+                :key="item.departmentID"
+                :label="item.departmentName"
+                :value="item"
             />
           </el-select>
         </el-form-item>
-        <el-form-item label="接收部门" :label-width="100">
-          <el-select
-              v-model="cfs.tableForm.receiveDepartment"
-              filterable
-              allow-create
-              default-first-option
-              :reserve-keyword="false"
-              placeholder="Choose tags for your article"
-          >
-            <el-option
-                v-for="item in cfs.receiveDepartments"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-            />
-          </el-select>
-        </el-form-item>
+
         <el-form-item label="接收人" :label-width="100">
           <el-select
               v-model="cfs.tableForm.recipient"
@@ -65,23 +49,6 @@
           >
             <el-option
                 v-for="item in cfs.recipients"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-            />
-          </el-select>
-        </el-form-item>
-        <el-form-item label="移交人" :label-width="100">
-          <el-select
-              v-model="cfs.tableForm.transferor"
-              filterable
-              allow-create
-              default-first-option
-              :reserve-keyword="false"
-              placeholder="Choose tags for your article"
-          >
-            <el-option
-                v-for="item in cfs.transferors"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
@@ -115,29 +82,24 @@
 <script setup>
 
   import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentInStore.js";
-  import API from "@/plugin/axiosInstance.js";
   import {zhCn} from "element-plus/lib/locale/index";
   import {onMounted} from "vue";
+  import {useDepartmentStore} from "@/store/departmentStore.js";
 
   const cfs = useConfidentialDocumentsStore()
-
+  const dep = useDepartmentStore()
   const dialogConfirm = ()=>{
     cfs.dialogFormVisible = false
     // 判断
 
     let index = cfs.tableData.findIndex(item => item.id===cfs.tableForm.id)
-    // console.log(index)
     cfs.tableData[index] = cfs.tableForm
-    //API.put("http://localhost:8080/ConfidentialDocuments/"+cfs.tableForm.id,cfs.tableForm)
     cfs.updateItem(cfs.tableForm.id,cfs.tableForm)
 
   }
 
   onMounted(()=>{
     cfs.getRecipients()
-    cfs.getTransferors()
-    cfs.getSendDepartments()
-    cfs.getReceiveDepartments()
   })
 
 </script>

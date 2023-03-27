@@ -22,17 +22,6 @@
       <el-form-item label="数量" :label-width="100">
         <el-input-number v-model="nfso.tableForm.quantity" :min="1" />
       </el-form-item>
-      <el-form-item label="移交人" :label-width="100">
-        <el-select
-            v-model="nfso.tableForm.transferor"
-            filterable
-            allow-create
-            default-first-option
-            :reserve-keyword="false"
-            placeholder="Choose tags for your article"
-        >
-        </el-select>
-      </el-form-item>
       <el-form-item label="接收人" :label-width="100">
         <el-select
             v-model="nfso.tableForm.recipient"

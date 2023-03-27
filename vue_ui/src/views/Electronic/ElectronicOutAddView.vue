@@ -49,12 +49,6 @@
               :reserve-keyword="false"
               placeholder="Choose tags for your article"
           >
-            <el-option
-                v-for="item in elso.recipients"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-            />
           </el-select>
         </el-form-item>
         <el-form-item label="移交人" :label-width="100">

@@ -33,27 +33,10 @@
             placeholder="Choose tags for your article"
         >
           <el-option
-              v-for="item in cfs.sendDepartments"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="接收部门" :label-width="100">
-        <el-select
-            v-model="cfs.tableForm.receiveDepartment"
-            filterable
-            allow-create
-            default-first-option
-            :reserve-keyword="false"
-            placeholder="Choose tags for your article"
-        >
-          <el-option
-              v-for="item in cfs.receiveDepartments"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+              v-for="item in dep.tableData"
+              :key="item.departmentID"
+              :label="item.departmentName"
+              :value="item"
           />
         </el-select>
       </el-form-item>
@@ -68,23 +51,6 @@
         >
           <el-option
               v-for="item in cfs.recipients"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="移交人" :label-width="100">
-        <el-select
-            v-model="cfs.tableForm.transferor"
-            filterable
-            allow-create
-            default-first-option
-            :reserve-keyword="false"
-            placeholder="Choose tags for your article"
-        >
-          <el-option
-              v-for="item in cfs.transferors"
               :key="item.value"
               :label="item.label"
               :value="item.value"
@@ -117,8 +83,10 @@
 import {useConfidentialDocumentsStore} from "@/store/confidentialDocumentInStore.js";
 import {zhCn} from "element-plus/lib/locale/index";
 import {onMounted} from "vue";
+import {useDepartmentStore} from "@/store/departmentStore.js";
 
 const cfs = useConfidentialDocumentsStore()
+const dep = useDepartmentStore()
 
 const dialogConfirm = ()=>{
 
@@ -126,15 +94,12 @@ const dialogConfirm = ()=>{
   // 添加到table
   cfs.addItem(cfs.tableForm)
   cfs.getItems()
-
 }
 
 onMounted(()=>{
   cfs.tableForm={}
   cfs.getRecipients()
-  cfs.getTransferors()
-  cfs.getSendDepartments()
-  cfs.getReceiveDepartments()
+  dep.getItems()
 })
 </script>
 

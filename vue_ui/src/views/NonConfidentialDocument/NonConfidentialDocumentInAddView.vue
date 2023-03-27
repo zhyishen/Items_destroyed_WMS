@@ -10,7 +10,7 @@
       <el-form :model="nfs.tableForm">
         <el-form-item label="移交单位" :label-width="100" prop="department">
           <el-select
-              v-model="nfs.tableForm.department"
+              v-model="nfs.tableForm.sendDepartment"
               filterable
               allow-create
               default-first-option
@@ -18,10 +18,10 @@
               placeholder="Choose tags for your article"
           >
             <el-option
-                v-for="item in nfs.departments"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
+                v-for="item in dep.tableData"
+                :key="item.departmentID"
+                :label="item.departmentName"
+                :value="item"
             />
           </el-select>
         </el-form-item>
@@ -30,23 +30,6 @@
         </el-form-item>
         <el-form-item label="数量" :label-width="100">
           <el-input-number v-model="nfs.tableForm.quantity" :min="1" />
-        </el-form-item>
-        <el-form-item label="移交人" :label-width="100">
-          <el-select
-              v-model="nfs.tableForm.transferor"
-              filterable
-              allow-create
-              default-first-option
-              :reserve-keyword="false"
-              placeholder="Choose tags for your article"
-          >
-            <el-option
-                v-for="item in nfs.transferors"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-            />
-          </el-select>
         </el-form-item>
         <el-form-item label="接收人" :label-width="100">
           <el-select
@@ -90,7 +73,9 @@
 import {useNonConfidentialDocumentsStore} from '@/store/nonConfidentialDocumentInStore.js'
 import {zhCn} from "element-plus/lib/locale/index";
 import {onMounted} from "vue";
+import {useDepartmentStore} from "@/store/departmentStore.js";
 const nfs = useNonConfidentialDocumentsStore()
+const dep = useDepartmentStore()
 
 const rules= {
 
@@ -107,9 +92,7 @@ const dialogConfirm = ()=>{
 
 onMounted(()=>{
   nfs.tableForm={}
-  nfs.getDepartments()
   nfs.getRecipients()
-  nfs.getTransferors()
 })
 </script>
 

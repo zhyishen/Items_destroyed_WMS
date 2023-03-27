@@ -52,10 +52,10 @@ import {onMounted, ref} from "vue";
         >
             <el-table-column type="selection" width="55" />
             <el-table-column prop="id" label="序号" width="150" />
-            <el-table-column prop="department" label="移交单位" width="120" />
+            <el-table-column prop="sendDepartment.departmentName" label="移交单位" width="120" />
             <el-table-column prop="detail" label="内容（明细）" width="120" />
             <el-table-column prop="quantity" label="数量（单位公斤）" width="120" />
-            <el-table-column prop="transferor" label="移交人" width="120" />
+            <el-table-column prop="sendDepartment.contact" label="移交人" width="120" />
             <el-table-column prop="recipient" label="接收人" width="120" />
             <el-table-column prop="receiveDate" label="接收日期" width="120" />
             <el-table-column fixed="right" label="操作" width="120">

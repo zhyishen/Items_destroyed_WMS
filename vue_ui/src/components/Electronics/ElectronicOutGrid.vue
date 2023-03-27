@@ -13,10 +13,10 @@
       <el-table-column prop="type" label="设备类型" width="120" />
       <el-table-column prop="quantity" label="数量" width="120" />
       <el-table-column prop="secretLevel" label="密级" width="120" />
-      <el-table-column prop="sendDepartment" label="移交单位" width="120" />
-      <el-table-column prop="recipient" label="接收人" width="120" />
+      <el-table-column prop="receiveDepartment.departmentName" label="接收单位" width="120" />
+      <el-table-column prop="receiveDepartment.contact" label="接收人" width="120" />
       <el-table-column prop="transferor" label="移交人" width="120" />
-      <el-table-column prop="sendDate" label="接收日期" width="120" />
+      <el-table-column prop="sendDate" label="移交日期" width="120" />
       <el-table-column fixed="right" label="操作" width="120">
         <template #default="scope">
           <el-button link type="primary" size="small" @click="handleEdit(scope.row)">编辑</el-button>

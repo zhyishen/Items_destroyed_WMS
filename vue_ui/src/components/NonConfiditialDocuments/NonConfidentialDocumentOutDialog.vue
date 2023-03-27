@@ -2,9 +2,9 @@
   <div>
     <el-dialog v-model="nfso.dialogFormVisible" :title=" '编辑条目' ">
     <el-form :model="nfso.tableForm">
-      <el-form-item label="移交单位" :label-width="100" prop="department">
+      <el-form-item label="接收单位" :label-width="100" prop="department">
         <el-select
-            v-model="nfso.tableForm.department"
+            v-model="nfso.tableForm.receiveDepartment"
             filterable
             allow-create
             default-first-option
@@ -12,10 +12,10 @@
             placeholder="Choose tags for your article"
         >
           <el-option
-              v-for="item in nfso.departments"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+              v-for="item in dep.tableData"
+              :key="item.departmentID"
+              :label="item.departmentName"
+              :value="item"
           />
         </el-select>
       </el-form-item>
@@ -32,17 +32,6 @@
             placeholder="Choose tags for your article"
         >
 
-        </el-select>
-      </el-form-item>
-      <el-form-item label="接收人" :label-width="100">
-        <el-select
-            v-model="nfso.tableForm.recipient"
-            filterable
-            allow-create
-            default-first-option
-            :reserve-keyword="false"
-            placeholder="Choose tags for your article"
-        >
         </el-select>
       </el-form-item>
       <el-form-item label="移交日期" :label-width="100">
@@ -70,7 +59,9 @@
 
 import {useNonConfidentialDocumentOutsStore} from "@/store/nonConfidentialDocumentOutStore.js";
 import {zhCn} from "element-plus/lib/locale/index";
+import {useDepartmentStore} from "@/store/departmentStore.js";
 const nfso = useNonConfidentialDocumentOutsStore()
+const dep = useDepartmentStore()
 const dialogConfirm = ()=>{
   nfso.dialogFormVisible = false
   // 判断

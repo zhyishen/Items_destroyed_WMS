@@ -41,23 +41,6 @@
 
         </el-select>
       </el-form-item>
-      <el-form-item label="接收人" :label-width="100">
-        <el-select
-            v-model="cfso.tableForm.recipient"
-            filterable
-            allow-create
-            default-first-option
-            :reserve-keyword="false"
-            placeholder="Choose tags for your article"
-        >
-          <el-option
-              v-for="item in cfso.recipients"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-          />
-        </el-select>
-      </el-form-item>
       <el-form-item label="移交人" :label-width="100">
         <el-select
             v-model="cfso.tableForm.transferor"
