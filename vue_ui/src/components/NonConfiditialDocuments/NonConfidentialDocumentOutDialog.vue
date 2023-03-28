@@ -60,6 +60,7 @@
 import {useNonConfidentialDocumentOutsStore} from "@/store/nonConfidentialDocumentOutStore.js";
 import {zhCn} from "element-plus/lib/locale/index";
 import {useDepartmentStore} from "@/store/departmentStore.js";
+import {onMounted} from "vue";
 const nfso = useNonConfidentialDocumentOutsStore()
 const dep = useDepartmentStore()
 const dialogConfirm = ()=>{
@@ -70,6 +71,10 @@ const dialogConfirm = ()=>{
   nfso.tableData[index] = nfso.tableForm
   nfso.updateItem(nfso.tableForm.id,nfso.tableForm)
 }
+
+onMounted(()=>{
+  dep.getReceiveDepartments()
+})
 </script>
 
 <style scoped>

@@ -12,7 +12,7 @@
           <el-radio-button label="秘密" />
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="接收部门" :label-width="100">
+      <el-form-item label="接收单位" :label-width="100">
         <el-select
             v-model="cfso.tableForm.receiveDepartment"
             filterable
@@ -72,6 +72,7 @@
 import {useConfidentialDocumentOutsStore} from "@/store/confidentialDocumentOutStore.js";
 import {zhCn} from "element-plus/lib/locale/index";
 import {useDepartmentStore} from "@/store/departmentStore.js";
+import {onMounted} from "vue";
 const cfso = useConfidentialDocumentOutsStore()
 const dep = useDepartmentStore()
 const dialogConfirm = ()=>{
@@ -82,6 +83,9 @@ const dialogConfirm = ()=>{
   cfso.updateItem(cfso.tableForm.id,cfso.tableForm)
 
 }
+onMounted(()=>{
+  dep.getReceiveDepartments()
+})
 </script>
 
 <style scoped>

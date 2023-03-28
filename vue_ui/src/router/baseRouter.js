@@ -13,6 +13,10 @@ import ConfidentialDocumentOutView from "@/views/ConfidentialDocument/Confidenti
 import ConfidentialDocumentOutAddView from "@/views/ConfidentialDocument/ConfidentialDocumentOutAddView.vue";
 import NonConfidentialDocumentOutView from "@/views/NonConfidentialDocument/NonConfidentialDocumentOutView.vue";
 import NonConfidentialDocumentOutAddView from "@/views/NonConfidentialDocument/NonConfidentialDocumentOutAddView.vue";
+import DepartmentAddView from "@/views/Department/DepartmentAddView.vue";
+import DepartmentView from "@/views/Department/DepartmentView.vue";
+import ElectronicTypeAddView from "@/views/ElectronicType/ElectronicTypeAddView.vue";
+import ElectronicTypeView from "@/views/ElectronicType/ElectronicTypeView.vue";
 
 
 const routes = [
@@ -85,6 +89,26 @@ const routes = [
                 path: "/addNonConfidentialDocumentOuts",
                 name: "AddNonConfidentialDocumentOuts",
                 component: NonConfidentialDocumentOutAddView,
+            },
+            {
+                path: "/addDepartments",
+                name:"AddDepartments",
+                component: DepartmentAddView,
+            },
+            {
+                path: "/getDepartments",
+                name:"GetDepartments",
+                component: DepartmentView,
+            },
+            {
+                path: "/addElectronicTypes",
+                name:"AddElectronicTypes",
+                component: ElectronicTypeAddView,
+            },
+            {
+                path: "/getElectronicTypes",
+                name:"GetElectronicTypes",
+                component: ElectronicTypeView,
             }
         ],
     },

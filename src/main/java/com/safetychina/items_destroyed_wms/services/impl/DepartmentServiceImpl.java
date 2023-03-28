@@ -1,7 +1,7 @@
 package com.safetychina.items_destroyed_wms.services.impl;
 
 import com.safetychina.items_destroyed_wms.entity.Department;
-import com.safetychina.items_destroyed_wms.exception.CompanyNotFoundException;
+import com.safetychina.items_destroyed_wms.exception.DepartmentNotFoundException;
 import com.safetychina.items_destroyed_wms.repository.DepartmentRepository;
 import com.safetychina.items_destroyed_wms.services.DepartmentService;
 import org.springframework.stereotype.Service;
@@ -23,12 +23,22 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public Department getDepartment(Long id) {
         return departmentRepository.findById(id)
-                .orElseThrow(()-> new CompanyNotFoundException(id));
+                .orElseThrow(()-> new DepartmentNotFoundException(id));
     }
 
     @Override
     public List<Department> getDepartments() {
         return departmentRepository.findAll();
+    }
+
+    @Override
+    public List<Department> getSendDepartments() {
+        return departmentRepository.findByType("移交单位");
+    }
+
+    @Override
+    public List<Department> getReceiveDepartments() {
+        return departmentRepository.findByType("接收单位");
     }
 
     @Override
@@ -43,6 +53,6 @@ public class DepartmentServiceImpl implements DepartmentService {
             company.setContact(newDepartment.getContact());
             company.setType(newDepartment.getType());
             return departmentRepository.save(company);
-        }).orElseThrow(()-> new CompanyNotFoundException(id));
+        }).orElseThrow(()-> new DepartmentNotFoundException(id));
     }
 }

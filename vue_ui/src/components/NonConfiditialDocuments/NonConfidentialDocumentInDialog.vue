@@ -22,6 +22,7 @@
 
     onMounted(()=>{
       nfs.getRecipients()
+      dep.getSendDepartments()
     })
 
 

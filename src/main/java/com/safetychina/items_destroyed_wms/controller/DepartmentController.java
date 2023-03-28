@@ -23,9 +23,18 @@ public class DepartmentController {
     public void postDepartment(@Validated @RequestBody Department department){
         departmentService.addDepartment(department);
     }
+
     @GetMapping
-    public List<Department> getDepartments(){
-        return departmentService.getDepartments();
+    public List<Department> getDepartments(){ return departmentService.getDepartments();}
+
+    @GetMapping("/SendDepartment")
+    public List<Department> getSendDepartments(){
+        return departmentService.getSendDepartments();
+    }
+
+    @GetMapping("/ReceiveDepartment")
+    public List<Department> getReceiveDepartments(){
+        return departmentService.getReceiveDepartments();
     }
     @GetMapping("/{id}")
     public Department getDepartment(@PathVariable(name = "id") @Pattern(regexp = "^[0-9]*$", message = "输入id格式错误") String id){

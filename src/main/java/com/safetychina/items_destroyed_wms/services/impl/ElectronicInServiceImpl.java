@@ -55,11 +55,6 @@ public class ElectronicInServiceImpl implements ElectronicInService {
         return electronicInRepository.findById(id)
                 .orElseThrow(()->new ElectronicInNotFoundException(id));
     }
-    @Override
-    public String getElectronicTypes(){
-        List<String> typeStrings = electronicInRepository.getAllType();
-        return stringToJsonUtil.stringToJsonString(typeStrings);
-    }
 
     @Override
     public String getElectronicRecipients(){

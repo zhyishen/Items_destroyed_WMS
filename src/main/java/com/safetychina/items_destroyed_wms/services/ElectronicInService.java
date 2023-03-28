@@ -18,8 +18,6 @@ public interface ElectronicInService {
 
     ElectronicIn getElectronic(Long id);
 
-    String getElectronicTypes();
-
     String getElectronicRecipients();
 
     String getElectronicPersonOfUses();

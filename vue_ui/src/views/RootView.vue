@@ -46,10 +46,16 @@
           </el-sub-menu>
 
 
-          <el-menu-item index="4" >
-            <el-icon><document /></el-icon>
-            <span>基础管理</span>
-          </el-menu-item>
+          <el-sub-menu index="4" >
+            <template #title>
+              <el-icon><document /></el-icon>
+              <span>基础管理</span>
+            </template>
+            <el-menu-item index="4-1" @click="toPage('AddDepartments')">部门增加</el-menu-item>
+            <el-menu-item index="4-2" @click="toPage('GetDepartments')">部门列表</el-menu-item>
+            <el-menu-item index="4-3" @click="toPage('AddElectronicTypes')">电子产品类型增加</el-menu-item>
+            <el-menu-item index="4-4" @click="toPage('GetElectronicTypes')">电子产品类型列表</el-menu-item>
+          </el-sub-menu>
           <el-menu-item index="5" >
             <el-icon><setting /></el-icon>
             <span>系统管理</span>

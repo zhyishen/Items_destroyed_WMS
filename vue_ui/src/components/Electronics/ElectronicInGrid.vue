@@ -12,7 +12,7 @@
       <el-table-column type="selection" width="55" />
       <el-table-column prop="id" label="序号" width="150" />
       <el-table-column prop="equipmentName" label="设备名称" width="120" />
-      <el-table-column prop="type" label="设备类型" width="120" />
+      <el-table-column prop="type.typeName" label="设备类型" width="120" />
       <el-table-column prop="quantity" label="数量" width="120" />
       <el-table-column prop="secretLevel" label="密级" width="120" />
       <el-table-column prop="sendDepartment.departmentName" label="移交单位" width="120" />

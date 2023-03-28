@@ -8,6 +8,12 @@
     <!-- input window -->
 
       <el-form :model="nfs.tableForm">
+        <el-form-item label="内容" :label-width="100">
+          <el-input v-model="nfs.tableForm.detail" autocomplete="off" />
+        </el-form-item>
+        <el-form-item label="数量" :label-width="100">
+          <el-input-number v-model="nfs.tableForm.quantity" :min="1" />
+        </el-form-item>
         <el-form-item label="移交单位" :label-width="100" prop="department">
           <el-select
               v-model="nfs.tableForm.sendDepartment"
@@ -24,12 +30,6 @@
                 :value="item"
             />
           </el-select>
-        </el-form-item>
-        <el-form-item label="内容" :label-width="100">
-          <el-input v-model="nfs.tableForm.detail" autocomplete="off" />
-        </el-form-item>
-        <el-form-item label="数量" :label-width="100">
-          <el-input-number v-model="nfs.tableForm.quantity" :min="1" />
         </el-form-item>
         <el-form-item label="接收人" :label-width="100">
           <el-select
@@ -93,6 +93,7 @@ const dialogConfirm = ()=>{
 onMounted(()=>{
   nfs.tableForm={}
   nfs.getRecipients()
+  dep.getSendDepartments()
 })
 </script>
 

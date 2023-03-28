@@ -1,11 +1,7 @@
 <template>
-
-  <div class="title">
-    <h2>单位新增</h2>
-  </div>
-  <div class="input-window">
+  <el-dialog v-model="dep.dialogFormVisible" :title="'编辑条目' ">
     <el-form :model="dep.tableForm">
-      <el-form-item label="部门名称" :label-width="100">
+      <el-form-item label="单位名称" :label-width="100">
         <el-input v-model="dep.tableForm.departmentName" autocomplete="off" />
       </el-form-item>
       <el-form-item label="联系人" :label-width="100">
@@ -17,41 +13,32 @@
           <el-radio-button label="接收单位" />
         </el-radio-group>
       </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="dialogConfirm">
-          确认
-        </el-button>
-
-      </el-form-item>
     </el-form>
-  </div>
-
+    <template #footer>
+                <span class="dialog-footer">
+                    <el-button type="primary" @click="dialogConfirm">
+                    确认
+                    </el-button>
+                </span>
+    </template>
+  </el-dialog>
 </template>
 
 <script setup>
-import {onMounted} from "vue";
+
 import {useDepartmentStore} from "@/store/departmentStore.js";
+
 const dep = useDepartmentStore()
+
 const dialogConfirm = ()=>{
-
-  // 拿到数据
-  // 添加到table
-  dep.addItem(dep.tableForm)
-  dep.getItems()
+  dep.dialogFormVisible = false
+  // 判断
+  const index = dep.tableData.findIndex(item => item.departmentId===dep.tableForm.departmentId)
+  dep.tableData[index] = dep.tableForm
+  dep.updateItem(dep.tableForm.departmentId,dep.tableForm)
 }
-
-onMounted(()=>{
-  dep.tableForm={}
-  dep.getItems()
-})
 </script>
 
 <style scoped>
-.title{
-  text-align: center;
-}
-.input-window{
-  width: 800px;
-  margin: 200px auto;
-}
+
 </style>

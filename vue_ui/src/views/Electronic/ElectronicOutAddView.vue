@@ -12,11 +12,16 @@
           <el-select
               v-model="elso.tableForm.type"
               filterable
-              allow-create
               default-first-option
               :reserve-keyword="false"
               placeholder="Choose tags for your article"
           >
+            <el-option
+                v-for="item in elty.tableData"
+                :key="item.id"
+                :label="item.typeName"
+                :value="item"
+            />
           </el-select>
         </el-form-item>
         <el-form-item label="数量" :label-width="100">
@@ -29,26 +34,21 @@
             <el-radio-button label="秘密" />
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="移交部门" :label-width="100">
+        <el-form-item label="接收单位" :label-width="100">
           <el-select
-              v-model="elso.tableForm.sendDepartment"
+              v-model="elso.tableForm.receiveDepartment"
               filterable
               allow-create
               default-first-option
               :reserve-keyword="false"
               placeholder="Choose tags for your article"
           >
-          </el-select>
-        </el-form-item>
-        <el-form-item label="接收人" :label-width="100">
-          <el-select
-              v-model="elso.tableForm.recipient"
-              filterable
-              allow-create
-              default-first-option
-              :reserve-keyword="false"
-              placeholder="Choose tags for your article"
-          >
+            <el-option
+                v-for="item in dep.tableData"
+                :key="item.departmentID"
+                :label="item.departmentName"
+                :value="item"
+            />
           </el-select>
         </el-form-item>
         <el-form-item label="移交人" :label-width="100">
@@ -62,7 +62,7 @@
           >
           </el-select>
         </el-form-item>
-        <el-form-item label="接收日期" :label-width="100">
+        <el-form-item label="移交日期" :label-width="100">
           <el-config-provider :locale=zhCn>
             <el-date-picker
                 v-model="elso.tableForm.sendDate"
@@ -87,7 +87,11 @@
 import {useElectronicOutsStore} from "@/store/electronicOutStore.js";
 import {zhCn} from "element-plus/lib/locale/index";
 import {onMounted} from "vue";
+import {useDepartmentStore} from "@/store/departmentStore.js";
+import {useElectronicTypeStore} from "@/store/electronicTypeStore.js";
 const elso = useElectronicOutsStore()
+const dep = useDepartmentStore()
+const elty = useElectronicTypeStore()
 const dialogConfirm = ()=>{
   // 拿到数据
   // 添加到table
@@ -98,6 +102,8 @@ const dialogConfirm = ()=>{
 }
 onMounted(()=>{
   elso.tableForm = {}
+  dep.getReceiveDepartments()
+  elty.getItems()
 })
 </script>
 

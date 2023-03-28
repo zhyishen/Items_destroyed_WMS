@@ -15,6 +15,10 @@ public interface DepartmentService {
 
     List<Department> getDepartments();
 
+    List<Department> getSendDepartments();
+
+    List<Department> getReceiveDepartments();
+
     void deleteDepartment(Long id);
 
     Department updateDepartment(Department newDepartment, Long id);

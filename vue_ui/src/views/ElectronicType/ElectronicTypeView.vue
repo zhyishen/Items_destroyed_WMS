@@ -1,7 +1,7 @@
 <template>
   <div class="table-box">
     <div class="title">
-      <h2>单位列表</h2>
+      <h2>类型列表</h2>
     </div>
 
     <div class="query-box">
@@ -9,12 +9,12 @@
     </div>
 
     <div class="table-box">
-      <DepartmentGrid></DepartmentGrid>
+      <ElectronicTypeGrid></ElectronicTypeGrid>
 
     </div>
 
     <div class = "el-dialog">
-      <DepartmentDialog></DepartmentDialog>
+      <ElectronicTypeDialog></ElectronicTypeDialog>
     </div>
 
   </div>
@@ -22,8 +22,8 @@
 
 <script setup>
 
-import DepartmentDialog from "@/components/Departments/DepartmentDialog.vue";
-import DepartmentGrid from "@/components/Departments/DepartmentGrid.vue";
+import ElectronicTypeGrid from "@/components/ElectronicTypes/ElectronicTypeGrid.vue";
+import ElectronicTypeDialog from "@/components/ElectronicTypes/ElectronicTypeDialog.vue";
 </script>
 
 <style scoped>

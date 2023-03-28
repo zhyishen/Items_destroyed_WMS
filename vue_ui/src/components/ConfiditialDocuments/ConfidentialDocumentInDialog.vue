@@ -20,7 +20,7 @@
             <el-radio-button label="秘密" />
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="移交部门" :label-width="100">
+        <el-form-item label="移交单位" :label-width="100">
           <el-select
               v-model="cfs.tableForm.sendDepartment"
               filterable
@@ -100,6 +100,7 @@
 
   onMounted(()=>{
     cfs.getRecipients()
+    dep.getSendDepartments()
   })
 
 </script>

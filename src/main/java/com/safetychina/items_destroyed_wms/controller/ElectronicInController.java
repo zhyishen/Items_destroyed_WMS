@@ -47,11 +47,6 @@ public class ElectronicInController {
         return electronicInService.getElectronic(Long.parseLong(id));
     }
 
-    @GetMapping("/types")
-    public String getElectronicTypes(){
-        return electronicInService.getElectronicTypes();
-    }
-
 
     @GetMapping("/recipients")
     public String getElectronicRecipients(){

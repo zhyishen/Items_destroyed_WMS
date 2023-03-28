@@ -14,7 +14,10 @@ export const useElectronicStore = defineStore('electronic',{
         tableForm : {
             id:'',
             equipmentName:'',
-            type:'',
+            type:{
+                id:'',
+                typeName:'',
+            },
             quantity:'',
             recipient:'',
             receiveDate:'',
@@ -81,12 +84,6 @@ export const useElectronicStore = defineStore('electronic',{
                 }else{
                     ElMessage.error(msg)
                 }
-            })
-        },
-
-        getTypes(){
-            API.get("http://localhost:8080/ElectronicIns/types").then(res=>{
-                this.typeStrings = res.data
             })
         },
 

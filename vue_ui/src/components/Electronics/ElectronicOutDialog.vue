@@ -11,6 +11,12 @@
             :reserve-keyword="false"
             placeholder="Choose tags for your article"
         >
+          <el-option
+              v-for="item in elty.tableData"
+              :key="item.id"
+              :label="item.typeName"
+              :value="item"
+          />
         </el-select>
       </el-form-item>
       <el-form-item label="数量" :label-width="100">
@@ -23,7 +29,7 @@
           <el-radio-button label="秘密" />
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="接收部门" :label-width="100">
+      <el-form-item label="接收单位" :label-width="100">
         <el-select
             v-model="elso.tableForm.receiveDepartment"
             filterable
@@ -78,8 +84,11 @@
 import {useElectronicOutsStore} from "@/store/electronicOutStore.js";
 import {zhCn} from "element-plus/lib/locale/index";
 import {useDepartmentStore} from "@/store/departmentStore.js";
+import {onMounted} from "vue";
+import {useElectronicTypeStore} from "@/store/electronicTypeStore.js";
 const elso = useElectronicOutsStore()
 const dep = useDepartmentStore()
+const elty = useElectronicTypeStore()
 const dialogConfirm = ()=>{
   elso.dialogFormVisible = false
   // 判断
@@ -89,6 +98,11 @@ const dialogConfirm = ()=>{
   elso.updateItem(elso.tableForm.id, elso.tableForm)
 
 }
+
+onMounted(()=>{
+  dep.getReceiveDepartments()
+  elty.getItems()
+})
 </script>
 
 <style scoped>

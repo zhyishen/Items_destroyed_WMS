@@ -17,10 +17,10 @@
               placeholder="Choose tags for your article"
           >
             <el-option
-                v-for="item in els.typeStrings"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
+                v-for="item in elty.tableData"
+                :key="item.id"
+                :label="item.typeName"
+                :value="item"
             />
           </el-select>
         </el-form-item>
@@ -34,7 +34,7 @@
             <el-radio-button label="秘密" />
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="移交部门" :label-width="100">
+        <el-form-item label="移交单位" :label-width="100">
           <el-select
               v-model="els.tableForm.sendDepartment"
               filterable
@@ -116,9 +116,11 @@ import {onMounted, ref} from "vue";
   import {useElectronicStore} from "@/store/electronicInStore.js";
   import {zhCn} from "element-plus/lib/locale/index";
 import {useDepartmentStore} from "@/store/departmentStore.js";
+import {useElectronicTypeStore} from "@/store/electronicTypeStore.js";
 
   const els = useElectronicStore()
   const dep = useDepartmentStore()
+  const elty = useElectronicTypeStore()
   const dialogConfirm = ()=>{
     els.dialogFormVisible = false
     // 判断
@@ -130,9 +132,10 @@ import {useDepartmentStore} from "@/store/departmentStore.js";
   }
 
   onMounted(()=>{
-    els.getTypes()
     els.getPersonOfUses()
     els.getRecipients()
+    dep.getSendDepartments()
+    elty.getItems()
   })
 
 </script>

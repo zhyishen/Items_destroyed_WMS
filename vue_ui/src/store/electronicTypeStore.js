@@ -2,20 +2,18 @@ import {defineStore} from "pinia";
 import API from "@/plugin/axiosInstance.js";
 import {ElMessage} from "element-plus";
 
-export const useDepartmentStore = defineStore('departments',{
+export const useElectronicTypeStore = defineStore('electronicType',{
     state:()=>({
         dialogFormVisible : false,
         multipleSelection :[],
         tableForm:{
-            departmentName:'',
-            contact:'',
-            type:''
+            typeName:'',
         },
         tableData:[]
     }),
     actions:{
         getItems(){
-            API.get("http://localhost:8080/Departments").then(res=>{
+            API.get("http://localhost:8080/ElectronicTypes").then(res=>{
                 const {code, msg, data} = res.data
                 if(code === 200){
                     ElMessage.success(msg)
@@ -26,32 +24,9 @@ export const useDepartmentStore = defineStore('departments',{
             })
         },
 
-        getSendDepartments(){
-            API.get("http://localhost:8080/Departments/SendDepartment").then(res=>{
-                const {code, msg, data} = res.data
-                if(code === 200){
-                    ElMessage.success(msg)
-                    this.tableData = data
-                }else{
-                    ElMessage.error(msg)
-                }
-            })
-        },
-
-        getReceiveDepartments(){
-            API.get("http://localhost:8080/Departments/ReceiveDepartment").then(res=>{
-                const {code, msg, data} = res.data
-                if(code === 200){
-                    ElMessage.success(msg)
-                    this.tableData = data
-                }else{
-                    ElMessage.error(msg)
-                }
-            })
-        },
 
         addItem(data){
-            API.post("http://localhost:8080/Departments", data).then(res =>{
+            API.post("http://localhost:8080/ElectronicTypes", data).then(res =>{
                 const {code, msg, data} = res.data
                 if(code === 200){
                     ElMessage.success(msg)
@@ -62,7 +37,7 @@ export const useDepartmentStore = defineStore('departments',{
         },
 
         deleteItem(id){
-            API.delete("http://localhost:8080/Departments/"+id).then(res=>{
+            API.delete("http://localhost:8080/ElectronicTypes/"+id).then(res=>{
                 const {code, msg, data} = res.data
                 if(code === 200){
                     ElMessage.success(msg)
@@ -73,7 +48,7 @@ export const useDepartmentStore = defineStore('departments',{
         },
 
         updateItem(id,data){
-            API.put("http://localhost:8080/Departments/"+id,data).then(res=>{
+            API.put("http://localhost:8080/ElectronicTypes/"+id,data).then(res=>{
                 const {code, msg, data} = res.data
                 if(code === 200){
                     ElMessage.success(msg)

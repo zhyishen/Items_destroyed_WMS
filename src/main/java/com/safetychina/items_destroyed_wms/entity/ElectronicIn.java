@@ -28,7 +28,8 @@ public class ElectronicIn {
     @NotNull(message = "设备名称不能为空")
     private String equipmentName;//设备名称
     @NotNull(message = "设备类型不能为空")
-    private String type;//设备类型
+    @ManyToOne
+    private ElectronicType type;//设备类型
     @NotNull(message = "保密级别不能为空")
     private String secretLevel;//保密级别
 
@@ -45,7 +46,7 @@ public class ElectronicIn {
     private String recipient;//接收人
     private String notes;//备注
 
-    public ElectronicIn(String equipmentName, String type, String secretLevel, Integer quantity, Department sendDepartment, String personOfUse, Date receiveDate, String recipient, String notes) {
+    public ElectronicIn(String equipmentName, ElectronicType type, String secretLevel, Integer quantity, Department sendDepartment, String personOfUse, Date receiveDate, String recipient, String notes) {
         this.equipmentName = equipmentName;
         this.type = type;
         this.secretLevel = secretLevel;

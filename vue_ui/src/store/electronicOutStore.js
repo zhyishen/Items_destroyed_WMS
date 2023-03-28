@@ -8,7 +8,10 @@ export const useElectronicOutsStore = defineStore('electronicOutsStore',{
         multipleSelection :[],
         tableForm : {
             id:'',
-            type:'',
+            type:{
+                id:'',
+                typeName:'',
+            },
             quantity: '',
             secretLevel: '',
             receiveDepartment:{

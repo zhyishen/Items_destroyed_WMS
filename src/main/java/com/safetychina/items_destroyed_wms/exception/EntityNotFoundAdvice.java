@@ -53,10 +53,16 @@ public class EntityNotFoundAdvice {
     }
 
     @ResponseBody
-    @ExceptionHandler(CompanyNotFoundException.class)
+    @ExceptionHandler(DepartmentNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public CommRes companyNotFoundHandler(CompanyNotFoundException companyNotFoundException){
-        return new CommRes(ResultCode.ENTITY_NOT_FOUND,companyNotFoundException.getMessage());
+    public CommRes departmentNotFoundHandler(DepartmentNotFoundException departmentNotFoundException){
+        return new CommRes(ResultCode.ENTITY_NOT_FOUND, departmentNotFoundException.getMessage());
     }
 
+    @ResponseBody
+    @ExceptionHandler(ElectronicTypeNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public CommRes electronicTypeNotFoundHandler(ElectronicTypeNotFoundException electronicTypeNotFoundException){
+        return new CommRes(ResultCode.ENTITY_NOT_FOUND,electronicTypeNotFoundException.getMessage());
+    }
 }
