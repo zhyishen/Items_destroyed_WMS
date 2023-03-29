@@ -1,6 +1,6 @@
 package com.safetychina.items_destroyed_wms.services.impl;
 
-import com.safetychina.items_destroyed_wms.entity.ElectronicType;
+import com.safetychina.items_destroyed_wms.entity.Equipment;
 import com.safetychina.items_destroyed_wms.exception.ElectronicTypeNotFoundException;
 import com.safetychina.items_destroyed_wms.repository.ElectronicTypeRepository;
 import com.safetychina.items_destroyed_wms.services.ElectronicTypeService;
@@ -18,13 +18,13 @@ public class ElectronicTypeServiceImpl implements ElectronicTypeService {
     }
 
     @Override
-    public List<ElectronicType> getElectronicTypes() {
+    public List<Equipment> getElectronicTypes() {
         return electronicTypeRepository.findAll();
     }
 
     @Override
-    public void addElectronicType(ElectronicType electronicType) {
-        electronicTypeRepository.save(electronicType);
+    public void addElectronicType(Equipment equipment) {
+        electronicTypeRepository.save(equipment);
     }
 
     @Override
@@ -33,9 +33,9 @@ public class ElectronicTypeServiceImpl implements ElectronicTypeService {
     }
 
     @Override
-    public ElectronicType putElectronicType(ElectronicType newElectronicType, Long id) {
+    public Equipment putElectronicType(Equipment newEquipment, Long id) {
         return electronicTypeRepository.findById(id).map(electronicType -> {
-            electronicType.setTypeName(newElectronicType.getTypeName());
+            electronicType.setTypeName(newEquipment.getTypeName());
             return electronicTypeRepository.save(electronicType);
         }).orElseThrow(()->new ElectronicTypeNotFoundException(id));
     }

@@ -29,7 +29,7 @@ public class ElectronicOut {
 
     @NotNull(message = "设备类型不能为空")
     @ManyToOne
-    private ElectronicType type;//设备类型
+    private Equipment type;//设备类型
     @NotNull(message = "保密级别不能为空")
     private String secretLevel;//保密级别
     @Min(value = 0, message = "设备数量不能为空")
@@ -42,7 +42,7 @@ public class ElectronicOut {
     @NotNull(message = "移交人不能为空")
     private String transferor;//移交人
 
-    public ElectronicOut(ElectronicType type, String secretLevel, Integer quantity, Department receiveDepartment, Date sendDate, String transferor) {
+    public ElectronicOut(Equipment type, String secretLevel, Integer quantity, Department receiveDepartment, Date sendDate, String transferor) {
         this.type = type;
         this.secretLevel = secretLevel;
         this.quantity = quantity;

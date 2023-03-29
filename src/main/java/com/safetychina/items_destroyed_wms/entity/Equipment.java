@@ -4,11 +4,13 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.util.Set;
+
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "electronics_type")
-public class ElectronicType {
+@Table(name = "equipment")
+public class Equipment {
     @Id
     @Setter(AccessLevel.NONE)
     @SequenceGenerator(name = "electronics_type_generator",
@@ -19,5 +21,15 @@ public class ElectronicType {
     private Long id;
     @Column(unique = true)
     @NotNull
-    private String typeName;
+    private String equipmentName;
+
+    private String equipment;
+
+    private Integer quantity;
+
+    private String unit;
+
+    private String secretLevel;
+
+
 }
